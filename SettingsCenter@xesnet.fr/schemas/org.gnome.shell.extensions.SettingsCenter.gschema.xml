@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extensions-SettingsCenter">
+  <schema path="/org/gnome/shell/extensions/SettingsCenter/" id="org.gnome.shell.extensions.SettingsCenter">
+    <key name="label-menu" type="s">
+      <default>'Settings Center'</default>
+      <summary>Label Menu</summary>
+      <description/>
+    </key>
+    <key name="replace-ss-menu" type="b">
+      <default>false</default>
+      <summary>Replace System Settings Menu</summary>
+      <description/>
+    </key>
+    <key name="items" type="s">
+      <default>'Advanced Settings;gnome-tweak-tool.desktop;1;gnome-tweak-tool|Desktop Config Editor;dconf-editor.desktop;1;dconf-editor|Gnome Config Editor;gconf-editor.desktop;1;gconf-editor|Session Properties;session-properties.desktop;1;gnome-session-properties|Extensions Preferences;gnome-shell-extension-prefs.desktop;1;gnome-shell-extension-prefs|Passwords and Keys;seahorse.desktop;0;seahorse|NVidia Settings;nvidia-settings.desktop;0;nvidia-settings'</default>
+      <summary>Items</summary>
+      <description/>
+    </key>
+  </schema>
+</schemalist>
