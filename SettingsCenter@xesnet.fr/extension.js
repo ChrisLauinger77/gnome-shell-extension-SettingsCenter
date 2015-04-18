@@ -10,7 +10,7 @@ const Util = imports.misc.util;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Lib = Extension.imports.lib;
 const MenuItems = Extension.imports.menu_items;
-
+const Clutter = imports.gi.Clutter;
 const schema = "org.gnome.shell.extensions.SettingsCenter";
 
 let userMenu, age;
@@ -135,11 +135,11 @@ SettingsCenter.prototype =
         
 	if (this.replaceMenu || this.items.length > 0)
 	{
-            this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")));
+	    this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")), true);
+        this.settingsCenterMenu.icon.icon_name = 'preferences-other-symbolic';
 
 	    //Add new menu to status area
 	    userMenu.menu.addMenuItem(this.settingsCenterMenu, index - 2);
-
 	    let i = 0;
 
 	    //Replace System Settings Menu if defined
