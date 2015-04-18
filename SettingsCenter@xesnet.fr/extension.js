@@ -25,14 +25,20 @@ function init(extensionMeta)
         break;
         case"5": global.log("Warning of extension [" + metadata.uuid + "]:\n              Development release detected (" + Config.PACKAGE_VERSION + "). Loading as a 3.6 release.\n"); //eak
         case"6": age = "new";
+        case"8":  ;
         break;
-        case"8": age = "new2";
+        case"10": age = "new2"
+        case"12":  ;
+        case"14":  ;
+        case"15": global.log("Warning of extension [" + metadata.uuid + "]:\n              Development release detected (" + Config.PACKAGE_VERSION + "). Loading as a 3.16 release.\n"); //eak
+        case"16":  ;
         break;
-        default: throw new Error("Strange version number (extension.js:31).");
+        default: throw new Error("Strange version number (extension.js:36).");
     }
 
-    if (age=="old") userMenu = Main.panel._statusArea.userMenu;
-    else            userMenu = Main.panel.statusArea.userMenu;
+    if (age=="old")       userMenu = Main.panel._statusArea.userMenu;
+    else if (age=="new")  userMenu = Main.panel.statusArea.userMenu;
+    else                  userMenu = Main.panel.statusArea.aggregateMenu;
 
     return new SettingsCenter(extensionMeta, schema);
 }
@@ -102,8 +108,8 @@ SettingsCenter.prototype =
         let index = null;
         let menuItems = userMenu.menu._getMenuItems();
 	//Find System Settings menu position, "Settings" on > 3.8
-        if (age=="new2") new3 = "Settings";
-        else             new3 = "System Settings";
+        if (age=="new") new3 = "Settings";
+        else new3 = "System Settings";
         for (let i = 0; i < menuItems.length; i++)
         {    
 	    if (
@@ -123,7 +129,7 @@ SettingsCenter.prototype =
 	//If no find, set the position arbitrary and force "replace menu" to Off
 	if (index == null)
 	{
-	    index = 4;
+	    index = 11;
 	    this.replaceMenu = false;
 	}
         
@@ -132,7 +138,7 @@ SettingsCenter.prototype =
             this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")));
 
 	    //Add new menu to status area
-	    userMenu.menu.addMenuItem(this.settingsCenterMenu, index + 1);
+	    userMenu.menu.addMenuItem(this.settingsCenterMenu, index - 2);
 
 	    let i = 0;
 
