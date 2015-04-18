@@ -29,7 +29,7 @@ MenuItems.prototype =
     getEnableItems: function()
     {
 	let items = this.getItems();
-
+        let indexItem;
 	let itemsEnable = new Array();
 
 	for (indexItem in items)
