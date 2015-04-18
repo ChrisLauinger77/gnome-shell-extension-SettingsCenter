@@ -2,7 +2,7 @@
 
 Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the user/aggregate menu. Originally created by XES. 
 
-v8: minor cleanup, now has an icon for the main menu entry.
+v9: minor cleanup, now has an icon for the main menu entry.
 
 Settings shortcuts : gnome-tweak-tool, dconf-editor, gconf-editor, gnome-session-properties, gnome-shell-extension-prefs, seahorse and nvidia-settings. You can add your own
 
