@@ -153,7 +153,7 @@ MenuItems.prototype =
     {	
 	let items = new Array()
 
-	for (indexItem in itemsArray)
+	for (let indexItem in itemsArray)
 	{
             let itemDatasArray = itemsArray[indexItem];
         

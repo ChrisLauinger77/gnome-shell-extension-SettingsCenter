@@ -135,9 +135,12 @@ SettingsCenter.prototype =
         
 	if (this.replaceMenu || this.items.length > 0)
 	{
-	    this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")), true);
-            this.settingsCenterMenu.icon.icon_name = 'preferences-other-symbolic';
-
+            if (age=="old" | age=="new") {
+                this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")));
+            } else {
+                this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")), true);
+                this.settingsCenterMenu.icon.icon_name = 'preferences-other-symbolic';
+            }
 	    //Add new menu to status area
 	    userMenu.menu.addMenuItem(this.settingsCenterMenu, index - 2);
 	    let i = 0;
