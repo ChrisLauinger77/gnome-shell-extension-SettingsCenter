@@ -27,11 +27,21 @@ function init(extensionMeta)
         case"6": age = "new";
         case"8":  ;
         break;
-        case"10": age = "new2"
+        case"10": age = "new2";
         case"12":  ;
         case"14":  ;
         case"15": global.log("Warning of extension [" + metadata.uuid + "]:\n              Development release detected (" + Config.PACKAGE_VERSION + "). Loading as a 3.16 release.\n"); //eak
         case"16":  ;
+        break;
+        case"18":  ;
+        break;
+        case"20":  ;
+        break;
+        case"22":  ;
+        break;
+        case"24": age = "new3";
+        break;
+        case"30": age = "new3";
         break;
         default: throw new Error("Strange version number (extension.js:36).");
     }
@@ -43,7 +53,7 @@ function init(extensionMeta)
     return new SettingsCenter(extensionMeta, schema);
 }
 
-let new3;
+let new4;
 
 function SettingsCenter(extensionMeta, schema)
 {
@@ -106,10 +116,16 @@ SettingsCenter.prototype =
         this.items = menuItems.getEnableItems();
 
         let index = null;
-        let menuItems = userMenu.menu._getMenuItems();
+
+        //workaround JS ERROR in 3.24, "redeclaration of let menuItems". removed the line for 3.24
+        if (age=="old" || age=="new" || age=="new2") {
+		let menuItems = userMenu.menu._getMenuItems();
+	}
+        //end of workaround for JS ERROR in 3.24
+
 	//Find System Settings menu position, "Settings" on > 3.8
-        if (age=="new") new3 = "Settings";
-        else new3 = "System Settings";
+        if (age=="new") new4 = "Settings";
+        else new4 = "System Settings";
         for (let i = 0; i < menuItems.length; i++)
         {    
 	    if (
@@ -117,7 +133,7 @@ SettingsCenter.prototype =
 		    && typeof (menuItems[i]._children[0]) == "object"
 		    && typeof (menuItems[i]._children[0].actor) == "object"
 		    && typeof (menuItems[i]._children[0].actor.get_text) == "function"
-		    && menuItems[i]._children[0].actor.get_text() == _(new3))
+		    && menuItems[i]._children[0].actor.get_text() == _(new4))
 	    {
                 index = i;
                 break;
@@ -135,7 +151,7 @@ SettingsCenter.prototype =
         
 	if (this.replaceMenu || this.items.length > 0)
 	{
-            if (age=="old" | age=="new") {
+            if (age=="old" || age=="new") {
                 this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")));
             } else {
                 this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(_(this.settings.get_string("label-menu")), true);
@@ -150,7 +166,7 @@ SettingsCenter.prototype =
 	    {
 		menuItems[index].destroy();
 		
-		let item = new PopupMenu.PopupMenuItem(_(new3));
+		let item = new PopupMenu.PopupMenuItem(_(new4));
 		item.connect("activate", Lang.bind(this, this.onPreferencesActivate));
 		this.settingsCenterMenu.menu.addMenuItem(item, i++);
 	    }
@@ -201,7 +217,7 @@ SettingsCenter.prototype =
 	//Add original menu if necessary
 	if (this.replaceMenu)
 	{
-            let item = new PopupMenu.PopupMenuItem(_(new3));
+            let item = new PopupMenu.PopupMenuItem(_(new4));
             item.connect("activate", Lang.bind(this, this.onPreferencesActivate));
 	    userMenu.menu.addMenuItem(item, index);
 	}
