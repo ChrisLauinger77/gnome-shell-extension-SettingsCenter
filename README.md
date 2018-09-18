@@ -1,3 +1,5 @@
+my fork adds 3.26 , 3.28 and 3.30 - but I could only test on 3.30
+
 ### Description: 
 
 Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the user/aggregate menu. Originally created by XES. 
