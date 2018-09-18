@@ -41,6 +41,10 @@ function init(extensionMeta)
         break;
         case"24": age = "new3";
         break;
+        case"26": age = "new3";
+        break;
+        case"28": age = "new3";
+        break;
         case"30": age = "new3";
         break;
         default: throw new Error("Strange version number (extension.js:36).");
