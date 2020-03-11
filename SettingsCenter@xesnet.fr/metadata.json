@@ -21,9 +21,10 @@
     "3.28",
     "3.30",
     "3.32",
-    "3.34"
+    "3.34",
+    "3.36"
   ], 
   "url": "https://github.com/l300lvl/XES-Settings-Center-Extension", 
   "uuid": "SettingsCenter@xesnet.fr", 
-  "version": 16
+  "version": 17
 }
