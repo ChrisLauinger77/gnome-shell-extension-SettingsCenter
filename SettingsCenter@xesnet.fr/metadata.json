@@ -22,9 +22,10 @@
     "3.30",
     "3.32",
     "3.34",
-    "3.36"
+    "3.36",
+    "3.38"
   ], 
   "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension", 
   "uuid": "SettingsCenter@lauinger-clan.de", 
-  "version": 18
+  "version": 19
 }
