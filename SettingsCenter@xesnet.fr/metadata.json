@@ -5,27 +5,9 @@
   "name": "SettingsCenter", 
   "original-author": "Xes, l300lvl", 
   "shell-version": [
-    "3.4", 
-    "3.6", 
-    "3.5.4", 
-    "3.8", 
-    "3.10", 
-    "3.12", 
-    "3.14", 
-    "3.16", 
-    "3.18", 
-    "3.20",
-    "3.22",
-    "3.24", 
-    "3.26",
-    "3.28",
-    "3.30",
-    "3.32",
-    "3.34",
-    "3.36",
-    "3.38"
+    "40.0"
   ], 
   "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension", 
   "uuid": "SettingsCenter@lauinger-clan.de", 
-  "version": 19
+  "version": 20
 }

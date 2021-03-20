@@ -18,8 +18,13 @@ let userMenu, age;
 function init(extensionMeta)
 {
     let current_version = Config.PACKAGE_VERSION.split('.');
+    if (current_version[0] >= 40)
+    	{
+    	age = "new3";
+    	}
+    else
+    {
     if (current_version.length > 4 || current_version[0] != 3) throw new Error("Strange version number (extension.js:21).");
-    
     switch (current_version[1]) {
         case"4": age = "old";
         break;
@@ -57,7 +62,7 @@ function init(extensionMeta)
         break;
         default: throw new Error("Strange version number (extension.js:36).");
     }
-
+}
     if (age=="old")       userMenu = Main.panel._statusArea.userMenu;
     else if (age=="new")  userMenu = Main.panel.statusArea.userMenu;
     else                  userMenu = Main.panel.statusArea.aggregateMenu;
