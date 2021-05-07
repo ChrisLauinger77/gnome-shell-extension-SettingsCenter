@@ -7,199 +7,250 @@ const MenuItems = Extension.imports.menu_items;
 
 const schema = "org.gnome.shell.extensions.SettingsCenter";
 
-function init() {
-
-}
+function init() {}
 
 function buildPrefsWidget() {
-	let prefs = new Prefs(schema);
+  let prefs = new Prefs(schema);
 
-	return prefs.buildPrefsWidget();
+  return prefs.buildPrefsWidget();
 }
 
 function Prefs(schema) {
-	this.init(schema);
+  this.init(schema);
 }
 
-Prefs.prototype =
-{
-	settings: null,
-	menuItems: null,
+Prefs.prototype = {
+  settings: null,
+  menuItems: null,
 
-	vboxList: null,
-	hboxsList: new Array(),
+  vboxList: null,
+  hboxsList: new Array(),
 
-	init: function (schema) {
-		let settings = new Lib.Settings(schema);
+  init: function (schema) {
+    let settings = new Lib.Settings(schema);
 
-		this.settings = settings.getSettings();
+    this.settings = settings.getSettings();
 
-		this.menuItems = new MenuItems.MenuItems(this.settings);
-	},
+    this.menuItems = new MenuItems.MenuItems(this.settings);
+  },
 
-	changeMenu: function (object, text) {
-		this.settings.set_string("label-menu", text.get_text());
-	},
+  changeMenu: function (object, text) {
+    this.settings.set_string("label-menu", text.get_text());
+  },
 
-	changeReplace: function (object, pspec) {
-		this.settings.set_boolean("replace-ss-menu", object.get_active());
-	},
+  changeReplace: function (object, pspec) {
+    this.settings.set_boolean("replace-ss-menu", object.get_active());
+  },
 
-	changeEnable: function (object, pspec, index) {
-		this.menuItems.changeEnable(index, object.active);
-	},
+  changeEnable: function (object, pspec, index) {
+    this.menuItems.changeEnable(index, object.active);
+  },
 
-	addCmd: function (object, label, cmd) {
-		this.menuItems.addItem(label.get_text(), cmd.get_text());
+  addCmd: function (object, label, cmd) {
+    this.menuItems.addItem(label.get_text(), cmd.get_text());
 
-		label.set_text("");
-		cmd.set_text("");
+    label.set_text("");
+    cmd.set_text("");
 
-		this.buildList();
-	},
+    this.buildList();
+  },
 
-	changeOrder: function (object, index, order) {
-		this.menuItems.changeOrder(index, order);
+  changeOrder: function (object, index, order) {
+    this.menuItems.changeOrder(index, order);
 
-		this.buildList();
-	},
+    this.buildList();
+  },
 
-	delCmd: function (object, index) {
-		this.menuItems.delItem(index);
+  delCmd: function (object, index) {
+    this.menuItems.delItem(index);
 
-		this.buildList();
-	},
+    this.buildList();
+  },
 
-	buildList: function () {
-		for (let indexHboxsList in this.hboxsList)
-			this.vboxList.remove(this.hboxsList[indexHboxsList]);
-		this.hboxsList = new Array();
+  buildList: function () {
+    for (let indexHboxsList in this.hboxsList)
+      this.vboxList.remove(this.hboxsList[indexHboxsList]);
+    this.hboxsList = new Array();
 
-		let items = this.menuItems.getItems();
+    let items = this.menuItems.getItems();
 
-		for (let indexItem in items) {
-			let item = items[indexItem];
+    for (let indexItem in items) {
+      let item = items[indexItem];
 
-			let hboxList = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-			let labelList = new Gtk.Label({ label: item["label"], xalign: 0 });
+      let hboxList = new Gtk.Box({
+        orientation: Gtk.Orientation.HORIZONTAL,
+        spacing: 12,
+      });
+      let labelList = new Gtk.Label({ label: item["label"], xalign: 0 });
 
-			let buttonUp = new Gtk.Button({ label: "Up" });
-			if (indexItem > 0)
-				buttonUp.connect("clicked", Lang.bind(this, this.changeOrder, indexItem, -1));
+      let buttonUp = new Gtk.Button({ label: "Up" });
+      if (indexItem > 0)
+        buttonUp.connect(
+          "clicked",
+          Lang.bind(this, this.changeOrder, indexItem, -1)
+        );
 
-			let buttonDown = new Gtk.Button({ label: "Down" });
-			if (indexItem < items.length - 1)
-				buttonDown.connect("clicked", Lang.bind(this, this.changeOrder, indexItem, 1));
+      let buttonDown = new Gtk.Button({ label: "Down" });
+      if (indexItem < items.length - 1)
+        buttonDown.connect(
+          "clicked",
+          Lang.bind(this, this.changeOrder, indexItem, 1)
+        );
 
-			let valueList = new Gtk.Switch({ active: (item["enable"] == "1") });
-			valueList.connect("notify::active", Lang.bind(this, this.changeEnable, indexItem));
+      let valueList = new Gtk.Switch({ active: item["enable"] == "1" });
+      valueList.connect(
+        "notify::active",
+        Lang.bind(this, this.changeEnable, indexItem)
+      );
 
-			let buttonDel = null;
-			if (items.length > 1) {
-				buttonDel = new Gtk.Button({ label: "Del", margin_start: 10 });
-				buttonDel.connect("clicked", Lang.bind(this, this.delCmd, indexItem));
-			}
+      let buttonDel = null;
+      if (items.length > 1) {
+        buttonDel = new Gtk.Button({ label: "Del", margin_start: 10 });
+        buttonDel.connect("clicked", Lang.bind(this, this.delCmd, indexItem));
+      }
 
-			hboxList.prepend(labelList, true, true, 0);
+      hboxList.prepend(labelList, true, true, 0);
 
-			hboxList.append(valueList);
-			hboxList.append(buttonUp);
-			hboxList.append(buttonDown);
+      hboxList.append(valueList);
+      hboxList.append(buttonUp);
+      hboxList.append(buttonDown);
 
-			if (buttonDel != null)
-				hboxList.append(buttonDel);
-			this.vboxList.append(hboxList);
+      if (buttonDel != null) hboxList.append(buttonDel);
+      this.vboxList.append(hboxList);
 
-			this.hboxsList.push(hboxList);
-		}
+      this.hboxsList.push(hboxList);
+    }
 
-		//	this.vboxList.show_all();
-	},
+    //	this.vboxList.show_all();
+  },
 
-	buildPrefsWidget: function () {
-		let frame = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 12 });
+  buildPrefsWidget: function () {
+    let frame = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      spacing: 12,
+    });
 
-		let label = new Gtk.Label({ label: "<b>Global</b>", use_markup: true, xalign: 0 });
-		let vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 12, margin_start: 20 });
+    let label = new Gtk.Label({
+      label: "<b>Global</b>",
+      use_markup: true,
+      xalign: 0,
+    });
+    let vbox = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      spacing: 12,
+      margin_start: 20,
+    });
 
+    let hboxMenu = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+    });
+    let labelMenu = new Gtk.Label({ label: "Menu Label", xalign: 0 });
+    let valueMenu = new Gtk.Entry({ hexpand: true });
+    valueMenu.set_text(this.settings.get_string("label-menu"));
+    let buttonMenu = new Gtk.Button({ label: "Apply" });
+    buttonMenu.connect("clicked", Lang.bind(this, this.changeMenu, valueMenu));
 
+    hboxMenu.prepend(labelMenu);
+    hboxMenu.append(valueMenu);
+    hboxMenu.append(buttonMenu);
+    vbox.append(hboxMenu);
 
-		let hboxMenu = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-		let labelMenu = new Gtk.Label({ label: "Menu Label", xalign: 0 });
-		let valueMenu = new Gtk.Entry({ hexpand: true });
-		valueMenu.set_text(this.settings.get_string("label-menu"));
-		let buttonMenu = new Gtk.Button({ label: "Apply" });
-		buttonMenu.connect("clicked", Lang.bind(this, this.changeMenu, valueMenu));
+    frame.append(label);
+    frame.append(vbox);
 
-		hboxMenu.prepend(labelMenu);
-		hboxMenu.append(valueMenu);
-		hboxMenu.append(buttonMenu);
-		vbox.append(hboxMenu);
+    vbox = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      spacing: 12,
+      margin_start: 20,
+    });
 
-		frame.append(label);
-		frame.append(vbox);
+    let hboxReplace = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+    });
+    let labelReplace = new Gtk.Label({
+      label: "Replace System Settings (Only if found)",
+      xalign: 0,
+    });
+    let valueReplace = new Gtk.Switch({
+      active: this.settings.get_boolean("replace-ss-menu"),
+    });
+    valueReplace.connect("notify::active", Lang.bind(this, this.changeReplace));
 
+    hboxReplace.prepend(labelReplace);
+    hboxReplace.append(valueReplace);
+    vbox.append(hboxReplace);
 
+    frame.append(vbox);
 
-		vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 12, margin_start: 20 });
+    label = new Gtk.Label({
+      label: "<b>Menu Items</b>",
+      use_markup: true,
+      xalign: 0,
+    });
+    this.vboxList = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      spacing: 12,
+      margin_start: 20,
+    });
 
-		let hboxReplace = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-		let labelReplace = new Gtk.Label({ label: "Replace System Settings (Only if found)", xalign: 0 });
-		let valueReplace = new Gtk.Switch({ active: this.settings.get_boolean("replace-ss-menu") });
-		valueReplace.connect('notify::active', Lang.bind(this, this.changeReplace));
+    this.buildList();
 
-		hboxReplace.prepend(labelReplace);
-		hboxReplace.append(valueReplace);
-		vbox.append(hboxReplace);
+    frame.append(label);
+    frame.append(this.vboxList);
 
-		frame.append(vbox);
+    label = new Gtk.Label({
+      label: "<b>Add Menu</b>",
+      use_markup: true,
+      xalign: 0,
+    });
+    vbox = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      spacing: 12,
+      margin_start: 20,
+    });
 
+    let hboxLabelAdd = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+    });
+    let labelLabelAdd = new Gtk.Label({ label: "Label", xalign: 0 });
+    let valueLabelAdd = new Gtk.Entry({ hexpand: true });
 
+    hboxLabelAdd.prepend(labelLabelAdd, true, true, 0);
+    hboxLabelAdd.append(valueLabelAdd);
+    vbox.append(hboxLabelAdd);
 
+    let hboxCmdAdd = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+    });
+    let labelCmdAdd = new Gtk.Label({ label: "Command", xalign: 0 });
+    let valueCmdAdd = new Gtk.Entry({ hexpand: true });
 
-		label = new Gtk.Label({ label: "<b>Menu Items</b>", use_markup: true, xalign: 0 });
-		this.vboxList = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 12, margin_start: 20 });
+    hboxCmdAdd.prepend(labelCmdAdd, true, true, 0);
+    hboxCmdAdd.append(valueCmdAdd);
+    vbox.append(hboxCmdAdd);
 
-		this.buildList();
+    let hboxButtonAdd = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+    });
+    let buttonAdd = new Gtk.Button({ label: "Add" });
+    buttonAdd.connect(
+      "clicked",
+      Lang.bind(this, this.addCmd, valueLabelAdd, valueCmdAdd)
+    );
 
-		frame.append(label);
-		frame.append(this.vboxList);
+    hboxButtonAdd.append(buttonAdd, true, true, 0);
+    vbox.append(hboxButtonAdd);
 
+    frame.append(label);
+    frame.append(vbox);
 
+    //	frame.show_all();
 
-		label = new Gtk.Label({ label: "<b>Add Menu</b>", use_markup: true, xalign: 0 });
-		vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 12, margin_start: 20 });
-
-		let hboxLabelAdd = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-		let labelLabelAdd = new Gtk.Label({ label: "Label", xalign: 0 });
-		let valueLabelAdd = new Gtk.Entry({ hexpand: true });
-
-		hboxLabelAdd.prepend(labelLabelAdd, true, true, 0);
-		hboxLabelAdd.append(valueLabelAdd);
-		vbox.append(hboxLabelAdd);
-
-		let hboxCmdAdd = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-		let labelCmdAdd = new Gtk.Label({ label: "Command", xalign: 0 });
-		let valueCmdAdd = new Gtk.Entry({ hexpand: true });
-
-		hboxCmdAdd.prepend(labelCmdAdd, true, true, 0);
-		hboxCmdAdd.append(valueCmdAdd);
-		vbox.append(hboxCmdAdd);
-
-		let hboxButtonAdd = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 12 });
-		let buttonAdd = new Gtk.Button({ label: "Add" });
-		buttonAdd.connect("clicked", Lang.bind(this, this.addCmd, valueLabelAdd, valueCmdAdd));
-
-		hboxButtonAdd.append(buttonAdd, true, true, 0);
-		vbox.append(hboxButtonAdd);
-
-		frame.append(label);
-		frame.append(vbox);
-
-
-
-		//	frame.show_all();
-
-		return frame;
-	}
-}
+    return frame;
+  },
+};
