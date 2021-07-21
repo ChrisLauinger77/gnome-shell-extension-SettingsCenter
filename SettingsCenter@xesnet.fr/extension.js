@@ -3,7 +3,6 @@
 const St = imports.gi.St;
 const Config = imports.misc.config;
 const Main = imports.ui.main;
-const Lang = imports.lang;
 const Shell = imports.gi.Shell;
 const PopupMenu = imports.ui.popupMenu;
 const Util = imports.misc.util;
@@ -117,7 +116,7 @@ SettingsCenter.prototype = {
         menuItems[index].destroy();
 
         let item = new PopupMenu.PopupMenuItem(_(new4));
-        item.connect("activate", Lang.bind(this, this.onPreferencesActivate));
+        item.connect("activate", this.onPreferencesActivate.bind(this));
         this.settingsCenterMenu.menu.addMenuItem(item, i++);
       }
 
@@ -127,10 +126,7 @@ SettingsCenter.prototype = {
           _(this.items[indexItem]["label"]),
           0
         );
-        menuItem.connect(
-          "activate",
-          Lang.bind(this, this.launch, this.items[indexItem])
-        );
+        menuItem.connect("activate", this.launch.bind(this.items[indexItem]));
 
         this.settingsCenterMenu.menu.addMenuItem(menuItem, i++);
       }
@@ -138,7 +134,7 @@ SettingsCenter.prototype = {
       this.settingSignals.push(
         this.settings.connect(
           "changed::label-menu",
-          Lang.bind(this, this.onParamChanged)
+          this.onParamChanged.bind(this)
         )
       );
     }
@@ -146,14 +142,11 @@ SettingsCenter.prototype = {
     this.settingSignals.push(
       this.settings.connect(
         "changed::replace-ss-menu",
-        Lang.bind(this, this.onParamChanged)
+        this.onParamChanged.bind(this)
       )
     );
     this.settingSignals.push(
-      this.settings.connect(
-        "changed::items",
-        Lang.bind(this, this.onParamChanged)
-      )
+      this.settings.connect("changed::items", this.onParamChanged.bind(this))
     );
   },
 
@@ -179,7 +172,7 @@ SettingsCenter.prototype = {
     //Add original menu if necessary
     if (this.replaceMenu) {
       let item = new PopupMenu.PopupMenuItem(_(new4));
-      item.connect("activate", Lang.bind(this, this.onPreferencesActivate));
+      item.connect("activate", this.onPreferencesActivate.bind(this));
       userMenu.menu.addMenuItem(item, index);
     }
 
