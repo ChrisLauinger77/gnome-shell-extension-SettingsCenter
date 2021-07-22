@@ -50,7 +50,7 @@ SettingsCenter.prototype = {
     app.activate();
   },
 
-  launch: function (object, pspec, settingItem) {
+  launch: function (settingItem) {
     if (settingItem["cmd"].match(/.desktop$/)) {
       let app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
 
@@ -126,7 +126,10 @@ SettingsCenter.prototype = {
           _(this.items[indexItem]["label"]),
           0
         );
-        menuItem.connect("activate", this.launch.bind(this.items[indexItem]));
+        menuItem.connect(
+          "activate",
+          this.launch.bind(this, this.items[indexItem])
+        );
 
         this.settingsCenterMenu.menu.addMenuItem(menuItem, i++);
       }
