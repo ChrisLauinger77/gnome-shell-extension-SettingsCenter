@@ -67,12 +67,10 @@ SettingsCenter.prototype = {
   },
 
   enable: function () {
-<<<<<<< HEAD
-=======
     if (!isSupported()) {
       return;
     }
->>>>>>> gnome4x
+
     this.settings = ExtensionUtils.getSettings(this.schema);
 
     this.settingSignals = new Array();
