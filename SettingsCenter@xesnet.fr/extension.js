@@ -1,15 +1,13 @@
 /* original author Xes. 3.6/3.8 fork l300lvl. replace system settings menu credit: IsacDaavid */
 
-const St = imports.gi.St;
 const Config = imports.misc.config;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 const PopupMenu = imports.ui.popupMenu;
 const Util = imports.misc.util;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Lib = Extension.imports.lib;
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const MenuItems = Extension.imports.menu_items;
-const Clutter = imports.gi.Clutter;
 const schema = "org.gnome.shell.extensions.SettingsCenter";
 
 let userMenu;
@@ -69,8 +67,7 @@ SettingsCenter.prototype = {
   },
 
   enable: function () {
-    let settings = new Lib.Settings(this.schema);
-    this.settings = settings.getSettings();
+    this.settings = ExtensionUtils.getSettings(this.schema);
 
     this.settingSignals = new Array();
 
@@ -159,6 +156,7 @@ SettingsCenter.prototype = {
       this.settings.disconnect(signal);
     }, this);
     this.settingSignals = null;
+    this.settings = null;
 
     //Find new menu position
     let index = null;

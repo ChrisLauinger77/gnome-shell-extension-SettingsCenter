@@ -1,8 +1,6 @@
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
-
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Lib = Extension.imports.lib;
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const MenuItems = Extension.imports.menu_items;
 
 const schema = "org.gnome.shell.extensions.SettingsCenter";
@@ -27,9 +25,7 @@ Prefs.prototype = {
   hboxsList: new Array(),
 
   init: function (schema) {
-    let settings = new Lib.Settings(schema);
-
-    this.settings = settings.getSettings();
+    this.settings = ExtensionUtils.getSettings(schema);
 
     this.menuItems = new MenuItems.MenuItems(this.settings);
   },
@@ -85,28 +81,25 @@ Prefs.prototype = {
 
       let buttonUp = new Gtk.Button({ label: "Up" });
       if (indexItem > 0)
-        buttonUp.connect(
-          "clicked",
-          Lang.bind(this, this.changeOrder, indexItem, -1)
-        );
+        buttonUp.connect("clicked", this.changeOrder.bind(this, indexItem, -1));
 
       let buttonDown = new Gtk.Button({ label: "Down" });
       if (indexItem < items.length - 1)
         buttonDown.connect(
           "clicked",
-          Lang.bind(this, this.changeOrder, indexItem, 1)
+          this.changeOrder.bind(this, indexItem, 1)
         );
 
       let valueList = new Gtk.Switch({ active: item["enable"] == "1" });
       valueList.connect(
         "notify::active",
-        Lang.bind(this, this.changeEnable, indexItem)
+        this.changeEnable.bind(this, indexItem)
       );
 
       let buttonDel = null;
       if (items.length > 1) {
         buttonDel = new Gtk.Button({ label: "Del", margin_start: 10 });
-        buttonDel.connect("clicked", Lang.bind(this, this.delCmd, indexItem));
+        buttonDel.connect("clicked", this.delCmd.bind(this, indexItem));
       }
 
       hboxList.prepend(labelList, true, true, 0);
@@ -149,7 +142,8 @@ Prefs.prototype = {
     let valueMenu = new Gtk.Entry({ hexpand: true });
     valueMenu.set_text(this.settings.get_string("label-menu"));
     let buttonMenu = new Gtk.Button({ label: "Apply" });
-    buttonMenu.connect("clicked", Lang.bind(this, this.changeMenu, valueMenu));
+
+    buttonMenu.connect("clicked", this.changeMenu.bind(this, valueMenu));
 
     hboxMenu.prepend(labelMenu);
     hboxMenu.append(valueMenu);
@@ -176,7 +170,7 @@ Prefs.prototype = {
     let valueReplace = new Gtk.Switch({
       active: this.settings.get_boolean("replace-ss-menu"),
     });
-    valueReplace.connect("notify::active", Lang.bind(this, this.changeReplace));
+    valueReplace.connect("notify::active", this.changeReplace.bind(this));
 
     hboxReplace.prepend(labelReplace);
     hboxReplace.append(valueReplace);
@@ -240,7 +234,7 @@ Prefs.prototype = {
     let buttonAdd = new Gtk.Button({ label: "Add" });
     buttonAdd.connect(
       "clicked",
-      Lang.bind(this, this.addCmd, valueLabelAdd, valueCmdAdd)
+      this.addCmd.bind(this, valueLabelAdd, valueCmdAdd)
     );
 
     hboxButtonAdd.append(buttonAdd, true, true, 0);
