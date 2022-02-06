@@ -12,13 +12,13 @@ const schema = "org.gnome.shell.extensions.SettingsCenter";
 
 let userMenu;
 
-function init(extensionMeta) {
+function isSupported() {
   let current_version = Config.PACKAGE_VERSION.split(".");
-  if (current_version[0] >= 40) {
-    userMenu = Main.panel.statusArea.aggregateMenu;
-  } else {
-    throw new Error("Strange version number (extension.js:24).");
-  }
+  return current_version[0] >= 40 ? true : false;
+}
+
+function init(extensionMeta) {
+  userMenu = Main.panel.statusArea.aggregateMenu;
   return new SettingsCenter(extensionMeta, schema);
 }
 
@@ -67,6 +67,12 @@ SettingsCenter.prototype = {
   },
 
   enable: function () {
+<<<<<<< HEAD
+=======
+    if (!isSupported()) {
+      return;
+    }
+>>>>>>> gnome4x
     this.settings = ExtensionUtils.getSettings(this.schema);
 
     this.settingSignals = new Array();
@@ -151,6 +157,9 @@ SettingsCenter.prototype = {
   },
 
   disable: function () {
+    if (!isSupported()) {
+      return;
+    }
     //Remove setting Signals
     this.settingSignals.forEach(function (signal) {
       this.settings.disconnect(signal);
