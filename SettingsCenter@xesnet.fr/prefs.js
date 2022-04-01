@@ -30,34 +30,30 @@ Prefs.prototype = {
     this.menuItems = new MenuItems.MenuItems(this.settings);
   },
 
-  changeMenu: function (object, text) {
-    this.settings.set_string("label-menu", text.get_text());
+  changeMenu: function (text) {
+    this.settings.set_string("label-menu", text.text);
   },
 
-  changeReplace: function (object, pspec) {
-    this.settings.set_boolean("replace-ss-menu", object.get_active());
+  changeEnable: function (pspec, index) {
+    this.menuItems.changeEnable(index, this.active);
   },
 
-  changeEnable: function (object, pspec, index) {
-    this.menuItems.changeEnable(index, object.active);
-  },
+  addCmd: function (label, cmd) {
+    this.menuItems.addItem(label.text, cmd.text);
 
-  addCmd: function (object, label, cmd) {
-    this.menuItems.addItem(label.get_text(), cmd.get_text());
-
-    label.set_text("");
-    cmd.set_text("");
+    label.text = "";
+    cmd.text = "";
 
     this.buildList();
   },
 
-  changeOrder: function (object, index, order) {
+  changeOrder: function (index, order) {
     this.menuItems.changeOrder(index, order);
 
     this.buildList();
   },
 
-  delCmd: function (object, index) {
+  delCmd: function (index) {
     this.menuItems.delItem(index);
 
     this.buildList();
@@ -102,7 +98,7 @@ Prefs.prototype = {
         buttonDel.connect("clicked", this.delCmd.bind(this, indexItem));
       }
 
-      hboxList.prepend(labelList, true, true, 0);
+      hboxList.prepend(labelList);
 
       hboxList.append(valueList);
       hboxList.append(buttonUp);
@@ -159,23 +155,6 @@ Prefs.prototype = {
       margin_start: 20,
     });
 
-    let hboxReplace = new Gtk.Box({
-      orientation: Gtk.Orientation.HORIZONTAL,
-      spacing: 12,
-    });
-    let labelReplace = new Gtk.Label({
-      label: "Replace System Settings (Only if found)",
-      xalign: 0,
-    });
-    let valueReplace = new Gtk.Switch({
-      active: this.settings.get_boolean("replace-ss-menu"),
-    });
-    valueReplace.connect("notify::active", this.changeReplace.bind(this));
-
-    hboxReplace.prepend(labelReplace);
-    hboxReplace.append(valueReplace);
-    vbox.append(hboxReplace);
-
     frame.append(vbox);
 
     label = new Gtk.Label({
@@ -212,7 +191,7 @@ Prefs.prototype = {
     let labelLabelAdd = new Gtk.Label({ label: "Label", xalign: 0 });
     let valueLabelAdd = new Gtk.Entry({ hexpand: true });
 
-    hboxLabelAdd.prepend(labelLabelAdd, true, true, 0);
+    hboxLabelAdd.prepend(labelLabelAdd);
     hboxLabelAdd.append(valueLabelAdd);
     vbox.append(hboxLabelAdd);
 
@@ -223,7 +202,7 @@ Prefs.prototype = {
     let labelCmdAdd = new Gtk.Label({ label: "Command", xalign: 0 });
     let valueCmdAdd = new Gtk.Entry({ hexpand: true });
 
-    hboxCmdAdd.prepend(labelCmdAdd, true, true, 0);
+    hboxCmdAdd.prepend(labelCmdAdd);
     hboxCmdAdd.append(valueCmdAdd);
     vbox.append(hboxCmdAdd);
 
@@ -237,7 +216,7 @@ Prefs.prototype = {
       this.addCmd.bind(this, valueLabelAdd, valueCmdAdd)
     );
 
-    hboxButtonAdd.append(buttonAdd, true, true, 0);
+    hboxButtonAdd.append(buttonAdd);
     vbox.append(hboxButtonAdd);
 
     frame.append(label);
