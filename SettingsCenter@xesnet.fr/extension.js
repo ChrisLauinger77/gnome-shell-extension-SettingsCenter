@@ -22,8 +22,6 @@ function init(extensionMeta) {
   return new SettingsCenter(extensionMeta, schema);
 }
 
-let new4;
-
 function SettingsCenter(extensionMeta, schema) {
   this.init(extensionMeta, schema);
 }
@@ -78,31 +76,9 @@ SettingsCenter.prototype = {
     let menuItems = new MenuItems.MenuItems(this.settings);
     this.items = menuItems.getEnableItems();
 
-    let index = null;
+    let index = 11;
 
-    new4 = "System Settings";
-    for (let i = 0; i < menuItems.length; i++) {
-      if (
-        typeof menuItems[i]._children == "object" &&
-        typeof menuItems[i]._children[0] == "object" &&
-        typeof menuItems[i]._children[0].actor == "object" &&
-        typeof menuItems[i]._children[0].actor.get_text == "function" &&
-        menuItems[i]._children[0].actor.get_text() == _(new4)
-      ) {
-        index = i;
-        break;
-      }
-    }
-
-    this.replaceMenu = this.settings.get_boolean("replace-ss-menu");
-
-    //If no find, set the position arbitrary and force "replace menu" to Off
-    if (index == null) {
-      index = 11;
-      this.replaceMenu = false;
-    }
-
-    if (this.replaceMenu || this.items.length > 0) {
+    if (this.items.length > 0) {
       this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(
         _(this.settings.get_string("label-menu")),
         true
@@ -111,15 +87,6 @@ SettingsCenter.prototype = {
       //Add new menu to status area
       userMenu.menu.addMenuItem(this.settingsCenterMenu, index - 2);
       let i = 0;
-
-      //Replace System Settings Menu if defined
-      if (this.replaceMenu) {
-        menuItems[index].destroy();
-
-        let item = new PopupMenu.PopupMenuItem(_(new4));
-        item.connect("activate", this.onPreferencesActivate.bind(this));
-        this.settingsCenterMenu.menu.addMenuItem(item, i++);
-      }
 
       //Add others menus
       for (let indexItem in this.items) {
