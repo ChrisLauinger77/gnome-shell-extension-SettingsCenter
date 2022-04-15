@@ -34,8 +34,8 @@ Prefs.prototype = {
     this.settings.set_string("label-menu", text.text);
   },
 
-  changeEnable: function (pspec, index) {
-    this.menuItems.changeEnable(index, this.active);
+  changeEnable: function (index, valueList) {
+    this.menuItems.changeEnable(index, Number(valueList.active));
   },
 
   addCmd: function (label, cmd) {
@@ -89,7 +89,7 @@ Prefs.prototype = {
       let valueList = new Gtk.Switch({ active: item["enable"] == "1" });
       valueList.connect(
         "notify::active",
-        this.changeEnable.bind(this, indexItem)
+        this.changeEnable.bind(this, indexItem, valueList)
       );
 
       let buttonDel = null;
