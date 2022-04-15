@@ -33,7 +33,6 @@ SettingsCenter.prototype = {
 
   settingsCenterMenu: null,
   items: null,
-  replaceMenu: null,
 
   init: function (extensionMeta, schema) {
     this.schema = schema;
@@ -111,12 +110,6 @@ SettingsCenter.prototype = {
     }
 
     this.settingSignals.push(
-      this.settings.connect(
-        "changed::replace-ss-menu",
-        this.onParamChanged.bind(this)
-      )
-    );
-    this.settingSignals.push(
       this.settings.connect("changed::items", this.onParamChanged.bind(this))
     );
   },
@@ -143,13 +136,6 @@ SettingsCenter.prototype = {
     }
 
     if (index == null) return;
-
-    //Add original menu if necessary
-    if (this.replaceMenu) {
-      let item = new PopupMenu.PopupMenuItem(_(new4));
-      item.connect("activate", this.onPreferencesActivate.bind(this));
-      userMenu.menu.addMenuItem(item, index);
-    }
 
     //Remove new menu
     if (this.settingsCenterMenu != null) {
