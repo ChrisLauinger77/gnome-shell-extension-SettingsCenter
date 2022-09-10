@@ -1,9 +1,6 @@
 ### Description: 
 
-Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the user/aggregate menu. Originally created by XES. 
-
-v10: fix for older versions, i havent tested this on anything below 3.10
-v9: minor cleanup, now has an icon for the main menu entry.
+Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu. Originally created by XES. 
 
 Settings shortcuts : gnome-tweak-tool, dconf-editor, gconf-editor, gnome-session-properties, gnome-shell-extension-prefs, seahorse and nvidia-settings. You can add your own
 
@@ -26,6 +23,10 @@ https://extensions.gnome.org/extension/341/settingscenter/
 _this is not the fork, of my fork of XES' original work, by vistaus, who never attempted to contact me to update this. i am not, nor do i represent, vistaus_
 
 
-### Screenshot
+### Screenshot GNOME 43 and newer
 
-![Screenshot](https://raw.github.com/l300lvl/XES-Settings-Center-Extension/master/screenshot.png)
+![Screenshot](https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/blob/master/screenshot_4x.png)
+
+### Screenshot GNOME 3.x
+
+![Screenshot](https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/blob/master/screenshot_3x.png)
