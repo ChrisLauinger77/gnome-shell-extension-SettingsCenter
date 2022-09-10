@@ -3,12 +3,14 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const MenuItems = Extension.imports.menu_items;
 
-const schema = "org.gnome.shell.extensions.SettingsCenter";
+const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
-function init() {}
+function init() {
+  // init
+}
 
 function buildPrefsWidget() {
-  let prefs = new Prefs(schema);
+  let prefs = new Prefs(g_schema);
 
   return prefs.buildPrefsWidget();
 }
