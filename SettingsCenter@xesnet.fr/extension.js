@@ -127,14 +127,7 @@ class SettingsCenter {
     if (!isSupported()) {
       return;
     }
-<<<<<<< HEAD
-
-    this.settings = ExtensionUtils.getSettings(this.schema);
-
-    this.settingSignals = new Array();
-=======
     this._settings = ExtensionUtils.getSettings(g_schema);
->>>>>>> 0ea7a20... gnome 43
 
     this._settingSignals = new Array();
 
