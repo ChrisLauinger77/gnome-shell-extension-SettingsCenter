@@ -1,145 +1,165 @@
 /* original author Xes. 3.6/3.8 fork l300lvl. replace system settings menu credit: IsacDaavid */
 
+const { Gio, GObject, St } = imports.gi;
 const Config = imports.misc.config;
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 const PopupMenu = imports.ui.popupMenu;
+const QuickSettings = imports.ui.quickSettings;
+const QuickSettingsMenu = imports.ui.main.panel.statusArea.quickSettings;
 const Util = imports.misc.util;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const MenuItems = Extension.imports.menu_items;
-const schema = "org.gnome.shell.extensions.SettingsCenter";
+const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
-let userMenu;
+const SettingsCenterMenuToggle = GObject.registerClass(
+  class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
+    _init() {
+      this._settings = ExtensionUtils.getSettings(g_schema);
+      super._init({
+        label: this._settings.get_string("label-menu"),
+        iconName: "preferences-other-symbolic",
+        toggleMode: true,
+      });
+
+      // This function is unique to this class. It adds a nice header with an
+      // icon, title and optional subtitle. It's recommended you do so for
+      // consistency with other menus.
+      this.menu.setHeader(
+        "preferences-other-symbolic",
+        this._settings.get_string("label-menu"),
+        ""
+      );
+
+      // You may also add sections of items to the menu
+      let menuItems = new MenuItems.MenuItems(this._settings);
+      this._items = menuItems.getEnableItems();
+
+      if (this._items.length > 0) {
+        let i = 0;
+        //Add others menus
+        for (let indexItem in this._items) {
+          let menuItem = new PopupMenu.PopupMenuItem(
+            _(this._items[indexItem]["label"]),
+            0
+          );
+          menuItem.connect(
+            "activate",
+            this.launch.bind(this, this._items[indexItem])
+          );
+          this.menu.addMenuItem(menuItem, i++);
+        }
+      }
+      // Add an entry-point for more settings
+      this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+      const settingsItem = this.menu.addAction("More Settings", () =>
+        ExtensionUtils.openPrefs()
+      );
+
+      // Ensure the settings are unavailable when the screen is locked
+      settingsItem.visible = Main.sessionMode.allowSettings;
+      this.menu._settingsActions[Extension.uuid] = settingsItem;
+    }
+
+    launch(settingItem) {
+      if (settingItem["cmd"].match(/.desktop$/)) {
+        let app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
+
+        if (app != null) app.activate();
+        else if (settingItem["cmd-alt"] != null)
+          Util.spawn([settingItem["cmd-alt"]]);
+      } else {
+        let cmdArray = settingItem["cmd"].split(" ");
+        Util.spawn(cmdArray);
+      }
+    }
+  }
+);
+
+const SettingsCenterIndicator = GObject.registerClass(
+  class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
+    _init() {
+      super._init();
+
+      // Create the icon for the indicator
+      this._indicator = this._addIndicator();
+      this._indicator.icon_name = "selection-mode-symbolic";
+
+      // Create the toggle menu and associate it with the indicator, being
+      // sure to destroy it along with the indicator
+      this.quickSettingsItems.push(new SettingsCenterMenuToggle());
+
+      this.connect("destroy", () => {
+        this.quickSettingsItems.forEach((item) => item.destroy());
+      });
+
+      // Add the indicator to the panel and the toggle to the menu
+      QuickSettingsMenu._indicators.add_child(this);
+      QuickSettingsMenu._addItems(this.quickSettingsItems);
+    }
+  }
+);
 
 function isSupported() {
   let current_version = Config.PACKAGE_VERSION.split(".");
-  return current_version[0] >= 40 ? true : false;
+  return current_version[0] >= 43 ? true : false;
 }
 
-function init(extensionMeta) {
-  userMenu = Main.panel.statusArea.aggregateMenu;
-  return new SettingsCenter(extensionMeta, schema);
-}
+class SettingsCenter {
+  constructor() {
+    this._indicator = null;
+  }
 
-function SettingsCenter(extensionMeta, schema) {
-  this.init(extensionMeta, schema);
-}
-
-SettingsCenter.prototype = {
-  schema: null,
-  settings: null,
-  settingSignals: null,
-
-  settingsCenterMenu: null,
-  items: null,
-
-  init: function (extensionMeta, schema) {
-    this.schema = schema;
-  },
-
-  onPreferencesActivate: function () {
+  onPreferencesActivate() {
     let app = Shell.AppSystem.get_default().lookup_app(
       "gnome-control-center.desktop"
     );
     app.activate();
-  },
+  }
 
-  launch: function (settingItem) {
-    if (settingItem["cmd"].match(/.desktop$/)) {
-      let app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
-
-      if (app != null) app.activate();
-      else if (settingItem["cmd-alt"] != null)
-        Util.spawn([settingItem["cmd-alt"]]);
-    } else {
-      let cmdArray = settingItem["cmd"].split(" ");
-      Util.spawn(cmdArray);
-    }
-  },
-
-  onParamChanged: function () {
+  onParamChanged() {
     this.disable();
     this.enable();
-  },
+  }
 
-  enable: function () {
+  enable() {
     if (!isSupported()) {
       return;
     }
-    this.settings = ExtensionUtils.getSettings(this.schema);
+    this._settings = ExtensionUtils.getSettings(g_schema);
 
-    this.settingSignals = new Array();
+    this._settingSignals = new Array();
 
-    let menuItems = new MenuItems.MenuItems(this.settings);
-    this.items = menuItems.getEnableItems();
+    this._indicator = new SettingsCenterIndicator();
 
-    let index = 11;
-
-    if (this.items.length > 0) {
-      this.settingsCenterMenu = new PopupMenu.PopupSubMenuMenuItem(
-        _(this.settings.get_string("label-menu")),
-        true
-      );
-      this.settingsCenterMenu.icon.icon_name = "preferences-other-symbolic";
-      //Add new menu to status area
-      userMenu.menu.addMenuItem(this.settingsCenterMenu, index - 2);
-      let i = 0;
-
-      //Add others menus
-      for (let indexItem in this.items) {
-        let menuItem = new PopupMenu.PopupMenuItem(
-          _(this.items[indexItem]["label"]),
-          0
-        );
-        menuItem.connect(
-          "activate",
-          this.launch.bind(this, this.items[indexItem])
-        );
-
-        this.settingsCenterMenu.menu.addMenuItem(menuItem, i++);
-      }
-
-      this.settingSignals.push(
-        this.settings.connect(
-          "changed::label-menu",
-          this.onParamChanged.bind(this)
-        )
-      );
-    }
-
-    this.settingSignals.push(
-      this.settings.connect("changed::items", this.onParamChanged.bind(this))
+    this._settingSignals.push(
+      this._settings.connect(
+        "changed::label-menu",
+        this.onParamChanged.bind(this)
+      )
     );
-  },
+    this._settingSignals.push(
+      this._settings.connect("changed::items", this.onParamChanged.bind(this))
+    );
+  }
 
-  disable: function () {
+  disable() {
     if (!isSupported()) {
       return;
     }
     //Remove setting Signals
-    this.settingSignals.forEach(function (signal) {
-      this.settings.disconnect(signal);
+    this._settingSignals.forEach(function (signal) {
+      this._settings.disconnect(signal);
     }, this);
-    this.settingSignals = null;
-    this.settings = null;
+    this._settingSignals = null;
+    this._settings = null;
 
-    //Find new menu position
-    let index = null;
-    let menuItems = userMenu.menu._getMenuItems();
-    for (let i = 0; i < menuItems.length; i++) {
-      if (menuItems[i] == this.settingsCenterMenu) {
-        index = i;
-        break;
-      }
-    }
+    this._indicator.destroy();
+    this._indicator = null;
+  }
+}
 
-    if (index == null) return;
-
-    //Remove new menu
-    if (this.settingsCenterMenu != null) {
-      this.settingsCenterMenu.destroy();
-      this.settingsCenterMenu = null;
-    }
-  },
-};
+function init() {
+  return new SettingsCenter();
+}
