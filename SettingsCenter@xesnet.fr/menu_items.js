@@ -1,27 +1,21 @@
-function MenuItems(settings) {
-  this.init(settings);
-}
+var MenuItems = class MenuItems {
+  constructor(settings) {
+    this._settings = settings;
+  }
 
-MenuItems.prototype = {
-  settings: null,
-
-  init: function (settings) {
-    this.settings = settings;
-  },
-
-  getItems: function () {
-    let itemsString = this.settings.get_string("items");
+  getItems() {
+    let itemsString = this._settings.get_string("items");
 
     return this.itemsToArray(itemsString);
-  },
+  }
 
-  setItems: function (items) {
+  setItems(items) {
     let itemsString = this.itemsToString(items);
 
-    this.settings.set_string("items", itemsString);
-  },
+    this._settings.set_string("items", itemsString);
+  }
 
-  getEnableItems: function () {
+  getEnableItems() {
     let items = this.getItems();
     let indexItem;
     let itemsEnable = new Array();
@@ -33,23 +27,23 @@ MenuItems.prototype = {
     }
 
     return itemsEnable;
-  },
+  }
 
-  getItem: function (index) {
+  getItem(index) {
     let items = this.getItems();
 
     if (index >= 0 && index < items.length) return items[index];
     else return null;
-  },
+  }
 
-  isEnable: function (index) {
+  isEnable(index) {
     let item = this.getItem(index);
 
     if (item != null) return item["enable"];
     else return null;
-  },
+  }
 
-  changeOrder: function (index, posRel) {
+  changeOrder(index, posRel) {
     let items = this.getItems();
 
     if ((posRel < 0 && index > 0) || (posRel > 0 && index < items.length - 1)) {
@@ -61,9 +55,9 @@ MenuItems.prototype = {
 
       return true;
     } else return false;
-  },
+  }
 
-  changeEnable: function (index, value) {
+  changeEnable(index, value) {
     let items = this.getItems();
 
     if (index < 0 && index >= items.length) return false;
@@ -73,9 +67,9 @@ MenuItems.prototype = {
     this.setItems(items);
 
     return true;
-  },
+  }
 
-  addItem: function (label, cmd) {
+  addItem(label, cmd) {
     let items = this.getItems();
 
     let item = {
@@ -88,9 +82,9 @@ MenuItems.prototype = {
     items.push(item);
 
     this.setItems(items);
-  },
+  }
 
-  delItem: function (index) {
+  delItem(index) {
     let items = this.getItems();
 
     if (index < 1 && index >= items.length) return false;
@@ -100,9 +94,9 @@ MenuItems.prototype = {
     this.setItems(items);
 
     return true;
-  },
+  }
 
-  itemsToArray: function (itemsString) {
+  itemsToArray(itemsString) {
     let items = itemsString.split("|");
 
     let itemsArray = new Array();
@@ -121,9 +115,9 @@ MenuItems.prototype = {
     }
 
     return itemsArray;
-  },
+  }
 
-  itemsToString: function (itemsArray) {
+  itemsToString(itemsArray) {
     let items = new Array();
 
     for (let indexItem in itemsArray) {
@@ -142,5 +136,6 @@ MenuItems.prototype = {
     }
 
     return items.join("|");
-  },
-};
+  }
+}
+

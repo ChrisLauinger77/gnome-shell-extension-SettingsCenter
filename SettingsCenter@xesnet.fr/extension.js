@@ -10,7 +10,7 @@ const QuickSettingsMenu = imports.ui.main.panel.statusArea.quickSettings;
 const Util = imports.misc.util;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
-const MenuItems = Extension.imports.menu_items;
+const Menu_Items = Extension.imports.menu_items;
 const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
 const SettingsCenterMenuToggle = GObject.registerClass(
@@ -33,7 +33,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
       );
 
       // You may also add sections of items to the menu
-      let menuItems = new MenuItems.MenuItems(this._settings);
+      let menuItems = new Menu_Items.MenuItems(this._settings);
       this._items = menuItems.getEnableItems();
 
       if (this._items.length > 0) {

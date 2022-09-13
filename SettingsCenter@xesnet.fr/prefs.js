@@ -1,7 +1,7 @@
 const Gtk = imports.gi.Gtk;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
-const MenuItems = Extension.imports.menu_items;
+const Menu_Items = Extension.imports.menu_items;
 
 const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
@@ -14,59 +14,49 @@ function buildPrefsWidget() {
 
   return prefs.buildPrefsWidget();
 }
+class Prefs {
+  constructor(schema) {
+    this._settings = ExtensionUtils.getSettings(schema);
+    this._menuItems = new Menu_Items.MenuItems(this._settings);
+    this._vboxList = null;
+    this._hboxsList = new Array();
+  }
 
-function Prefs(schema) {
-  this.init(schema);
-}
+  changeMenu(text) {
+    this._settings.set_string("label-menu", text.text);
+  }
 
-Prefs.prototype = {
-  settings: null,
-  menuItems: null,
+  changeEnable(index, valueList) {
+    this._menuItems.changeEnable(index, Number(valueList.active));
+  }
 
-  vboxList: null,
-  hboxsList: new Array(),
-
-  init: function (schema) {
-    this.settings = ExtensionUtils.getSettings(schema);
-
-    this.menuItems = new MenuItems.MenuItems(this.settings);
-  },
-
-  changeMenu: function (text) {
-    this.settings.set_string("label-menu", text.text);
-  },
-
-  changeEnable: function (index, valueList) {
-    this.menuItems.changeEnable(index, Number(valueList.active));
-  },
-
-  addCmd: function (label, cmd) {
-    this.menuItems.addItem(label.text, cmd.text);
+  addCmd(label, cmd) {
+    this._menuItems.addItem(label.text, cmd.text);
 
     label.text = "";
     cmd.text = "";
 
     this.buildList();
-  },
+  }
 
-  changeOrder: function (index, order) {
-    this.menuItems.changeOrder(index, order);
-
-    this.buildList();
-  },
-
-  delCmd: function (index) {
-    this.menuItems.delItem(index);
+  changeOrder(index, order) {
+    this._menuItems.changeOrder(index, order);
 
     this.buildList();
-  },
+  }
 
-  buildList: function () {
-    for (let indexHboxsList in this.hboxsList)
-      this.vboxList.remove(this.hboxsList[indexHboxsList]);
-    this.hboxsList = new Array();
+  delCmd(index) {
+    this._menuItems.delItem(index);
 
-    let items = this.menuItems.getItems();
+    this.buildList();
+  }
+
+  buildList() {
+    for (let indexHboxsList in this._hboxsList)
+      this._vboxList.remove(this._hboxsList[indexHboxsList]);
+    this._hboxsList = new Array();
+
+    let items = this._menuItems.getItems();
 
     for (let indexItem in items) {
       let item = items[indexItem];
@@ -107,15 +97,13 @@ Prefs.prototype = {
       hboxList.append(buttonDown);
 
       if (buttonDel != null) hboxList.append(buttonDel);
-      this.vboxList.append(hboxList);
+      this._vboxList.append(hboxList);
 
-      this.hboxsList.push(hboxList);
+      this._hboxsList.push(hboxList);
     }
+  }
 
-    //	this.vboxList.show_all();
-  },
-
-  buildPrefsWidget: function () {
+  buildPrefsWidget() {
     let frame = new Gtk.Box({
       orientation: Gtk.Orientation.VERTICAL,
       spacing: 12,
@@ -138,7 +126,7 @@ Prefs.prototype = {
     });
     let labelMenu = new Gtk.Label({ label: "Menu Label", xalign: 0 });
     let valueMenu = new Gtk.Entry({ hexpand: true });
-    valueMenu.set_text(this.settings.get_string("label-menu"));
+    valueMenu.set_text(this._settings.get_string("label-menu"));
     let buttonMenu = new Gtk.Button({ label: "Apply" });
 
     buttonMenu.connect("clicked", this.changeMenu.bind(this, valueMenu));
@@ -164,7 +152,7 @@ Prefs.prototype = {
       use_markup: true,
       xalign: 0,
     });
-    this.vboxList = new Gtk.Box({
+    this._vboxList = new Gtk.Box({
       orientation: Gtk.Orientation.VERTICAL,
       spacing: 12,
       margin_start: 20,
@@ -173,7 +161,7 @@ Prefs.prototype = {
     this.buildList();
 
     frame.append(label);
-    frame.append(this.vboxList);
+    frame.append(this._vboxList);
 
     label = new Gtk.Label({
       label: "<b>Add Menu</b>",
@@ -224,8 +212,6 @@ Prefs.prototype = {
     frame.append(label);
     frame.append(vbox);
 
-    //	frame.show_all();
-
     return frame;
-  },
-};
+  }
+}
