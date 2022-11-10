@@ -9,8 +9,10 @@ const QuickSettings = imports.ui.quickSettings;
 const QuickSettingsMenu = imports.ui.main.panel.statusArea.quickSettings;
 const Util = imports.misc.util;
 const ExtensionUtils = imports.misc.extensionUtils;
-const Extension = ExtensionUtils.getCurrentExtension();
-const Menu_Items = Extension.imports.menu_items;
+const Me = ExtensionUtils.getCurrentExtension();
+const Menu_Items = Me.imports.menu_items;
+const Gettext = imports.gettext.domain("SettingsCenter");
+const _ = Gettext.gettext;
 const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
 const SettingsCenterMenuToggle = GObject.registerClass(
@@ -53,13 +55,13 @@ const SettingsCenterMenuToggle = GObject.registerClass(
       }
       // Add an entry-point for more settings
       this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-      const settingsItem = this.menu.addAction("More Settings", () =>
+      const settingsItem = this.menu.addAction(_("Settings"), () =>
         ExtensionUtils.openPrefs()
       );
 
       // Ensure the settings are unavailable when the screen is locked
       settingsItem.visible = Main.sessionMode.allowSettings;
-      this.menu._settingsActions[Extension.uuid] = settingsItem;
+      this.menu._settingsActions[Me.uuid] = settingsItem;
     }
 
     launch(settingItem) {
@@ -161,5 +163,6 @@ class SettingsCenter {
 }
 
 function init() {
+  ExtensionUtils.initTranslations("SettingsCenter");
   return new SettingsCenter();
 }

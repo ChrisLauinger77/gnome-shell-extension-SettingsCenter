@@ -1,2 +1,11 @@
+*.po
+*.po~
+*.mo
+*.zip
+SettingsCenter\@lauinger-clan.de/.prettierrc
 
-SettingsCenter\@xesnet.fr/.prettierrc
+.editorconfig
+
+.prettierrc
+
+SettingsCenter\@lauinger-clan.de/schemas/gschemas.compiled
