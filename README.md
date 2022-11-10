@@ -4,7 +4,7 @@ Settings Center is a customizable drop-down menu for quickly launching frequentl
 
 Settings shortcuts : gnome-tweak-tool, dconf-editor, gconf-editor, gnome-session-properties, gnome-shell-extension-prefs, seahorse and nvidia-settings. You can add your own
 
-Original source : http://svn.xesnet.fr/gnomeextensions (3.8 replace Settings code credit IsacDaavid)
+Original source : https://github.com/l300lvl/XES-Settings-Center-Extension
 
 ### 1 click install from E.G.O:
 
