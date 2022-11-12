@@ -71,7 +71,10 @@ class Prefs {
     }
 
     _buttonUp(indexItem) {
-        let buttonUp = new Gtk.Button({ label: _("Up") });
+        let buttonUp = new Gtk.Button({
+            label: _("Up"),
+            valign: Gtk.Align.CENTER,
+        });
         if (indexItem > 0)
             buttonUp.connect(
                 "clicked",
@@ -81,7 +84,10 @@ class Prefs {
     }
 
     _buttonDown(indexItem, itemslen) {
-        let buttonDown = new Gtk.Button({ label: _("Down") });
+        let buttonDown = new Gtk.Button({
+            label: _("Down"),
+            valign: Gtk.Align.CENTER,
+        });
         if (indexItem < itemslen - 1)
             buttonDown.connect(
                 "clicked",
@@ -95,6 +101,7 @@ class Prefs {
         if (itemslen > 1) {
             buttonDel = new Gtk.Button({
                 label: _("Del"),
+                valign: Gtk.Align.CENTER,
                 margin_start: 10,
             });
             buttonDel.connect("clicked", this.delCmd.bind(this, indexItem));
@@ -103,7 +110,10 @@ class Prefs {
     }
 
     _valueList(indexItem, item) {
-        let valueList = new Gtk.Switch({ active: item["enable"] == "1" });
+        let valueList = new Gtk.Switch({
+            active: item["enable"] == "1",
+            valign: Gtk.Align.CENTER,
+        });
         valueList.connect(
             "notify::active",
             this.changeEnable.bind(this, indexItem, valueList)
@@ -307,10 +317,16 @@ class AdwPrefs extends Prefs {
         this._page1.add(group1);
         adwrow = new Adw.ActionRow({ title: _("Menu Label") });
         group1.add(adwrow);
-        let valueMenu = new Gtk.Entry({ hexpand: true });
+        let valueMenu = new Gtk.Entry({
+            hexpand: true,
+            valign: Gtk.Align.CENTER,
+        });
 
         valueMenu.set_text(_(this._settings.get_string("label-menu")));
-        let buttonMenu = new Gtk.Button({ label: _("Apply") });
+        let buttonMenu = new Gtk.Button({
+            label: _("Apply"),
+            valign: Gtk.Align.CENTER,
+        });
         buttonMenu.connect("clicked", this.changeMenu.bind(this, valueMenu));
         adwrow.add_suffix(valueMenu);
         adwrow.add_suffix(buttonMenu);
@@ -323,15 +339,24 @@ class AdwPrefs extends Prefs {
         this._page1.add(group2);
         adwrow = new Adw.ActionRow({ title: _("Label") });
         group2.add(adwrow);
-        let valueLabelAdd = new Gtk.Entry({ hexpand: true });
+        let valueLabelAdd = new Gtk.Entry({
+            hexpand: true,
+            valign: Gtk.Align.CENTER,
+        });
         adwrow.add_suffix(valueLabelAdd);
         adwrow = new Adw.ActionRow({ title: _("Command") });
         group2.add(adwrow);
-        let valueCmdAdd = new Gtk.Entry({ hexpand: true });
+        let valueCmdAdd = new Gtk.Entry({
+            hexpand: true,
+            valign: Gtk.Align.CENTER,
+        });
         adwrow.add_suffix(valueCmdAdd);
         adwrow = new Adw.ActionRow({ title: "" });
         group2.add(adwrow);
-        let buttonAdd = new Gtk.Button({ label: _("Add") });
+        let buttonAdd = new Gtk.Button({
+            label: _("Add"),
+            valign: Gtk.Align.CENTER,
+        });
         buttonAdd.connect(
             "clicked",
             this.addCmd.bind(this, valueLabelAdd, valueCmdAdd)
