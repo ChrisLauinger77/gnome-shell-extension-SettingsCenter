@@ -1,0 +1,114 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Heimen Stoffels <vistausss@fastmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-21 18:39+0100\n"
+"PO-Revision-Date: 2022-11-21 20:26+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.03.70\n"
+
+#: SettingsCenter@lauinger-clan.de/extension.js:58
+msgid "Settings"
+msgstr "Voorkeuren"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:10
+msgid "Desktop Config Editor"
+msgstr "Bureaublad-voorkeurenbewerker"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:11
+msgid "Gnome Config Editor"
+msgstr "GNOME-voorkeurenbewerker"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:12
+msgid "Session Properties"
+msgstr "Sessievoorkeuren"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:13
+msgid "Extensions Preferences"
+msgstr "Uitbreidingsvoorkeuren"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:14
+msgid "Passwords and Keys"
+msgstr "Wachtwoorden en toegangssleutels"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:15
+msgid "NVidia Settings"
+msgstr "NVIDIA-voorkeuren"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:16
+msgid "Gnome Tweaks"
+msgstr "GNOME Afstelhulp"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:75
+msgid "Up"
+msgstr "Omhoog"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:88
+msgid "Down"
+msgstr "Omlaag"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:103
+msgid "Del"
+msgstr "Del"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:165
+#: SettingsCenter@lauinger-clan.de/prefs.js:315
+msgid "Global"
+msgstr "Algemeen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:179
+#: SettingsCenter@lauinger-clan.de/prefs.js:318
+msgid "Menu Label"
+msgstr "Menutekst"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:182
+#: SettingsCenter@lauinger-clan.de/prefs.js:327
+msgid "Apply"
+msgstr "Toepassen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:203
+#: SettingsCenter@lauinger-clan.de/prefs.js:285
+msgid "Menu Items"
+msgstr "Menu-items"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:219
+#: SettingsCenter@lauinger-clan.de/prefs.js:337
+msgid "Add Menu"
+msgstr "Menu toevoegen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:233
+#: SettingsCenter@lauinger-clan.de/prefs.js:340
+msgid "Label"
+msgstr "Tekst"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:244
+#: SettingsCenter@lauinger-clan.de/prefs.js:347
+msgid "Command"
+msgstr "Opdracht"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:255
+#: SettingsCenter@lauinger-clan.de/prefs.js:357
+msgid "Add"
+msgstr "Toevoegen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:309
+msgid "Settings Center"
+msgstr "Voorkeurenmenu"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
+msgid "Label Menu"
+msgstr "Menutekst"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:11
+msgid "Items"
+msgstr "Items"
