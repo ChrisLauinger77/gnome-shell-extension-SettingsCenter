@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-12 14:04+0100\n"
-"PO-Revision-Date: 2022-11-12 14:32+0100\n"
+"POT-Creation-Date: 2022-11-21 18:39+0100\n"
+"PO-Revision-Date: 2022-11-21 18:40+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -50,61 +50,69 @@ msgstr "NVidia Einstellungen"
 msgid "Gnome Tweaks"
 msgstr "Gnome Optimierungen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:74
+#: SettingsCenter@lauinger-clan.de/prefs.js:75
 msgid "Up"
 msgstr "Auf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:84
+#: SettingsCenter@lauinger-clan.de/prefs.js:88
 msgid "Down"
 msgstr "Ab"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:96
+#: SettingsCenter@lauinger-clan.de/prefs.js:103
 msgid "Del"
 msgstr "Entf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:152
-#: SettingsCenter@lauinger-clan.de/prefs.js:302
+#: SettingsCenter@lauinger-clan.de/prefs.js:165
+#: SettingsCenter@lauinger-clan.de/prefs.js:315
 msgid "Global"
 msgstr "Global"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:166
-#: SettingsCenter@lauinger-clan.de/prefs.js:305
+#: SettingsCenter@lauinger-clan.de/prefs.js:179
+#: SettingsCenter@lauinger-clan.de/prefs.js:318
 msgid "Menu Label"
 msgstr "Menü Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:169
-#: SettingsCenter@lauinger-clan.de/prefs.js:310
+#: SettingsCenter@lauinger-clan.de/prefs.js:182
+#: SettingsCenter@lauinger-clan.de/prefs.js:327
 msgid "Apply"
 msgstr "Übernehmen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:190
-#: SettingsCenter@lauinger-clan.de/prefs.js:272
+#: SettingsCenter@lauinger-clan.de/prefs.js:203
+#: SettingsCenter@lauinger-clan.de/prefs.js:285
 msgid "Menu Items"
 msgstr "Menü Einträge"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:206
-#: SettingsCenter@lauinger-clan.de/prefs.js:318
+#: SettingsCenter@lauinger-clan.de/prefs.js:219
+#: SettingsCenter@lauinger-clan.de/prefs.js:337
 msgid "Add Menu"
 msgstr "Menü hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:220
-#: SettingsCenter@lauinger-clan.de/prefs.js:321
+#: SettingsCenter@lauinger-clan.de/prefs.js:233
+#: SettingsCenter@lauinger-clan.de/prefs.js:340
 msgid "Label"
 msgstr "Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:231
-#: SettingsCenter@lauinger-clan.de/prefs.js:325
+#: SettingsCenter@lauinger-clan.de/prefs.js:244
+#: SettingsCenter@lauinger-clan.de/prefs.js:347
 msgid "Command"
 msgstr "Kommando"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:242
-#: SettingsCenter@lauinger-clan.de/prefs.js:331
+#: SettingsCenter@lauinger-clan.de/prefs.js:255
+#: SettingsCenter@lauinger-clan.de/prefs.js:357
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:296
+#: SettingsCenter@lauinger-clan.de/prefs.js:309
 msgid "Settings Center"
 msgstr "Einstellungscenter"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
+msgid "Label Menu"
+msgstr "Menü Beschriftung"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:11
+msgid "Items"
+msgstr "Menü Einträge"
 
 #~ msgid "Advanced Settings"
 #~ msgstr "Optimierungen"
