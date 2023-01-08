@@ -84,9 +84,12 @@ const SettingsCenterIndicator = GObject.registerClass(
     _init() {
       super._init();
 
-      // Create the icon for the indicator
-      this._indicator = this._addIndicator();
-      this._indicator.icon_name = "preferences-other-symbolic";
+      this._settings = ExtensionUtils.getSettings(g_schema);
+      if (this._settings.get_boolean("show-systemindicator")) {
+        // Create the icon for the indicator
+        this._indicator = this._addIndicator();
+        this._indicator.icon_name = "preferences-other-symbolic";
+      }
 
       // Create the toggle menu and associate it with the indicator, being
       // sure to destroy it along with the indicator
@@ -138,6 +141,12 @@ class SettingsCenter {
     this._settingSignals.push(
       this._settings.connect(
         "changed::label-menu",
+        this.onParamChanged.bind(this)
+      )
+    );
+    this._settingSignals.push(
+      this._settings.connect(
+        "changed::show-systemindicator",
         this.onParamChanged.bind(this)
       )
     );

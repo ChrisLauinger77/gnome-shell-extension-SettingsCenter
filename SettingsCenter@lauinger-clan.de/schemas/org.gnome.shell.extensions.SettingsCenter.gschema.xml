@@ -7,9 +7,14 @@
       <description/>
     </key>
     <key name="items" type="s">
-      <default>'Gnome Tweaks;gnome-tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;dconf-editor.desktop;1;dconf-editor|Gnome Config Editor;gconf-editor.desktop;1;gconf-editor|Session Properties;session-properties.desktop;1;gnome-session-properties|Extensions Preferences;gnome-shell-extension-prefs.desktop;1;gnome-shell-extension-prefs|Passwords and Keys;seahorse.desktop;0;seahorse|NVidia Settings;nvidia-settings.desktop;0;nvidia-settings'</default>
+      <default>'Gnome Config Editor;gconf-editor.desktop;1;gconf-editor|Gnome Tweaks;gnome-tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;dconf-editor.desktop;1;dconf-editor|Extensions Preferences;gnome-shell-extension-prefs.desktop;1;gnome-shell-extension-prefs|NVidia Settings;nvidia-settings.desktop;1;nvidia-settings|Passwords and Keys;seahorse.desktop;1;seahorse|PulseAudio;pavucontrol.desktop;1;|Session Properties;session-properties.desktop;0;gnome-session-properties'</default>
       <summary>Items</summary>
       <description/>
+    </key>
+    <key name="show-systemindicator" type="b">
+      <default>true</default>
+      <summary>Toggle to show systemindicator</summary>
+      <description>Makes the systemindicator show/hide</description>
     </key>
   </schema>
 </schemalist>
