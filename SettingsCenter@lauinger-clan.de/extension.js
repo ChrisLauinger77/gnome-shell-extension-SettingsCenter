@@ -34,6 +34,13 @@ const SettingsCenterMenuToggle = GObject.registerClass(
         ""
       );
 
+      this._settings.bind(
+        "show-systemindicator",
+        this,
+        "checked",
+        Gio.SettingsBindFlags.DEFAULT
+      );
+
       // You may also add sections of items to the menu
       let menuItems = new Menu_Items.MenuItems(this._settings);
       this._items = menuItems.getEnableItems();
