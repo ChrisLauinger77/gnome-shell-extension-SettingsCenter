@@ -123,13 +123,6 @@ class SettingsCenter {
     this._indicator = null;
   }
 
-  onPreferencesActivate() {
-    let app = Shell.AppSystem.get_default().lookup_app(
-      "gnome-control-center.desktop"
-    );
-    app.activate();
-  }
-
   onParamChanged() {
     this.disable();
     this.enable();
