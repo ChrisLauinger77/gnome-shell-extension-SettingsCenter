@@ -284,6 +284,7 @@ class AdwPrefs extends Prefs {
     for (let indexItem in items) {
       let item = items[indexItem];
       let adwrow = new Adw.ActionRow({ title: _(item["label"]) });
+      adwrow.set_tooltip_text(item["cmd"]);
       this._group3.add(adwrow);
       let buttonUp = this._buttonUp(indexItem);
       let buttonDown = this._buttonDown(indexItem, items.length);
