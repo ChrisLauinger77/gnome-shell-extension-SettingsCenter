@@ -328,6 +328,7 @@ class AdwPrefs extends Prefs {
     adwrow.activatable_widget = buttonMenu;
 
     adwrow = new Adw.ActionRow({ title: _("Show SystemIndicator") });
+    adwrow.set_tooltip_text(_("Toggle to show systemindicator"));
     group1.add(adwrow);
     let systemindicator_switch = new Gtk.Switch({
       active: this._settings.get_boolean("show-systemindicator"),
@@ -347,6 +348,7 @@ class AdwPrefs extends Prefs {
     group2.set_name("settingscenter_addmenu");
     this._page1.add(group2);
     adwrow = new Adw.ActionRow({ title: _("Label") });
+    adwrow.set_tooltip_text(_("Label to show in menu"));
     group2.add(adwrow);
     let valueLabelAdd = new Gtk.Entry({
       hexpand: true,
@@ -354,6 +356,9 @@ class AdwPrefs extends Prefs {
     });
     adwrow.add_suffix(valueLabelAdd);
     adwrow = new Adw.ActionRow({ title: _("Command") });
+    adwrow.set_tooltip_text(
+      _("Name of .desktop file (MyApp.desktop) or name of command")
+    );
     group2.add(adwrow);
     let valueCmdAdd = new Gtk.Entry({
       hexpand: true,
