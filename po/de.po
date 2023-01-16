@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-14 13:55+0100\n"
-"PO-Revision-Date: 2023-01-14 14:07+0100\n"
+"POT-Creation-Date: 2023-01-16 19:36+0100\n"
+"PO-Revision-Date: 2023-01-16 19:38+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -51,91 +51,96 @@ msgid "Gnome Tweaks"
 msgstr "Gnome Optimierungen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:55
-msgid "'Label' and 'Command' must be filled out !"
-msgstr "'Beschriftung' und 'Kommando' müssen ausgefüllt werden !"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:56
 msgid "SettingsCenter"
 msgstr "Einstellungszentrum"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:82
+#: SettingsCenter@lauinger-clan.de/prefs.js:57
+#: SettingsCenter@lauinger-clan.de/prefs.js:449
+msgid "'Label' and 'Command' must be filled out !"
+msgstr "'Beschriftung' und 'Kommando' müssen ausgefüllt werden !"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:83
 msgid "Up"
 msgstr "Auf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:95
+#: SettingsCenter@lauinger-clan.de/prefs.js:96
 msgid "Down"
 msgstr "Ab"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:110
+#: SettingsCenter@lauinger-clan.de/prefs.js:111
 msgid "Del"
 msgstr "Entf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:172
-#: SettingsCenter@lauinger-clan.de/prefs.js:350
+#: SettingsCenter@lauinger-clan.de/prefs.js:173
+#: SettingsCenter@lauinger-clan.de/prefs.js:356
 msgid "Global"
 msgstr "Global"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:186
-#: SettingsCenter@lauinger-clan.de/prefs.js:353
+#: SettingsCenter@lauinger-clan.de/prefs.js:187
+#: SettingsCenter@lauinger-clan.de/prefs.js:359
 msgid "Menu Label"
 msgstr "Menü Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:189
-#: SettingsCenter@lauinger-clan.de/prefs.js:362
+#: SettingsCenter@lauinger-clan.de/prefs.js:190
+#: SettingsCenter@lauinger-clan.de/prefs.js:368
 msgid "Apply"
 msgstr "Übernehmen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:210
-#: SettingsCenter@lauinger-clan.de/prefs.js:293
+#: SettingsCenter@lauinger-clan.de/prefs.js:211
+#: SettingsCenter@lauinger-clan.de/prefs.js:295
 msgid "Menu Items"
 msgstr "Menü Einträge"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:226
-#: SettingsCenter@lauinger-clan.de/prefs.js:387
+#: SettingsCenter@lauinger-clan.de/prefs.js:227
+#: SettingsCenter@lauinger-clan.de/prefs.js:393
 msgid "Add Menu"
 msgstr "Menü hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:240
-#: SettingsCenter@lauinger-clan.de/prefs.js:390
+#: SettingsCenter@lauinger-clan.de/prefs.js:241
+#: SettingsCenter@lauinger-clan.de/prefs.js:396
 msgid "Label"
 msgstr "Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:251
-#: SettingsCenter@lauinger-clan.de/prefs.js:398
+#: SettingsCenter@lauinger-clan.de/prefs.js:252
+#: SettingsCenter@lauinger-clan.de/prefs.js:405
 msgid "Command"
 msgstr "Kommando"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:262
-#: SettingsCenter@lauinger-clan.de/prefs.js:431
+#: SettingsCenter@lauinger-clan.de/prefs.js:263
+#: SettingsCenter@lauinger-clan.de/prefs.js:441
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:323
-#: SettingsCenter@lauinger-clan.de/prefs.js:412
-#: SettingsCenter@lauinger-clan.de/prefs.js:422
+#: SettingsCenter@lauinger-clan.de/prefs.js:325
+#: SettingsCenter@lauinger-clan.de/prefs.js:419
+#: SettingsCenter@lauinger-clan.de/prefs.js:432
 msgid "Select desktop file"
 msgstr "Desktop Datei auswählen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:344
+#: SettingsCenter@lauinger-clan.de/prefs.js:350
 msgid "Settings Center"
 msgstr "Einstellungszentrum"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:370
+#: SettingsCenter@lauinger-clan.de/prefs.js:376
 msgid "Show SystemIndicator"
 msgstr "Systemindikator anzeigen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:371
+#: SettingsCenter@lauinger-clan.de/prefs.js:377
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
 msgid "Toggle to show systemindicator"
 msgstr "Umschalten der Anzeige des Systemindikators"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:391
+#: SettingsCenter@lauinger-clan.de/prefs.js:397
 msgid "Label to show in menu"
 msgstr "Beschriftung die im Menü angezeigt wird"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:400
+#: SettingsCenter@lauinger-clan.de/prefs.js:407
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr "Name der .desktop Datei (MyApp.desktop) oder Name des Befehls"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:423
+msgid "Usually located in '/usr/share/applications'"
+msgstr "Befinden sich normalerweise in '/usr/share/applications'"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"

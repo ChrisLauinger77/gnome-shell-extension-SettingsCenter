@@ -419,6 +419,9 @@ class AdwPrefs extends Prefs {
             label: _("Select desktop file"),
             valign: Gtk.Align.CENTER,
         });
+        buttonfilechooser.set_tooltip_text(
+            _("Usually located in '/usr/share/applications'")
+        );
         adwrow.add_suffix(buttonfilechooser);
         adwrow.activatable_widget = buttonfilechooser;
         buttonfilechooser.connect(
@@ -441,6 +444,9 @@ class AdwPrefs extends Prefs {
         buttonAdd.connect(
             "clicked",
             this.addCmd.bind(this, valueLabelAdd, valueCmdAdd)
+        );
+        buttonAdd.set_tooltip_text(
+            _("'Label' and 'Command' must be filled out !")
         );
         adwrow.add_suffix(buttonAdd);
         adwrow.activatable_widget = buttonAdd;
