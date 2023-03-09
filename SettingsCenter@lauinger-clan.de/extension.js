@@ -20,11 +20,12 @@ const SettingsCenterMenuToggle = GObject.registerClass(
     _init() {
       this._settings = ExtensionUtils.getSettings(g_schema);
       super._init({
-        label: _(this._settings.get_string("label-menu")),
         iconName: "preferences-other-symbolic",
         toggleMode: true,
       });
-
+      // gnome 43 / 44
+      this.label = _(this._settings.get_string("label-menu"));
+      
       // This function is unique to this class. It adds a nice header with an
       // icon, title and optional subtitle. It's recommended you do so for
       // consistency with other menus.
