@@ -5,10 +5,11 @@
   "name": "SettingsCenter",
   "original-author": "Xes, l300lvl",
   "shell-version": [
+    "43",
     "44"
   ],
   "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension",
   "uuid": "SettingsCenter@lauinger-clan.de",
   "settings-schema": "org.gnome.shell.extensions.SettingsCenter",
-  "version": 31
+  "version": 32
 }

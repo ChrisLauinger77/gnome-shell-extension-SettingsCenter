@@ -19,11 +19,22 @@ const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
         _init() {
             this._settings = ExtensionUtils.getSettings(g_schema);
-            super._init({
-                title: _(this._settings.get_string("label-menu")),
-                iconName: "preferences-other-symbolic",
-                toggleMode: true,
-            });
+            let current_version = Config.PACKAGE_VERSION.split(".");
+            if (current_version[0] >= 44) {
+                //GNOME 44 and newer
+                super._init({
+                    title: _(this._settings.get_string("label-menu")),
+                    iconName: "preferences-other-symbolic",
+                    toggleMode: true,
+                });
+            } else {
+                //GNOME 43
+                super._init({
+                    label: _(this._settings.get_string("label-menu")),
+                    iconName: "preferences-other-symbolic",
+                    toggleMode: true,
+                });
+            }
 
             // This function is unique to this class. It adds a nice header with an
             // icon, title and optional subtitle. It's recommended you do so for
@@ -115,11 +126,6 @@ const SettingsCenterIndicator = GObject.registerClass(
     }
 );
 
-function isSupported() {
-    let current_version = Config.PACKAGE_VERSION.split(".");
-    return current_version[0] >= 44 ? true : false;
-}
-
 class SettingsCenter {
     constructor() {
         this._indicator = null;
@@ -131,9 +137,6 @@ class SettingsCenter {
     }
 
     enable() {
-        if (!isSupported()) {
-            return;
-        }
         this._settings = ExtensionUtils.getSettings(g_schema);
 
         this._settingSignals = new Array();
@@ -161,9 +164,6 @@ class SettingsCenter {
     }
 
     disable() {
-        if (!isSupported()) {
-            return;
-        }
         //Remove setting Signals
         this._settingSignals.forEach(function (signal) {
             this._settings.disconnect(signal);
