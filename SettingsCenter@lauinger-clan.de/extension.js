@@ -17,20 +17,19 @@ const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
-        _init() {
-            this._settings = ExtensionUtils.getSettings(g_schema);
+        _init(settings) {
             let current_version = Config.PACKAGE_VERSION.split(".");
             if (current_version[0] >= 44) {
                 //GNOME 44 and newer
                 super._init({
-                    title: _(this._settings.get_string("label-menu")),
+                    title: _(settings.get_string("label-menu")),
                     iconName: "preferences-other-symbolic",
                     toggleMode: true,
                 });
             } else {
                 //GNOME 43
                 super._init({
-                    label: _(this._settings.get_string("label-menu")),
+                    label: _(settings.get_string("label-menu")),
                     iconName: "preferences-other-symbolic",
                     toggleMode: true,
                 });
@@ -41,11 +40,11 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             // consistency with other menus.
             this.menu.setHeader(
                 "preferences-other-symbolic",
-                _(this._settings.get_string("label-menu")),
+                _(settings.get_string("label-menu")),
                 ""
             );
 
-            this._settings.bind(
+            settings.bind(
                 "show-systemindicator",
                 this,
                 "checked",
@@ -53,7 +52,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             );
 
             // You may also add sections of items to the menu
-            let menuItems = new Menu_Items.MenuItems(this._settings);
+            let menuItems = new Menu_Items.MenuItems(settings);
             this._items = menuItems.getEnableItems();
 
             if (this._items.length > 0) {
@@ -101,11 +100,10 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
 const SettingsCenterIndicator = GObject.registerClass(
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
-        _init() {
+        _init(settings) {
             super._init();
 
-            this._settings = ExtensionUtils.getSettings(g_schema);
-            if (this._settings.get_boolean("show-systemindicator")) {
+            if (settings.get_boolean("show-systemindicator")) {
                 // Create the icon for the indicator
                 this._indicator = this._addIndicator();
                 this._indicator.icon_name = "preferences-other-symbolic";
@@ -113,7 +111,9 @@ const SettingsCenterIndicator = GObject.registerClass(
 
             // Create the toggle menu and associate it with the indicator, being
             // sure to destroy it along with the indicator
-            this.quickSettingsItems.push(new SettingsCenterMenuToggle());
+            this.quickSettingsItems.push(
+                new SettingsCenterMenuToggle(settings)
+            );
 
             this.connect("destroy", () => {
                 this.quickSettingsItems.forEach((item) => item.destroy());
