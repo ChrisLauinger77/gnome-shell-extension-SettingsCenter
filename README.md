@@ -6,6 +6,8 @@ Settings shortcuts : gnome-tweak-tool, dconf-editor, gconf-editor, gnome-session
 
 Original source : https://github.com/l300lvl/XES-Settings-Center-Extension
 
+Make sure you have gnome-icon-theme package installed.
+
 ### 1 click install from E.G.O:
 
 https://extensions.gnome.org/extension/2899/settingscenter/
