@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-16 19:36+0100\n"
-"PO-Revision-Date: 2023-01-16 19:38+0100\n"
+"POT-Creation-Date: 2023-03-28 18:02+0200\n"
+"PO-Revision-Date: 2023-03-28 18:01+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:65
+#: SettingsCenter@lauinger-clan.de/extension.js:75
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -152,7 +152,7 @@ msgstr "Menü Einträge"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:17
 msgid "Makes the systemindicator show/hide"
-msgstr "Systemindikator anzeogen/verstecken"
+msgstr "Systemindikator anzeigen/verstecken"
 
 #~ msgid "..."
 #~ msgstr "..."
