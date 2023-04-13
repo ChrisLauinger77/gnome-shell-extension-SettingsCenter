@@ -10,7 +10,7 @@ Make sure you have gnome-icon-theme package installed.
 
 ### 1 click install from E.G.O:
 
-https://extensions.gnome.org/extension/2899/settingscenter/
+[<img src="https://www.lauinger-clan.de/pics/get-it-on-ego.png" height="125">](https://extensions.gnome.org/extension/2899/settingscenter)
 
 ### Screenshot GNOME 43 and newer
 
