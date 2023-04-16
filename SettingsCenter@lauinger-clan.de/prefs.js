@@ -7,13 +7,13 @@ const _ = Gettext.gettext;
 const g_schema = "org.gnome.shell.extensions.SettingsCenter";
 
 //only here to be catched by translation
+const strFix1 = _("Gnome Tweaks");
 const strFix2 = _("Desktop Config Editor");
 const strFix3 = _("Gnome Config Editor");
 const strFix4 = _("Session Properties");
 const strFix5 = _("Extensions Preferences");
 const strFix6 = _("Passwords and Keys");
 const strFix7 = _("NVidia Settings");
-const strFix1 = _("Gnome Tweaks");
 
 function init() {
     ExtensionUtils.initTranslations("SettingsCenter");
