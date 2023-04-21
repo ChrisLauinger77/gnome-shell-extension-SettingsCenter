@@ -141,7 +141,7 @@ class SettingsCenter {
 
         this._settingSignals = new Array();
 
-        this._indicator = new SettingsCenterIndicator();
+        this._indicator = new SettingsCenterIndicator(this._settings);
 
         this._settingSignals.push(
             this._settings.connect(

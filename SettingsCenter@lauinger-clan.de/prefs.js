@@ -281,6 +281,7 @@ class AdwPrefs extends Prefs {
         super(schema);
         this._window = window;
         this._page1 = null;
+        this._page2 = null;
         this._group3 = null;
         this.filechoosertarget1 = null;
         this.filechoosertarget2 = null;
@@ -288,13 +289,13 @@ class AdwPrefs extends Prefs {
 
     buildList() {
         if (this._group3 !== null) {
-            this._page1.remove(this._group3);
+            this._page2.remove(this._group3);
         }
 
         this._group3 = Adw.PreferencesGroup.new();
         this._group3.set_title(_("Menu Items"));
         this._group3.set_name("settingscenter_menuitems");
-        this._page1.add(this._group3);
+        this._page2.add(this._group3);
         let items = this._menuItems.getItems();
 
         for (let indexItem in items) {
@@ -347,8 +348,8 @@ class AdwPrefs extends Prefs {
     fillPreferencesWindow() {
         let adwrow;
         this._page1 = Adw.PreferencesPage.new();
-        this._page1.set_title(_("Settings Center"));
-        this._page1.set_name("settingscenter_page");
+        this._page1.set_title(_("Settings"));
+        this._page1.set_name("settingscenter_page1");
         this._page1.set_icon_name("preferences-system-symbolic");
 
         // group1
@@ -450,9 +451,15 @@ class AdwPrefs extends Prefs {
         );
         adwrow.add_suffix(buttonAdd);
         adwrow.activatable_widget = buttonAdd;
+        //page2
+        this._page2 = Adw.PreferencesPage.new();
+        this._page2.set_title(_("Settings Center"));
+        this._page2.set_name("settingscenter_page2");
+        this._page2.set_icon_name("preferences-other-symbolic");
         // group3
         this.buildList();
-        this._window.set_default_size(675, 800);
+        this._window.set_default_size(675, 655);
         this._window.add(this._page1);
+        this._window.add(this._page2);
     }
 }
