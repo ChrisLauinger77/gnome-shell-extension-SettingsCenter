@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-21 17:29+0200\n"
-"PO-Revision-Date: 2022-11-21 20:26+0100\n"
+"PO-Revision-Date: 2023-04-23 20:13+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: SettingsCenter@lauinger-clan.de/extension.js:75
 #: SettingsCenter@lauinger-clan.de/prefs.js:351
@@ -51,14 +51,13 @@ msgid "NVidia Settings"
 msgstr "NVIDIA-voorkeuren"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:55
-#, fuzzy
 msgid "SettingsCenter"
-msgstr "Voorkeurenmenu"
+msgstr "Voorkeurencentrum"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:57
 #: SettingsCenter@lauinger-clan.de/prefs.js:450
 msgid "'Label' and 'Command' must be filled out !"
-msgstr ""
+msgstr "Kies een label en opdracht."
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:83
 msgid "Up"
@@ -116,28 +115,28 @@ msgstr "Toevoegen"
 #: SettingsCenter@lauinger-clan.de/prefs.js:420
 #: SettingsCenter@lauinger-clan.de/prefs.js:433
 msgid "Select desktop file"
-msgstr ""
+msgstr "Kies een .desktopbestand"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:377
 msgid "Show SystemIndicator"
-msgstr ""
+msgstr "Systeemindicator tonen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:378
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
 msgid "Toggle to show systemindicator"
-msgstr ""
+msgstr "Systeemindicator toon-/verbergknop"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:398
 msgid "Label to show in menu"
-msgstr ""
+msgstr "Het te tonen label in het menu"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:408
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
-msgstr ""
+msgstr "De naam van een .desktopbestand (MijnToepassing.desktop) of naam van een opdracht"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:424
 msgid "Usually located in '/usr/share/applications'"
-msgstr ""
+msgstr "Doorgaans te vinden in ‘/usr/share/applications’"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:456
 msgid "Settings Center"
@@ -153,4 +152,4 @@ msgstr "Items"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:17
 msgid "Makes the systemindicator show/hide"
-msgstr ""
+msgstr "Toon/Verberg de systeemindicator"
