@@ -1,39 +1,36 @@
-/* original author Xes. 3.6/3.8 fork l300lvl. replace system settings menu credit: IsacDaavid */
+import Shell from "gi://Shell";
+import Gio from "gi://Gio";
+import GObject from "gi://GObject";
 
-const { Gio, GObject, St } = imports.gi;
-const Config = imports.misc.config;
-const Main = imports.ui.main;
-const Shell = imports.gi.Shell;
-const PopupMenu = imports.ui.popupMenu;
-const QuickSettings = imports.ui.quickSettings;
-const QuickSettingsMenu = imports.ui.main.panel.statusArea.quickSettings;
-const Util = imports.misc.util;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const Menu_Items = Me.imports.menu_items;
-const Gettext = imports.gettext.domain("SettingsCenter");
-const _ = Gettext.gettext;
-const g_schema = "org.gnome.shell.extensions.SettingsCenter";
+import * as Main from "resource:///org/gnome/shell/ui/main.js";
+import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
+import * as QuickSettings from "resource:///org/gnome/shell/ui/quickSettings.js";
+import * as Util from "resource:///org/gnome/shell/misc/util.js";
+import * as Menu_Items from "./menu_items.js";
+
+import {
+    Extension,
+    gettext as _,
+} from "resource:///org/gnome/shell/extensions/extension.js";
+
+const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
+//only here to be catched by translation
+const strFix1 = _("Gnome Tweaks");
+const strFix2 = _("Desktop Config Editor");
+const strFix3 = _("Gnome Config Editor");
+const strFix4 = _("Session Properties");
+const strFix5 = _("Extensions Preferences");
+const strFix6 = _("Passwords and Keys");
+const strFix7 = _("NVidia Settings");
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
-        _init(settings) {
-            let current_version = Config.PACKAGE_VERSION.split(".");
-            if (current_version[0] >= 44) {
-                //GNOME 44 and newer
-                super._init({
-                    title: _(settings.get_string("label-menu")),
-                    iconName: "preferences-other-symbolic",
-                    toggleMode: true,
-                });
-            } else {
-                //GNOME 43
-                super._init({
-                    label: _(settings.get_string("label-menu")),
-                    iconName: "preferences-other-symbolic",
-                    toggleMode: true,
-                });
-            }
+        _init(settings, Me) {
+            super._init({
+                title: _(settings.get_string("label-menu")),
+                iconName: "preferences-other-symbolic",
+                toggleMode: true,
+            });
 
             // This function is unique to this class. It adds a nice header with an
             // icon, title and optional subtitle. It's recommended you do so for
@@ -73,7 +70,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             // Add an entry-point for more settings
             this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
             const settingsItem = this.menu.addAction(_("Settings"), () =>
-                ExtensionUtils.openPrefs()
+                Me._openPreferences()
             );
 
             // Ensure the settings are unavailable when the screen is locked
@@ -100,7 +97,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
 const SettingsCenterIndicator = GObject.registerClass(
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
-        _init(settings) {
+        _init(settings, Me) {
             super._init();
 
             if (settings.get_boolean("show-systemindicator")) {
@@ -112,7 +109,7 @@ const SettingsCenterIndicator = GObject.registerClass(
             // Create the toggle menu and associate it with the indicator, being
             // sure to destroy it along with the indicator
             this.quickSettingsItems.push(
-                new SettingsCenterMenuToggle(settings)
+                new SettingsCenterMenuToggle(settings, Me)
             );
 
             this.connect("destroy", () => {
@@ -126,22 +123,22 @@ const SettingsCenterIndicator = GObject.registerClass(
     }
 );
 
-class SettingsCenter {
-    constructor() {
-        this._indicator = null;
-    }
-
+export default class SettingsCenter extends Extension {
     onParamChanged() {
         this.disable();
         this.enable();
     }
 
+    _openPreferences() {
+        this.openPreferences();
+    }
+
     enable() {
-        this._settings = ExtensionUtils.getSettings(g_schema);
+        this._settings = this.getSettings();
 
         this._settingSignals = new Array();
 
-        this._indicator = new SettingsCenterIndicator(this._settings);
+        this._indicator = new SettingsCenterIndicator(this._settings, this);
 
         this._settingSignals.push(
             this._settings.connect(
@@ -174,9 +171,4 @@ class SettingsCenter {
         this._indicator.destroy();
         this._indicator = null;
     }
-}
-
-function init() {
-    ExtensionUtils.initTranslations("SettingsCenter");
-    return new SettingsCenter();
 }

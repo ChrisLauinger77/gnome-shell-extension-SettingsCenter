@@ -16,5 +16,10 @@
       <summary>Toggle to show systemindicator</summary>
       <description>Makes the systemindicator show/hide</description>
     </key>
+    <key name="last-choosen-file" type="s">
+      <default>''</default>
+      <summary>Last choosen file</summary>
+      <description></description>
+    </key>
   </schema>
 </schemalist>
