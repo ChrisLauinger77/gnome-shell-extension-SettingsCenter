@@ -14,14 +14,6 @@ import {
 } from "resource:///org/gnome/shell/extensions/extension.js";
 
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
-//only here to be catched by translation
-const strFix1 = _("Gnome Tweaks");
-const strFix2 = _("Desktop Config Editor");
-const strFix3 = _("Gnome Config Editor");
-const strFix4 = _("Session Properties");
-const strFix5 = _("Extensions Preferences");
-const strFix6 = _("Passwords and Keys");
-const strFix7 = _("NVidia Settings");
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
