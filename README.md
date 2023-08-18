@@ -25,3 +25,7 @@ Make sure you have gnome-icon-theme package installed.
 Pull requests are welcome.
 
 To update the translation files run ./update-translation-po-files.sh in the extensions directory after your code changes are finished. This will update the files in po folder. Then poedit (https://poedit.net/download) can be used to translate the strings. poedit can also be used to create new localization files.
+
+# ✨️ Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=ChrisLauinger77/XES-Settings-Center-Extension)](https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/graphs/contributors)
