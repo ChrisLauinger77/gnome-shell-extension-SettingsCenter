@@ -11,3 +11,4 @@ const strFix4 = _("Session Properties");
 const strFix5 = _("Extensions Preferences");
 const strFix6 = _("Passwords and Keys");
 const strFix7 = _("NVidia Settings");
+const strFix8 = _("Extension Manager");
