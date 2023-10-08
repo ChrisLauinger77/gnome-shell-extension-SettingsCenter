@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 15:43+0200\n"
-"PO-Revision-Date: 2023-04-23 20:13+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"POT-Creation-Date: 2023-10-08 19:20+0200\n"
+"PO-Revision-Date: 2023-10-08 19:26+0200\n"
+"Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: SettingsCenter@lauinger-clan.de/extension.js:64
 #: SettingsCenter@lauinger-clan.de/prefs.js:189
@@ -29,7 +29,7 @@ msgstr "Voorkeurencentrum"
 #: SettingsCenter@lauinger-clan.de/prefs.js:24
 #: SettingsCenter@lauinger-clan.de/prefs.js:300
 msgid "'Label' and 'Command' must be filled out !"
-msgstr "Kies een label en opdracht."
+msgstr "Kies een label en opdracht !"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:50
 msgid "Up"
@@ -137,9 +137,8 @@ msgid "NVidia Settings"
 msgstr "NVIDIA-voorkeuren"
 
 #: SettingsCenter@lauinger-clan.de/translation.js:14
-#, fuzzy
 msgid "Extension Manager"
-msgstr "Uitbreidingsvoorkeuren"
+msgstr "Uitbreidingsbeheer"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"
@@ -154,5 +153,5 @@ msgid "Makes the systemindicator show/hide"
 msgstr "Toon/Verberg de systeemindicator"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:21
-msgid "Last choosen file"
-msgstr ""
+msgid "Last chosen file"
+msgstr "Laatst gekozen bestand"

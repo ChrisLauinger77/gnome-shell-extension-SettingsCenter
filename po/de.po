@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 15:43+0200\n"
-"PO-Revision-Date: 2023-08-26 15:45+0200\n"
+"POT-Creation-Date: 2023-10-08 19:20+0200\n"
+"PO-Revision-Date: 2023-10-08 19:21+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: SettingsCenter@lauinger-clan.de/extension.js:64
 #: SettingsCenter@lauinger-clan.de/prefs.js:189
@@ -152,7 +152,7 @@ msgid "Makes the systemindicator show/hide"
 msgstr "Systemindikator anzeigen/verstecken"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:21
-msgid "Last choosen file"
+msgid "Last chosen file"
 msgstr "Letzt gewählte Datei"
 
 #~ msgid "..."
