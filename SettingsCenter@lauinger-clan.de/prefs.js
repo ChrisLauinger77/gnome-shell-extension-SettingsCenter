@@ -50,6 +50,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             label: _("Up"),
             valign: Gtk.Align.CENTER,
         });
+        buttonUp.set_icon_name("go-up-symbolic");
         if (indexItem > 0)
             buttonUp.connect(
                 "clicked",
@@ -63,6 +64,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             label: _("Down"),
             valign: Gtk.Align.CENTER,
         });
+        buttonDown.set_icon_name("go-down-symbolic");
         if (indexItem < itemslen - 1)
             buttonDown.connect(
                 "clicked",
@@ -79,6 +81,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                 valign: Gtk.Align.CENTER,
                 margin_start: 10,
             });
+            buttonDel.set_icon_name("user-trash-symbolic");
             buttonDel.connect(
                 "clicked",
                 this._delCmd.bind(this, menuItems, page2, indexItem)
