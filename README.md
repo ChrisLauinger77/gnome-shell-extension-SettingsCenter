@@ -14,11 +14,11 @@ Make sure you have gnome-icon-theme package installed.
 
 ### Screenshot GNOME 43 and newer
 
-![Screenshot](https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/blob/master/screenshot_4x.png)
+![Screenshot](screenshot_4x.png)
 
 ### Screenshot GNOME 3.x
 
-![Screenshot](https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/blob/master/screenshot_3x.png)
+![Screenshot](screenshot_3x.png)
 
 ## Developing
 
