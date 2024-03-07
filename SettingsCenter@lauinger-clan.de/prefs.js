@@ -77,6 +77,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         let buttonDel = null;
         if (itemslen > 1) {
             buttonDel = new Gtk.Button({
+                css_classes: ["destructive-action"],
                 label: _("Del"),
                 valign: Gtk.Align.CENTER,
                 margin_start: 10,
