@@ -51,11 +51,15 @@ export default class AdwPrefs extends ExtensionPreferences {
             valign: Gtk.Align.CENTER,
         });
         buttonUp.set_icon_name("go-up-symbolic");
-        if (indexItem > 0)
+        if (indexItem > 0) {
             buttonUp.connect(
                 "clicked",
                 this._changeOrder.bind(this, menuItems, page2, indexItem, -1)
             );
+            buttonUp.set_sensitive(true);
+        } else {
+            buttonUp.set_sensitive(false);
+        }
         return buttonUp;
     }
 
@@ -65,11 +69,15 @@ export default class AdwPrefs extends ExtensionPreferences {
             valign: Gtk.Align.CENTER,
         });
         buttonDown.set_icon_name("go-down-symbolic");
-        if (indexItem < itemslen - 1)
+        if (indexItem < itemslen - 1) {
             buttonDown.connect(
                 "clicked",
                 this._changeOrder.bind(this, menuItems, page2, indexItem, 1)
             );
+            buttonDown.set_sensitive(true);
+        } else {
+            buttonDown.set_sensitive(false);
+        }
         return buttonDown;
     }
 
