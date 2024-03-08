@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-08 16:54+0100\n"
+"POT-Creation-Date: 2024-03-09 00:47+0100\n"
 "PO-Revision-Date: 2024-03-08 16:54+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Dutch\n"
@@ -18,111 +18,118 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: SettingsCenter@lauinger-clan.de/extension.js:64
-#: SettingsCenter@lauinger-clan.de/prefs.js:218
+#: SettingsCenter@lauinger-clan.de/prefs.js:189
 msgid "Settings"
 msgstr "Voorkeuren"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:22
+#: SettingsCenter@lauinger-clan.de/prefs.js:32
 msgid "SettingsCenter"
 msgstr "Voorkeurencentrum"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:24
-#: SettingsCenter@lauinger-clan.de/prefs.js:329
+#: SettingsCenter@lauinger-clan.de/prefs.js:34
+#: SettingsCenter@lauinger-clan.de/prefs.js:298
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "Kies een label en opdracht !"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:45
+#: SettingsCenter@lauinger-clan.de/prefs.js:55
 msgid "Delete entry"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:46
+#: SettingsCenter@lauinger-clan.de/prefs.js:56
 msgid "Are you sure you want to delete the entry ?"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:48
+#: SettingsCenter@lauinger-clan.de/prefs.js:58
+#: SettingsCenter@lauinger-clan.de/prefs.js:328
 msgid "Cancel"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:49
+#: SettingsCenter@lauinger-clan.de/prefs.js:59
 msgid "Delete"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:67
+#: SettingsCenter@lauinger-clan.de/prefs.js:77
 msgid "Up"
 msgstr "Omhoog"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:85
+#: SettingsCenter@lauinger-clan.de/prefs.js:95
 msgid "Down"
 msgstr "Omlaag"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:106
+#: SettingsCenter@lauinger-clan.de/prefs.js:116
 msgid "Del"
 msgstr "Del"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:136
+#: SettingsCenter@lauinger-clan.de/prefs.js:146
 msgid "Menu Items"
 msgstr "Menu-items"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:177
-#: SettingsCenter@lauinger-clan.de/prefs.js:289
-#: SettingsCenter@lauinger-clan.de/prefs.js:299
-msgid "Select desktop file"
-msgstr "Kies een .desktopbestand"
+#: SettingsCenter@lauinger-clan.de/prefs.js:194
+msgid "Select app"
+msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:224
+#: SettingsCenter@lauinger-clan.de/prefs.js:205
 msgid "Global"
 msgstr "Algemeen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:227
+#: SettingsCenter@lauinger-clan.de/prefs.js:208
 msgid "Menu Label"
 msgstr "Menutekst"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:236
+#: SettingsCenter@lauinger-clan.de/prefs.js:217
 msgid "Apply"
 msgstr "Toepassen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:244
+#: SettingsCenter@lauinger-clan.de/prefs.js:225
 msgid "Show SystemIndicator"
 msgstr "Systeemindicator tonen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:245
+#: SettingsCenter@lauinger-clan.de/prefs.js:226
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
 msgid "Toggle to show systemindicator"
 msgstr "Systeemindicator toon-/verbergknop"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:261
+#: SettingsCenter@lauinger-clan.de/prefs.js:242
 msgid "Add Menu"
 msgstr "Menu toevoegen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:264
+#: SettingsCenter@lauinger-clan.de/prefs.js:245
 msgid "Label"
 msgstr "Tekst"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:265
+#: SettingsCenter@lauinger-clan.de/prefs.js:246
 msgid "Label to show in menu"
 msgstr "Het te tonen label in het menu"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:272
+#: SettingsCenter@lauinger-clan.de/prefs.js:253
 msgid "Command"
 msgstr "Opdracht"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:274
+#: SettingsCenter@lauinger-clan.de/prefs.js:255
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr ""
 "De naam van een .desktopbestand (MijnToepassing.desktop) of naam van een "
 "opdracht"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:293
+#: SettingsCenter@lauinger-clan.de/prefs.js:267
+msgid "Select desktop file"
+msgstr "Kies een .desktopbestand"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:271
 msgid "Usually located in '/usr/share/applications'"
 msgstr "Doorgaans te vinden in ‘/usr/share/applications’"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:309
+#: SettingsCenter@lauinger-clan.de/prefs.js:285
 msgid "Add"
 msgstr "Toevoegen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:314
+#: SettingsCenter@lauinger-clan.de/prefs.js:290
 msgid "Settings Center"
 msgstr "Voorkeurenmenu"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:325
+msgid "Select"
+msgstr ""
 
 #: SettingsCenter@lauinger-clan.de/translation.js:7
 msgid "Gnome Tweaks"
