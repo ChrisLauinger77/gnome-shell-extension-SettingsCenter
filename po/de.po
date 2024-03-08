@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-08 16:21+0100\n"
-"PO-Revision-Date: 2024-03-08 16:22+0100\n"
+"POT-Creation-Date: 2024-03-08 16:54+0100\n"
+"PO-Revision-Date: 2024-03-08 16:54+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -152,7 +152,7 @@ msgid "NVidia Settings"
 msgstr "NVidia Einstellungen"
 
 #: SettingsCenter@lauinger-clan.de/translation.js:14
-msgid "Extension Manager"
+msgid "ExtensionManager"
 msgstr "Erweiterungs-Manager"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
