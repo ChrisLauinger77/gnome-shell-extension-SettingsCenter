@@ -40,9 +40,26 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     _delCmd(menuItems, page2, index) {
-        menuItems.delItem(index);
+        const dialog = Adw.MessageDialog.new(
+            page2.get_root(),
+            _("Delete entry"),
+            _("Are you sure you want to delete the entry ?")
+        );
+        dialog.add_response("cancel", _("Cancel"));
+        dialog.add_response("delete", _("Delete"));
+        dialog.set_response_appearance(
+            "delete",
+            Adw.ResponseAppearance.DESTRUCTIVE
+        );
 
-        this._buildList(menuItems, page2);
+        dialog.connect("response", (self, response) => {
+            if (response === "cancel") return;
+
+            menuItems.delItem(index);
+            this._buildList(menuItems, page2);
+        });
+
+        dialog.present();
     }
 
     _buttonUp(menuItems, page2, indexItem) {
