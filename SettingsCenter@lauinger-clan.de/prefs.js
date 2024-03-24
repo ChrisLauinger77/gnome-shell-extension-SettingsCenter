@@ -215,6 +215,7 @@ export default class AdwPrefs extends ExtensionPreferences {
     valueMenu.set_text(_(window._settings.get_string("label-menu")));
     const buttonMenu = new Gtk.Button({
       label: _("Apply"),
+      css_classes: ["suggested-action"],
       valign: Gtk.Align.CENTER,
     });
     buttonMenu.connect("clicked", this._changeMenu.bind(this, valueMenu));
@@ -263,7 +264,6 @@ export default class AdwPrefs extends ExtensionPreferences {
     adwrow = new Adw.ActionRow({ title: "" });
     group2.add(adwrow);
     const buttonfilechooser = new Gtk.Button({
-      css_classes: ["suggested-action"],
       label: _("Select app"),
       valign: Gtk.Align.CENTER,
     });
@@ -283,6 +283,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     const buttonAdd = new Gtk.Button({
       label: _("Add"),
+      css_classes: ["suggested-action"],
       valign: Gtk.Align.CENTER,
     });
     //page2
