@@ -18,7 +18,7 @@ export const MenuItems = class MenuItems {
     getEnableItems() {
         let items = this.getItems();
         let indexItem;
-        let itemsEnable = new Array();
+        let itemsEnable = [];
 
         for (indexItem in items) {
             let item = items[indexItem];
@@ -39,7 +39,7 @@ export const MenuItems = class MenuItems {
     isEnable(index) {
         let item = this.getItem(index);
 
-        if (item != null) return item["enable"];
+        if (item !== null) return item["enable"];
         else return null;
     }
 
@@ -102,7 +102,7 @@ export const MenuItems = class MenuItems {
     itemsToArray(itemsString) {
         let items = itemsString.split("|");
 
-        let itemsArray = new Array();
+        let itemsArray = [];
 
         for (let indexItem in items) {
             let itemDatas = items[indexItem].split(";");
@@ -110,7 +110,7 @@ export const MenuItems = class MenuItems {
             let item = {
                 label: itemDatas[0],
                 cmd: itemDatas[1],
-                enable: itemDatas[2] == "1",
+                enable: itemDatas[2] === "1",
                 "cmd-alt": itemDatas[3],
             };
 
@@ -121,7 +121,7 @@ export const MenuItems = class MenuItems {
     }
 
     itemsToString(itemsArray) {
-        let items = new Array();
+        let items = [];
 
         for (let indexItem in itemsArray) {
             let itemDatasArray = itemsArray[indexItem];

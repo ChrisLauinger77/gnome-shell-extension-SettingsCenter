@@ -12,3 +12,12 @@ const strFix5 = _("Extensions Preferences");
 const strFix6 = _("Passwords and Keys");
 const strFix7 = _("NVidia Settings");
 const strFix8 = _("ExtensionManager");
+
+console.log(strFix1);
+console.log(strFix2);
+console.log(strFix3);
+console.log(strFix4);
+console.log(strFix5);
+console.log(strFix6);
+console.log(strFix7);
+console.log(strFix8);

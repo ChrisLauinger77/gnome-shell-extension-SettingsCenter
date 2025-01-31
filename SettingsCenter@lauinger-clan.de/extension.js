@@ -17,8 +17,8 @@ const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
-        _init(settings, Me) {
-            super._init({
+        constructor(settings, Me) {
+            super({
                 title: _(settings.get_string("label-menu")),
                 iconName: "preferences-other-symbolic",
                 toggleMode: true,
@@ -76,8 +76,8 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                     settingItem["cmd"]
                 );
 
-                if (app != null) app.activate();
-                else if (settingItem["cmd-alt"] != null)
+                if (app !== null) app.activate();
+                else if (settingItem["cmd-alt"] !== null)
                     Util.spawn([settingItem["cmd-alt"]]);
             } else {
                 let cmdArray = settingItem["cmd"].split(" ");
@@ -89,8 +89,8 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
 const SettingsCenterIndicator = GObject.registerClass(
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
-        _init(settings, Me) {
-            super._init();
+        constructor(settings, Me) {
+            super();
 
             if (settings.get_boolean("show-systemindicator")) {
                 // Create the icon for the indicator
@@ -128,7 +128,7 @@ export default class SettingsCenter extends Extension {
     enable() {
         this._settings = this.getSettings();
 
-        this._settingSignals = new Array();
+        this._settingSignals = [];
 
         this._indicator = new SettingsCenterIndicator(this._settings, this);
 

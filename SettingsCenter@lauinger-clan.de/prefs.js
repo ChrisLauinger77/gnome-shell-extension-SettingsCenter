@@ -17,6 +17,59 @@ const handleError = (error) => {
   return null;
 };
 
+const AppChooser = GObject.registerClass(
+  class AppChooser extends Adw.Window {
+    constructor(params = {}) {
+      super(params);
+      let adwtoolbarview = new Adw.ToolbarView();
+      let adwheaderbar = new Adw.HeaderBar();
+      adwtoolbarview.add_top_bar(adwheaderbar);
+      this.set_content(adwtoolbarview);
+      let scrolledwindow = new Gtk.ScrolledWindow();
+      adwtoolbarview.set_content(scrolledwindow);
+      this.listBox = new Gtk.ListBox({
+        selection_mode: Gtk.SelectionMode.SINGLE,
+      });
+      scrolledwindow.set_child(this.listBox);
+      this.selectBtn = new Gtk.Button({
+        label: _("Select"),
+        css_classes: ["suggested-action"],
+      });
+      this.cancelBtn = new Gtk.Button({ label: _("Cancel") });
+      adwheaderbar.pack_start(this.cancelBtn);
+      adwheaderbar.pack_end(this.selectBtn);
+      const apps = Gio.AppInfo.get_all();
+
+      for (const app of apps) {
+        if (app.should_show() === false) continue;
+        const row = new Adw.ActionRow();
+        row.title = app.get_display_name();
+        row.subtitle = app.get_id();
+        row.subtitleLines = 1;
+        const icon = new Gtk.Image({ gicon: app.get_icon() });
+        row.add_prefix(icon);
+        this.listBox.append(row);
+      }
+
+      this.cancelBtn.connect("clicked", () => {
+        this.close();
+      });
+    }
+
+    showChooser() {
+      return new Promise((resolve) => {
+        const signalId = this.selectBtn.connect("clicked", () => {
+          this.close();
+          this.selectBtn.disconnect(signalId);
+          const row = this.listBox.get_selected_row();
+          resolve(row);
+        });
+        this.present();
+      });
+    }
+  }
+);
+
 export default class AdwPrefs extends ExtensionPreferences {
   _changeMenu(text) {
     this.getSettings.set_string("label-menu", text.text);
@@ -27,8 +80,8 @@ export default class AdwPrefs extends ExtensionPreferences {
   }
 
   _addCmd(menuItems, page2, label, cmd) {
-    if (label.text.trim() == "" || cmd.text.trim() == "") {
-      log(
+    if (label.text.trim() === "" || cmd.text.trim() === "") {
+      console.log(
         _("SettingsCenter") +
           " " +
           _("'Label' and 'Command' must be filled out !")
@@ -128,7 +181,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
   _valueList(menuItems, indexItem, item) {
     const valueList = new Gtk.Switch({
-      active: item["enable"] == "1",
+      active: item["enable"] === "1",
       valign: Gtk.Align.CENTER,
     });
     valueList.connect(
@@ -172,12 +225,12 @@ export default class AdwPrefs extends ExtensionPreferences {
       adwrow.activatable_widget = valueList;
       adwrow.add_suffix(buttonUp);
       adwrow.add_suffix(buttonDown);
-      if (buttonDel != null) adwrow.add_suffix(buttonDel);
+      if (buttonDel !== null) adwrow.add_suffix(buttonDel);
     }
   }
 
   _getFilename(fullPath) {
-    log("_getFilename fullPath: " + fullPath);
+    console.log("_getFilename fullPath: " + fullPath);
     return fullPath.replace(/^.*[\\/]/, "");
   }
 
@@ -307,56 +360,3 @@ export default class AdwPrefs extends ExtensionPreferences {
     window.add(page2);
   }
 }
-
-const AppChooser = GObject.registerClass(
-  class AppChooser extends Adw.Window {
-    _init(params = {}) {
-      super._init(params);
-      let adwtoolbarview = new Adw.ToolbarView();
-      let adwheaderbar = new Adw.HeaderBar();
-      adwtoolbarview.add_top_bar(adwheaderbar);
-      this.set_content(adwtoolbarview);
-      let scrolledwindow = new Gtk.ScrolledWindow();
-      adwtoolbarview.set_content(scrolledwindow);
-      this.listBox = new Gtk.ListBox({
-        selection_mode: Gtk.SelectionMode.SINGLE,
-      });
-      scrolledwindow.set_child(this.listBox);
-      this.selectBtn = new Gtk.Button({
-        label: _("Select"),
-        css_classes: ["suggested-action"],
-      });
-      this.cancelBtn = new Gtk.Button({ label: _("Cancel") });
-      adwheaderbar.pack_start(this.cancelBtn);
-      adwheaderbar.pack_end(this.selectBtn);
-      const apps = Gio.AppInfo.get_all();
-
-      for (const app of apps) {
-        if (app.should_show() === false) continue;
-        const row = new Adw.ActionRow();
-        row.title = app.get_display_name();
-        row.subtitle = app.get_id();
-        row.subtitleLines = 1;
-        const icon = new Gtk.Image({ gicon: app.get_icon() });
-        row.add_prefix(icon);
-        this.listBox.append(row);
-      }
-
-      this.cancelBtn.connect("clicked", () => {
-        this.close();
-      });
-    }
-
-    showChooser() {
-      return new Promise((resolve) => {
-        const signalId = this.selectBtn.connect("clicked", () => {
-          this.close();
-          this.selectBtn.disconnect(signalId);
-          const row = this.listBox.get_selected_row();
-          resolve(row);
-        });
-        this.present();
-      });
-    }
-  }
-);
