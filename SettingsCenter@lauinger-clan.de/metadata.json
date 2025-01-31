@@ -9,5 +9,5 @@
   "uuid": "SettingsCenter@lauinger-clan.de",
   "settings-schema": "org.gnome.shell.extensions.SettingsCenter",
   "donations": { "github": "ChrisLauinger77","paypal": "ChrisLauinger" },
-  "version-name": "47.1"
+  "version-name": "47.2"
 }

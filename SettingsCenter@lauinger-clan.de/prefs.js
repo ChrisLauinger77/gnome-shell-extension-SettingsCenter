@@ -181,7 +181,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
   _valueList(menuItems, indexItem, item) {
     const valueList = new Gtk.Switch({
-      active: item["enable"] === "1",
+      active: item["enable"],
       valign: Gtk.Align.CENTER,
     });
     valueList.connect(
