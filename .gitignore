@@ -2,10 +2,4 @@
 *.po~
 *.mo
 *.zip
-SettingsCenter\@lauinger-clan.de/.prettierrc
-
-.editorconfig
-
-.prettierrc
-
 SettingsCenter\@lauinger-clan.de/schemas/gschemas.compiled

@@ -1,0 +1,32 @@
+{
+  "name": "gnome-shell-extension-settingscenter",
+  "version": "1.0.0",
+  "description": "Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu.",
+  "main": "SettingsCenter@lauinger-clan.de/extension.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "update-translations": "./update-translation-po-files.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisLauinger77/XES-Settings-Center-Extension.git"
+  },
+  "keywords": [
+    "gnome-shell",
+    "extension",
+    "settings",
+    "quick-launch"
+  ],
+  "author": "Chris Lauinger",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/issues"
+  },
+  "homepage": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "@eslint/js": "^8.0.0"
+  },
+  "type": "module"
+}
