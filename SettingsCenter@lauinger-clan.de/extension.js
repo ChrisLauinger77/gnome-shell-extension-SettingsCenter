@@ -18,56 +18,53 @@ const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
         constructor(Me) {
+            const { _settings } = Me;
             super({
-                title: _(Me._settings.get_string("label-menu")),
+                title: _(_settings.get_string("label-menu")),
                 iconName: "preferences-other-symbolic",
                 toggleMode: true,
             });
 
-            // This function is unique to this class. It adds a nice header with an
-            // icon, title and optional subtitle. It's recommended you do so for
-            // consistency with other menus.
             this.menu.setHeader(
                 "preferences-other-symbolic",
-                _(Me._settings.get_string("label-menu")),
+                _(_settings.get_string("label-menu")),
                 ""
             );
 
-            Me._settings.bind(
+            _settings.bind(
                 "show-systemindicator",
                 this,
                 "checked",
                 Gio.SettingsBindFlags.DEFAULT
             );
 
-            // You may also add sections of items to the menu
-            let menuItems = new Menu_Items.MenuItems(Me._settings);
-            this._items = menuItems.getEnableItems();
+            try {
+                const menuItems = new Menu_Items.MenuItems(_settings);
+                this._items = menuItems.getEnableItems();
 
-            if (this._items.length > 0) {
-                let i = 0;
-                //Add others menus
-                for (let indexItem in this._items) {
-                    let menuItem = new PopupMenu.PopupMenuItem(
-                        _(this._items[indexItem]["label"]),
-                        0
-                    );
-                    menuItem.connect(
-                        "activate",
-                        this.launch.bind(this, this._items[indexItem])
-                    );
-                    this.menu.addMenuItem(menuItem, i++);
+                if (this._items.length > 0) {
+                    this._items.forEach((item, index) => {
+                        const menuItem = new PopupMenu.PopupMenuItem(
+                            _(item.label),
+                            0
+                        );
+                        menuItem.connect("activate", () => this.launch(item));
+                        this.menu.addMenuItem(menuItem, index);
+                    });
                 }
-            }
-            // Add an entry-point for more settings
-            this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-            const settingsItem = this.menu.addAction(_("Settings"), () =>
-                Me._openPreferences()
-            );
 
-            // Ensure the settings are unavailable when the screen is locked
-            settingsItem.visible = Main.sessionMode.allowSettings;
-            this.menu._settingsActions[Me.uuid] = settingsItem;
+                this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+                const settingsItem = this.menu.addAction(_("Settings"), () =>
+                    Me._openPreferences()
+                );
+
+                settingsItem.visible = Main.sessionMode.allowSettings;
+                this.menu._settingsActions[Me.uuid] = settingsItem;
+            } catch (error) {
+                console.error(
+                    `Error in SettingsCenterMenuToggle constructor: ${error}`
+                );
+            }
         }
 
         launch(settingItem) {
@@ -90,9 +87,10 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 const SettingsCenterIndicator = GObject.registerClass(
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
         constructor(Me) {
+            const { _settings } = Me;
             super();
 
-            if (Me._settings.get_boolean("show-systemindicator")) {
+            if (_settings.get_boolean("show-systemindicator")) {
                 // Create the icon for the indicator
                 this._indicator = this._addIndicator();
                 this._indicator.icon_name = "preferences-other-symbolic";
