@@ -17,9 +17,9 @@ const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
-        constructor(settings, Me) {
+        constructor(Me) {
             super({
-                title: _(settings.get_string("label-menu")),
+                title: _(Me._settings.get_string("label-menu")),
                 iconName: "preferences-other-symbolic",
                 toggleMode: true,
             });
@@ -29,11 +29,11 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             // consistency with other menus.
             this.menu.setHeader(
                 "preferences-other-symbolic",
-                _(settings.get_string("label-menu")),
+                _(Me._settings.get_string("label-menu")),
                 ""
             );
 
-            settings.bind(
+            Me._settings.bind(
                 "show-systemindicator",
                 this,
                 "checked",
@@ -41,7 +41,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             );
 
             // You may also add sections of items to the menu
-            let menuItems = new Menu_Items.MenuItems(settings);
+            let menuItems = new Menu_Items.MenuItems(Me._settings);
             this._items = menuItems.getEnableItems();
 
             if (this._items.length > 0) {
@@ -89,10 +89,10 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
 const SettingsCenterIndicator = GObject.registerClass(
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
-        constructor(settings, Me) {
+        constructor(Me) {
             super();
 
-            if (settings.get_boolean("show-systemindicator")) {
+            if (Me._settings.get_boolean("show-systemindicator")) {
                 // Create the icon for the indicator
                 this._indicator = this._addIndicator();
                 this._indicator.icon_name = "preferences-other-symbolic";
@@ -100,9 +100,7 @@ const SettingsCenterIndicator = GObject.registerClass(
 
             // Create the toggle menu and associate it with the indicator, being
             // sure to destroy it along with the indicator
-            this.quickSettingsItems.push(
-                new SettingsCenterMenuToggle(settings, Me)
-            );
+            this.quickSettingsItems.push(new SettingsCenterMenuToggle(Me));
 
             this.connect("destroy", () => {
                 this.quickSettingsItems.forEach((item) => item.destroy());
@@ -127,29 +125,18 @@ export default class SettingsCenter extends Extension {
 
     enable() {
         this._settings = this.getSettings();
-
         this._settingSignals = [];
+        this._indicator = new SettingsCenterIndicator(this);
 
-        this._indicator = new SettingsCenterIndicator(this._settings, this);
+        const settingsToWatch = ["label-menu", "show-systemindicator", "items"];
 
-        this._settingSignals.push(
-            this._settings.connect(
-                "changed::label-menu",
+        settingsToWatch.forEach((setting) => {
+            const signalId = this._settings.connect(
+                `changed::${setting}`,
                 this.onParamChanged.bind(this)
-            )
-        );
-        this._settingSignals.push(
-            this._settings.connect(
-                "changed::show-systemindicator",
-                this.onParamChanged.bind(this)
-            )
-        );
-        this._settingSignals.push(
-            this._settings.connect(
-                "changed::items",
-                this.onParamChanged.bind(this)
-            )
-        );
+            );
+            this._settingSignals.push(signalId);
+        });
     }
 
     disable() {
