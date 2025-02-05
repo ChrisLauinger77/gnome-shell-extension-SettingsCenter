@@ -72,7 +72,7 @@ const AppChooser = GObject.registerClass(
 
 export default class AdwPrefs extends ExtensionPreferences {
     _changeMenu(text) {
-        this.getSettings.set_string("label-menu", text.get_text);
+        this.getSettings.set_string("label-menu", text.get_text());
     }
 
     _changeEnable(menuItems, index, valueList) {
