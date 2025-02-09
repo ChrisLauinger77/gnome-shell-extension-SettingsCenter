@@ -4,10 +4,16 @@
   "gettext-domain": "SettingsCenter",
   "name": "SettingsCenter",
   "original-author": "Xes, l300lvl",
-  "shell-version": [ "47" ],
+  "shell-version": [
+    "47",
+    "48"
+  ],
   "url": "https://github.com/ChrisLauinger77/gnome-shell-extension-SettingsCenter",
   "uuid": "SettingsCenter@lauinger-clan.de",
   "settings-schema": "org.gnome.shell.extensions.SettingsCenter",
-  "donations": { "github": "ChrisLauinger77","paypal": "ChrisLauinger" },
-  "version-name": "47.4"
+  "donations": {
+    "github": "ChrisLauinger77",
+    "paypal": "ChrisLauinger"
+  },
+  "version-name": "48.0"
 }
