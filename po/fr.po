@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-09 00:47+0100\n"
+"PO-Revision-Date: 2025-02-09 18:55+0100\n"
+"Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: SettingsCenter@lauinger-clan.de/extension.js:64
+#: SettingsCenter@lauinger-clan.de/prefs.js:189
+msgid "Settings"
+msgstr "Paramètres"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:32
+msgid "SettingsCenter"
+msgstr "Centre de paramètres"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:34
+#: SettingsCenter@lauinger-clan.de/prefs.js:298
+msgid "'Label' and 'Command' must be filled out !"
+msgstr "'Label' et 'Commande' doivent être remplis !"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:55
+msgid "Delete entry"
+msgstr "Supprimer l'entrée"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:56
+msgid "Are you sure you want to delete the entry ?"
+msgstr "Êtes-vous sûr de vouloir supprimer l'entrée ?"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:58
+#: SettingsCenter@lauinger-clan.de/prefs.js:328
+msgid "Cancel"
+msgstr "Annuler"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:59
+msgid "Delete"
+msgstr "Supprimer"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:77
+msgid "Up"
+msgstr "Haut"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:95
+msgid "Down"
+msgstr "Bas"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:116
+msgid "Del"
+msgstr "Suppr"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:146
+msgid "Menu Items"
+msgstr "Éléments du menu"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:194
+msgid "Select app"
+msgstr "Sélectionner l'application"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:205
+msgid "Global"
+msgstr "Global"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:208
+msgid "Menu Label"
+msgstr "Étiquette du menu"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:217
+msgid "Apply"
+msgstr "Appliquer"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:225
+msgid "Show SystemIndicator"
+msgstr "Afficher l'indicateur système"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:226
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
+msgid "Toggle to show systemindicator"
+msgstr "Basculer pour afficher l'indicateur système"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:242
+msgid "Add Menu"
+msgstr "Ajouter un menu"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:245
+msgid "Label"
+msgstr "Étiquette"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:246
+msgid "Label to show in menu"
+msgstr "Étiquette à afficher dans le menu"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:253
+msgid "Command"
+msgstr "Commande"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:255
+msgid "Name of .desktop file (MyApp.desktop) or name of command"
+msgstr "Nom du fichier .desktop (MonApp.desktop) ou nom de la commande"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:267
+msgid "Select desktop file"
+msgstr "Sélectionner le fichier .desktop"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:271
+msgid "Usually located in '/usr/share/applications'"
+msgstr "Généralement situé dans '/usr/share/applications'"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:285
+msgid "Add"
+msgstr "Ajouter"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:290
+msgid "Settings Center"
+msgstr "Centre de paramètres"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:325
+msgid "Select"
+msgstr "Sélectionner"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:7
+msgid "Gnome Tweaks"
+msgstr "Ajustements Gnome"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:8
+msgid "Desktop Config Editor"
+msgstr "Éditeur de configuration du bureau"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:9
+msgid "Gnome Config Editor"
+msgstr "Éditeur de configuration Gnome"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:10
+msgid "Session Properties"
+msgstr "Propriétés de la session"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:11
+msgid "Extensions Preferences"
+msgstr "Préférences des extensions"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:12
+msgid "Passwords and Keys"
+msgstr "Mots de passe et clés"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:13
+msgid "NVidia Settings"
+msgstr "Paramètres NVidia"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:14
+msgid "ExtensionManager"
+msgstr "Gestionnaire d'extensions"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
+msgid "Label Menu"
+msgstr "Étiquette du menu"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:11
+msgid "Items"
+msgstr "Éléments"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:17
+msgid "Makes the systemindicator show/hide"
+msgstr "Permet d'afficher/masquer l'indicateur système"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:21
+msgid "Last chosen file"
+msgstr "Dernier fichier choisi"
