@@ -33,20 +33,20 @@ msgstr "Kies een label en opdracht !"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:55
 msgid "Delete entry"
-msgstr ""
+msgstr "Verwijder invoer"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:56
 msgid "Are you sure you want to delete the entry ?"
-msgstr ""
+msgstr "Weet u zeker dat u de invoer wilt verwijderen?"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:58
 #: SettingsCenter@lauinger-clan.de/prefs.js:328
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:59
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:77
 msgid "Up"
