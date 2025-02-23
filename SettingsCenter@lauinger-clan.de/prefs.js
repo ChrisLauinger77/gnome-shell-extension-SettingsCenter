@@ -235,6 +235,7 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     fillPreferencesWindow(window) {
+        window.search_enabled = true;
         window._settings = this.getSettings();
         const menuItems = new Menu_Items.MenuItems(window._settings);
         let adwrow;
