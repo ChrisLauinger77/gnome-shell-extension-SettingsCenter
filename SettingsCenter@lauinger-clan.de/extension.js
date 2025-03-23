@@ -7,6 +7,7 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as QuickSettings from "resource:///org/gnome/shell/ui/quickSettings.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as Menu_Items from "./menu_items.js";
+import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
 
 import {
     Extension,
@@ -80,6 +81,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 let cmdArray = settingItem["cmd"].split(" ");
                 Util.spawn(cmdArray);
             }
+            QuickSettingsMenu.menu.close(PopupAnimation.FADE);
         }
     }
 );
@@ -119,6 +121,7 @@ export default class SettingsCenter extends Extension {
 
     _openPreferences() {
         this.openPreferences();
+        QuickSettingsMenu.menu.close(PopupAnimation.FADE);
     }
 
     enable() {
