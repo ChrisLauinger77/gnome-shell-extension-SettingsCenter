@@ -38,7 +38,13 @@ const AppChooser = GObject.registerClass(
             this.cancelBtn = new Gtk.Button({ label: _("Cancel") });
             adwheaderbar.pack_start(this.cancelBtn);
             adwheaderbar.pack_end(this.selectBtn);
-            const apps = Gio.AppInfo.get_all();
+            let apps = Gio.AppInfo.get_all();
+            apps = apps.filter((app) => app.should_show());
+            apps.sort((a, b) => {
+                const nameA = a.get_display_name().toLowerCase();
+                const nameB = b.get_display_name().toLowerCase();
+                return nameA.localeCompare(nameB);
+            });
 
             for (const app of apps) {
                 if (app.should_show() === false) continue;
