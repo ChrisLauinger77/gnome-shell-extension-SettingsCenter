@@ -91,12 +91,12 @@ const SettingsCenterIndicator = GObject.registerClass(
         constructor(Me) {
             const { _settings } = Me;
             super();
-
-            if (_settings.get_boolean("show-systemindicator")) {
-                // Create the icon for the indicator
-                this._indicator = this._addIndicator();
-                this._indicator.icon_name = "preferences-other-symbolic";
-            }
+            // Create the icon for the indicator
+            this._indicator = this._addIndicator();
+            this._indicator.icon_name = "preferences-other-symbolic";
+            this._indicator.visible = _settings.get_boolean(
+                "show-systemindicator"
+            );
 
             // Create the toggle menu and associate it with the indicator, being
             // sure to destroy it along with the indicator
@@ -107,16 +107,26 @@ const SettingsCenterIndicator = GObject.registerClass(
             });
 
             // Add the indicator to the panel and the toggle to the menu
-            QuickSettingsMenu._indicators.add_child(this);
+            QuickSettingsMenu._indicators.insert_child_at_index(this, 0);
             QuickSettingsMenu.addExternalIndicator(this);
+        }
+
+        setIndicatorVisible(visible) {
+            this._indicator.visible = visible;
         }
     }
 );
 
 export default class SettingsCenter extends Extension {
-    onParamChanged() {
+    _onParamChanged() {
         this.disable();
         this.enable();
+    }
+
+    _onParamChangedIndicator() {
+        this._indicator.setIndicatorVisible(
+            this._settings.get_boolean("show-systemindicator")
+        );
     }
 
     _openPreferences() {
@@ -129,14 +139,22 @@ export default class SettingsCenter extends Extension {
         this._settingSignals = [];
         this._indicator = new SettingsCenterIndicator(this);
 
-        const settingsToWatch = ["label-menu", "show-systemindicator", "items"];
+        const settingsToMonitor = [
+            { key: "label-menu", callback: this._onParamChanged.bind(this) },
+            {
+                key: "show-systemindicator",
+                callback: this._onParamChangedIndicator.bind(this),
+            },
+            { key: "items", callback: this._onParamChanged.bind(this) },
+        ];
 
-        settingsToWatch.forEach((setting) => {
-            const signalId = this._settings.connect(
-                `changed::${setting}`,
-                this.onParamChanged.bind(this)
+        settingsToMonitor.forEach((setting) => {
+            this._settingSignals.push(
+                this._settings.connect(
+                    `changed::${setting.key}`,
+                    setting.callback
+                )
             );
-            this._settingSignals.push(signalId);
         });
     }
 
