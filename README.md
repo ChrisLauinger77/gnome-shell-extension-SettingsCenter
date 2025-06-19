@@ -20,7 +20,7 @@ Make sure you have gnome-icon-theme package installed.
 
 ![Screenshot](screenshot_3x.png)
 
-## Developing
+## Contributing
 
 Pull requests are welcome.
 
