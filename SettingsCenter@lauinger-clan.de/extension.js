@@ -140,19 +140,19 @@ export default class SettingsCenter extends Extension {
         this._indicator = new SettingsCenterIndicator(this);
 
         const settingsToMonitor = [
-            { key: "label-menu", callback: "_onParamChanged" },
+            { key: "label-menu", callback: this._onParamChanged.bind(this) },
             {
                 key: "show-systemindicator",
-                callback: "_onParamChangedIndicator",
+                callback: this._onParamChangedIndicator.bind(this),
             },
-            { key: "items", callback: "_onParamChanged" },
+            { key: "items", callback: this._onParamChanged.bind(this) },
         ];
 
         settingsToMonitor.forEach((setting) => {
             this._settingSignals.push(
                 this._settings.connect(
                     `changed::${setting.key}`,
-                    this[setting.callback].bind(this)
+                    setting.callback
                 )
             );
         });
