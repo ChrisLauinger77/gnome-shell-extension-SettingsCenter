@@ -9,10 +9,7 @@ import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as Menu_Items from "./menu_items.js";
 import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
 
-import {
-    Extension,
-    gettext as _,
-} from "resource:///org/gnome/shell/extensions/extension.js";
+import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
@@ -26,18 +23,9 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 toggleMode: true,
             });
 
-            this.menu.setHeader(
-                "preferences-other-symbolic",
-                _(_settings.get_string("label-menu")),
-                ""
-            );
+            this.menu.setHeader("preferences-other-symbolic", _(_settings.get_string("label-menu")), "");
 
-            _settings.bind(
-                "show-systemindicator",
-                this,
-                "checked",
-                Gio.SettingsBindFlags.DEFAULT
-            );
+            _settings.bind("show-systemindicator", this, "checked", Gio.SettingsBindFlags.DEFAULT);
 
             try {
                 const menuItems = new Menu_Items.MenuItems(_settings);
@@ -45,38 +33,28 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
                 if (this._items.length > 0) {
                     this._items.forEach((item, index) => {
-                        const menuItem = new PopupMenu.PopupMenuItem(
-                            _(item.label),
-                            0
-                        );
+                        const menuItem = new PopupMenu.PopupMenuItem(_(item.label), 0);
                         menuItem.connect("activate", () => this.launch(item));
                         this.menu.addMenuItem(menuItem, index);
                     });
                 }
 
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-                const settingsItem = this.menu.addAction(_("Settings"), () =>
-                    Me._openPreferences()
-                );
+                const settingsItem = this.menu.addAction(_("Settings"), () => Me._openPreferences());
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
                 this.menu._settingsActions[Me.uuid] = settingsItem;
             } catch (error) {
-                console.error(
-                    `Error in SettingsCenterMenuToggle constructor: ${error}`
-                );
+                console.error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
             }
         }
 
         launch(settingItem) {
             if (settingItem["cmd"].match(/.desktop$/)) {
-                let app = Shell.AppSystem.get_default().lookup_app(
-                    settingItem["cmd"]
-                );
+                let app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
 
                 if (app !== null) app.activate();
-                else if (settingItem["cmd-alt"] !== null)
-                    Util.spawn([settingItem["cmd-alt"]]);
+                else if (settingItem["cmd-alt"] !== null) Util.spawn([settingItem["cmd-alt"]]);
             } else {
                 let cmdArray = settingItem["cmd"].split(" ");
                 Util.spawn(cmdArray);
@@ -94,9 +72,7 @@ const SettingsCenterIndicator = GObject.registerClass(
             // Create the icon for the indicator
             this._indicator = this._addIndicator();
             this._indicator.icon_name = "preferences-other-symbolic";
-            this._indicator.visible = _settings.get_boolean(
-                "show-systemindicator"
-            );
+            this._indicator.visible = _settings.get_boolean("show-systemindicator");
 
             // Create the toggle menu and associate it with the indicator, being
             // sure to destroy it along with the indicator
@@ -124,9 +100,7 @@ export default class SettingsCenter extends Extension {
     }
 
     _onParamChangedIndicator() {
-        this._indicator.setIndicatorVisible(
-            this._settings.get_boolean("show-systemindicator")
-        );
+        this._indicator.setIndicatorVisible(this._settings.get_boolean("show-systemindicator"));
     }
 
     _openPreferences() {
@@ -149,12 +123,7 @@ export default class SettingsCenter extends Extension {
         ];
 
         settingsToMonitor.forEach((setting) => {
-            this._settingSignals.push(
-                this._settings.connect(
-                    `changed::${setting.key}`,
-                    setting.callback
-                )
-            );
+            this._settingSignals.push(this._settings.connect(`changed::${setting.key}`, setting.callback));
         });
     }
 

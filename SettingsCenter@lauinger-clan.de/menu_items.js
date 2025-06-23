@@ -46,10 +46,7 @@ export const MenuItems = class MenuItems {
     changeOrder(index, posRel) {
         let items = this.getItems();
 
-        if (
-            (posRel < 0 && index > 0) ||
-            (posRel > 0 && index < items.length - 1)
-        ) {
+        if ((posRel < 0 && index > 0) || (posRel > 0 && index < items.length - 1)) {
             let temp = items[index];
             items.splice(index, 1);
             items.splice(parseInt(index) + posRel, 0, temp);

@@ -3,10 +3,7 @@ import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 import GObject from "gi://GObject";
 import * as Menu_Items from "./menu_items.js";
-import {
-    ExtensionPreferences,
-    gettext as _,
-} from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
+import { ExtensionPreferences, gettext as _ } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 const errorLog = (...args) => {
     console.error("[SettingsCenter]", "Error:", ...args);
@@ -87,11 +84,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     _addCmd(menuItems, page2, label, cmd) {
         if (label.text.trim() === "" || cmd.text.trim() === "") {
-            console.log(
-                _("SettingsCenter") +
-                    " " +
-                    _("'Label' and 'Command' must be filled out !")
-            );
+            console.log(_("SettingsCenter") + " " + _("'Label' and 'Command' must be filled out !"));
             return;
         }
         menuItems.addItem(label.text, cmd.text);
@@ -116,10 +109,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         );
         dialog.add_response("cancel", _("Cancel"));
         dialog.add_response("delete", _("Delete"));
-        dialog.set_response_appearance(
-            "delete",
-            Adw.ResponseAppearance.DESTRUCTIVE
-        );
+        dialog.set_response_appearance("delete", Adw.ResponseAppearance.DESTRUCTIVE);
 
         dialog.connect("response", (self, response) => {
             if (response === "cancel") return;
@@ -138,10 +128,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         });
         buttonUp.set_icon_name("go-up-symbolic");
         if (indexItem > 0) {
-            buttonUp.connect(
-                "clicked",
-                this._changeOrder.bind(this, menuItems, page2, indexItem, -1)
-            );
+            buttonUp.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, -1));
             buttonUp.set_sensitive(true);
         } else {
             buttonUp.set_sensitive(false);
@@ -156,10 +143,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         });
         buttonDown.set_icon_name("go-down-symbolic");
         if (indexItem < itemslen - 1) {
-            buttonDown.connect(
-                "clicked",
-                this._changeOrder.bind(this, menuItems, page2, indexItem, 1)
-            );
+            buttonDown.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, 1));
             buttonDown.set_sensitive(true);
         } else {
             buttonDown.set_sensitive(false);
@@ -177,10 +161,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                 margin_start: 10,
             });
             buttonDel.set_icon_name("user-trash-symbolic");
-            buttonDel.connect(
-                "clicked",
-                this._delCmd.bind(this, menuItems, page2, indexItem)
-            );
+            buttonDel.connect("clicked", this._delCmd.bind(this, menuItems, page2, indexItem));
         }
         return buttonDel;
     }
@@ -190,10 +171,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             active: item["enable"],
             valign: Gtk.Align.CENTER,
         });
-        valueList.connect(
-            "notify::active",
-            this._changeEnable.bind(this, menuItems, indexItem, valueList)
-        );
+        valueList.connect("notify::active", this._changeEnable.bind(this, menuItems, indexItem, valueList));
         return valueList;
     }
 
@@ -214,19 +192,9 @@ export default class AdwPrefs extends ExtensionPreferences {
             adwrow.set_tooltip_text(item["cmd"]);
             group3.add(adwrow);
             const buttonUp = this._buttonUp(menuItems, page2, indexItem);
-            const buttonDown = this._buttonDown(
-                menuItems,
-                page2,
-                indexItem,
-                items.length
-            );
+            const buttonDown = this._buttonDown(menuItems, page2, indexItem, items.length);
             const valueList = this._valueList(menuItems, indexItem, item);
-            const buttonDel = this._buttonDel(
-                menuItems,
-                page2,
-                indexItem,
-                items.length
-            );
+            const buttonDel = this._buttonDel(menuItems, page2, indexItem, items.length);
             adwrow.add_suffix(valueList);
             adwrow.activatable_widget = valueList;
             adwrow.add_suffix(buttonUp);
@@ -281,12 +249,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         adwrow = new Adw.SwitchRow({ title: _("Show SystemIndicator") });
         adwrow.set_tooltip_text(_("Toggle to show systemindicator"));
         group1.add(adwrow);
-        window._settings.bind(
-            "show-systemindicator",
-            adwrow,
-            "active",
-            Gio.SettingsBindFlags.DEFAULT
-        );
+        window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
 
         // group2
         const group2 = Adw.PreferencesGroup.new();
@@ -299,9 +262,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         group2.add(valueLabelAdd);
 
         const valueCmdAdd = new Adw.EntryRow({ title: _("Command") });
-        valueCmdAdd.set_tooltip_text(
-            _("Name of .desktop file (MyApp.desktop) or name of command")
-        );
+        valueCmdAdd.set_tooltip_text(_("Name of .desktop file (MyApp.desktop) or name of command"));
         group2.add(valueCmdAdd);
 
         adwrow = new Adw.ActionRow({ title: "" });
@@ -310,9 +271,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             label: _("Select app"),
             valign: Gtk.Align.CENTER,
         });
-        buttonfilechooser.set_tooltip_text(
-            _("Usually located in '/usr/share/applications'")
-        );
+        buttonfilechooser.set_tooltip_text(_("Usually located in '/usr/share/applications'"));
         adwrow.add_suffix(buttonfilechooser);
         adwrow.activatable_widget = buttonfilechooser;
 
@@ -335,19 +294,8 @@ export default class AdwPrefs extends ExtensionPreferences {
         page2.set_name("settingscenter_page2");
         page2.set_icon_name("preferences-other-symbolic");
 
-        buttonAdd.connect(
-            "clicked",
-            this._addCmd.bind(
-                this,
-                menuItems,
-                page2,
-                valueLabelAdd,
-                valueCmdAdd
-            )
-        );
-        buttonAdd.set_tooltip_text(
-            _("'Label' and 'Command' must be filled out !")
-        );
+        buttonAdd.connect("clicked", this._addCmd.bind(this, menuItems, page2, valueLabelAdd, valueCmdAdd));
+        buttonAdd.set_tooltip_text(_("'Label' and 'Command' must be filled out !"));
         adwrow.add_suffix(buttonAdd);
         adwrow.activatable_widget = buttonAdd;
         // group3
