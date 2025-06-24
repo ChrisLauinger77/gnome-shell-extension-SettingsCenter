@@ -5,15 +5,6 @@ import GObject from "gi://GObject";
 import * as Menu_Items from "./menu_items.js";
 import { ExtensionPreferences, gettext as _ } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
-const errorLog = (...args) => {
-    console.error("[SettingsCenter]", "Error:", ...args);
-};
-
-const handleError = (error) => {
-    errorLog(error);
-    return null;
-};
-
 const AppChooser = GObject.registerClass(
     class AppChooser extends Adw.Window {
         constructor(params = {}) {
@@ -84,7 +75,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     _addCmd(menuItems, page2, label, cmd) {
         if (label.text.trim() === "" || cmd.text.trim() === "") {
-            console.log(_("SettingsCenter") + " " + _("'Label' and 'Command' must be filled out !"));
+            this.getLogger().log(_("SettingsCenter") + " " + _("'Label' and 'Command' must be filled out !"));
             return;
         }
         menuItems.addItem(label.text, cmd.text);
@@ -204,7 +195,7 @@ export default class AdwPrefs extends ExtensionPreferences {
     }
 
     _getFilename(fullPath) {
-        console.log("_getFilename fullPath: " + fullPath);
+        this.getLogger().log("_getFilename fullPath: " + fullPath);
         return fullPath.replace(/^.*[\\/]/, "");
     }
 
@@ -276,6 +267,13 @@ export default class AdwPrefs extends ExtensionPreferences {
         adwrow.activatable_widget = buttonfilechooser;
 
         buttonfilechooser.connect("clicked", async () => {
+            const errorLog = (...args) => {
+                this.getLogger().error("Error:", ...args);
+            };
+            const handleError = (error) => {
+                errorLog(error);
+                return null;
+            };
             const appRow = await myAppChooser.showChooser().catch(handleError);
             if (appRow !== null) {
                 valueLabelAdd.set_text(appRow.title);

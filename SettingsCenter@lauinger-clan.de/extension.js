@@ -45,7 +45,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 settingsItem.visible = Main.sessionMode.allowSettings;
                 this.menu._settingsActions[Me.uuid] = settingsItem;
             } catch (error) {
-                console.error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
+                this.getLogger().error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
             }
         }
 
