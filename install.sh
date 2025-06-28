@@ -7,7 +7,7 @@ gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=menu_items.js 
 cd ..
 mv SettingsCenter@lauinger-clan.de.shell-extension.zip SettingsCenter@lauinger-clan.de.zip
 
-if [ "$1" = "zip" ]; then
+if [ "$1" = "zip" ] || [ "$1" = "pack" ]; then
    echo "Extension zip created ..."
 else
    gnome-extensions install SettingsCenter\@lauinger-clan.de.zip --force
