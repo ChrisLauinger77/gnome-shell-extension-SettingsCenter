@@ -102,13 +102,13 @@ export const MenuItems = class MenuItems {
         let itemsArray = [];
 
         for (let indexItem in items) {
-            let itemDatas = items[indexItem].split(";");
+            let itemData = items[indexItem].split(";");
 
             let item = {
-                label: itemDatas[0],
-                cmd: itemDatas[1],
-                enable: itemDatas[2] === "1",
-                "cmd-alt": itemDatas[3],
+                label: itemData[0],
+                cmd: itemData[1],
+                enable: itemData[2] === "1",
+                "cmd-alt": itemData[3],
             };
 
             itemsArray.push(item);
