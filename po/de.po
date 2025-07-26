@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 00:47+0100\n"
-"PO-Revision-Date: 2024-03-09 00:48+0100\n"
+"POT-Creation-Date: 2025-07-26 12:36+0200\n"
+"PO-Revision-Date: 2025-07-26 12:36+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,119 +16,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:64
-#: SettingsCenter@lauinger-clan.de/prefs.js:189
+#: SettingsCenter@lauinger-clan.de/extension.js:43
+#: SettingsCenter@lauinger-clan.de/prefs.js:223
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:32
-msgid "SettingsCenter"
-msgstr "Einstellungszentrum"
+#: SettingsCenter@lauinger-clan.de/prefs.js:18
+msgid "Search..."
+msgstr "Suchen..."
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:34
-#: SettingsCenter@lauinger-clan.de/prefs.js:298
-msgid "'Label' and 'Command' must be filled out !"
-msgstr "'Beschriftung' und 'Kommando' müssen ausgefüllt werden !"
+#: SettingsCenter@lauinger-clan.de/prefs.js:30
+msgid "Select"
+msgstr "Auswählen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:55
-msgid "Delete entry"
-msgstr "Eintrag löschen"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:56
-msgid "Are you sure you want to delete the entry ?"
-msgstr "Sind Sie sicher das Sie den Eintrag löschen möchten ?"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:58
-#: SettingsCenter@lauinger-clan.de/prefs.js:328
+#: SettingsCenter@lauinger-clan.de/prefs.js:33
+#: SettingsCenter@lauinger-clan.de/prefs.js:116
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:59
+#: SettingsCenter@lauinger-clan.de/prefs.js:93
+msgid "SettingsCenter"
+msgstr "Einstellungszentrum"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:93
+#: SettingsCenter@lauinger-clan.de/prefs.js:311
+msgid "'Label' and 'Command' must be filled out !"
+msgstr "'Beschriftung' und 'Kommando' müssen ausgefüllt werden !"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:113
+msgid "Delete entry"
+msgstr "Eintrag löschen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:114
+msgid "Are you sure you want to delete the entry ?"
+msgstr "Sind Sie sicher das Sie den Eintrag löschen möchten ?"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:117
 msgid "Delete"
 msgstr "Löschen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:77
+#: SettingsCenter@lauinger-clan.de/prefs.js:132
 msgid "Up"
 msgstr "Auf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:95
+#: SettingsCenter@lauinger-clan.de/prefs.js:147
 msgid "Down"
 msgstr "Ab"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:116
+#: SettingsCenter@lauinger-clan.de/prefs.js:165
 msgid "Del"
 msgstr "Entf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:146
+#: SettingsCenter@lauinger-clan.de/prefs.js:189
 msgid "Menu Items"
 msgstr "Menü Einträge"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:194
+#: SettingsCenter@lauinger-clan.de/prefs.js:228
+#: SettingsCenter@lauinger-clan.de/prefs.js:277
 msgid "Select app"
 msgstr "App auswählen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:205
+#: SettingsCenter@lauinger-clan.de/prefs.js:239
 msgid "Global"
 msgstr "Global"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:208
+#: SettingsCenter@lauinger-clan.de/prefs.js:242
 msgid "Menu Label"
 msgstr "Menü Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:217
+#: SettingsCenter@lauinger-clan.de/prefs.js:247
 msgid "Apply"
 msgstr "Übernehmen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:225
+#: SettingsCenter@lauinger-clan.de/prefs.js:255
 msgid "Show SystemIndicator"
 msgstr "Systemindikator anzeigen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:226
+#: SettingsCenter@lauinger-clan.de/prefs.js:256
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
 msgid "Toggle to show systemindicator"
 msgstr "Umschalten der Anzeige des Systemindikators"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:242
+#: SettingsCenter@lauinger-clan.de/prefs.js:262
 msgid "Add Menu"
 msgstr "Menü hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:245
+#: SettingsCenter@lauinger-clan.de/prefs.js:266
 msgid "Label"
 msgstr "Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:246
+#: SettingsCenter@lauinger-clan.de/prefs.js:267
 msgid "Label to show in menu"
 msgstr "Beschriftung die im Menü angezeigt wird"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:253
+#: SettingsCenter@lauinger-clan.de/prefs.js:270
 msgid "Command"
 msgstr "Kommando"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:255
+#: SettingsCenter@lauinger-clan.de/prefs.js:271
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr "Name der .desktop Datei (MyApp.desktop) oder Name des Befehls"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:267
-msgid "Select desktop file"
-msgstr "Desktop Datei auswählen"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:271
+#: SettingsCenter@lauinger-clan.de/prefs.js:280
 msgid "Usually located in '/usr/share/applications'"
 msgstr "Befinden sich normalerweise in '/usr/share/applications'"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:285
+#: SettingsCenter@lauinger-clan.de/prefs.js:300
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:290
+#: SettingsCenter@lauinger-clan.de/prefs.js:306
 msgid "Settings Center"
 msgstr "Einstellungszentrum"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:325
-msgid "Select"
-msgstr "Auswählen"
 
 #: SettingsCenter@lauinger-clan.de/translation.js:7
 msgid "Gnome Tweaks"
@@ -174,9 +175,11 @@ msgstr "Menü Einträge"
 msgid "Makes the systemindicator show/hide"
 msgstr "Systemindikator anzeigen/verstecken"
 
-#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:21
-msgid "Last chosen file"
-msgstr "Letzt gewählte Datei"
+#~ msgid "Select desktop file"
+#~ msgstr "Desktop Datei auswählen"
+
+#~ msgid "Last chosen file"
+#~ msgstr "Letzt gewählte Datei"
 
 #~ msgid "..."
 #~ msgstr "..."
