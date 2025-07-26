@@ -17,13 +17,14 @@ const SettingsCenterMenuToggle = GObject.registerClass(
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
         constructor(Me) {
             const { _settings } = Me;
+            const labelmenu = _(_settings.get_string("label-menu"));
             super({
-                title: _(_settings.get_string("label-menu")),
+                title: labelmenu,
                 iconName: "preferences-other-symbolic",
                 toggleMode: true,
             });
 
-            this.menu.setHeader("preferences-other-symbolic", _(_settings.get_string("label-menu")), "");
+            this.menu.setHeader("preferences-other-symbolic", labelmenu, "");
 
             _settings.bind("show-systemindicator", this, "checked", Gio.SettingsBindFlags.DEFAULT);
 
