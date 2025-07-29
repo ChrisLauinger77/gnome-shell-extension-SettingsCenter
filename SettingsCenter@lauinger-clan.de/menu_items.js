@@ -1,3 +1,5 @@
+"use strict";
+
 export const MenuItems = class MenuItems {
     constructor(settings) {
         this._settings = settings;

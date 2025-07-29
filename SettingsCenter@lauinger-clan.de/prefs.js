@@ -1,3 +1,5 @@
+"use strict";
+
 import Gtk from "gi://Gtk";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";

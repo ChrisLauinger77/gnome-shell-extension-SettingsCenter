@@ -1,3 +1,5 @@
+"use strict";
+
 import Shell from "gi://Shell";
 import Gio from "gi://Gio";
 import GObject from "gi://GObject";
