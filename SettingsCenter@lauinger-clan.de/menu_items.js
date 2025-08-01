@@ -1,3 +1,5 @@
+"use strict";
+
 export const MenuItems = class MenuItems {
     constructor(settings) {
         this._settings = settings;
@@ -46,10 +48,7 @@ export const MenuItems = class MenuItems {
     changeOrder(index, posRel) {
         let items = this.getItems();
 
-        if (
-            (posRel < 0 && index > 0) ||
-            (posRel > 0 && index < items.length - 1)
-        ) {
+        if ((posRel < 0 && index > 0) || (posRel > 0 && index < items.length - 1)) {
             let temp = items[index];
             items.splice(index, 1);
             items.splice(parseInt(index) + posRel, 0, temp);
@@ -105,13 +104,13 @@ export const MenuItems = class MenuItems {
         let itemsArray = [];
 
         for (let indexItem in items) {
-            let itemDatas = items[indexItem].split(";");
+            let itemData = items[indexItem].split(";");
 
             let item = {
-                label: itemDatas[0],
-                cmd: itemDatas[1],
-                enable: itemDatas[2] === "1",
-                "cmd-alt": itemDatas[3],
+                label: itemData[0],
+                cmd: itemData[1],
+                enable: itemData[2] === "1",
+                "cmd-alt": itemData[3],
             };
 
             itemsArray.push(item);
