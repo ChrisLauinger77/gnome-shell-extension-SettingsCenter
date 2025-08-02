@@ -8,7 +8,7 @@ echo "Running $0 for $extension with arguments: $@"
 case "$1" in
   zip|pack)
     cd $extension
-    gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=./lib --extra-source=./ui/ --extra-source=./icons/ --extra-source=../LICENSE --force
+    gnome-extensions pack --podir=../po/ --out-dir=../ --extra-source=menu_items.js --extra-source=./ui/ --extra-source=./icons/ --extra-source=../LICENSE --force
     cd ..
     echo "Extension zip created ..."
     ;;
