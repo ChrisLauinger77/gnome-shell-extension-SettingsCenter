@@ -41,8 +41,8 @@ export const MenuItems = class MenuItems {
     isEnable(index) {
         let item = this.getItem(index);
 
-        if (item !== null) return item["enable"];
-        else return null;
+        if (item === null) return null;
+        return item["enable"];
     }
 
     changeOrder(index, posRel) {
@@ -51,7 +51,7 @@ export const MenuItems = class MenuItems {
         if ((posRel < 0 && index > 0) || (posRel > 0 && index < items.length - 1)) {
             let temp = items[index];
             items.splice(index, 1);
-            items.splice(parseInt(index) + posRel, 0, temp);
+            items.splice(Number.parseInt(index) + posRel, 0, temp);
 
             this.setItems(items);
 
