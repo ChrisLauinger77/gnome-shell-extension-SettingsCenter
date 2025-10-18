@@ -35,11 +35,11 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 this._items = menuItems.getEnableItems();
 
                 if (this._items.length > 0) {
-                    this._items.forEach((item, index) => {
+                    for (const [index, item] of this._items.entries()) {
                         const menuItem = new PopupMenu.PopupMenuItem(_(item.label), 0);
                         menuItem.connect("activate", () => this.launch(item));
                         this.menu.addMenuItem(menuItem, index);
-                    });
+                    }
                 }
 
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
@@ -82,7 +82,9 @@ const SettingsCenterIndicator = GObject.registerClass(
             this.quickSettingsItems.push(new SettingsCenterMenuToggle(Me));
 
             this.connect("destroy", () => {
-                this.quickSettingsItems.forEach((item) => item.destroy());
+                for (const item of this.quickSettingsItems) {
+                    item.destroy();
+                }
             });
 
             // Add the indicator to the panel and the toggle to the menu
@@ -125,16 +127,16 @@ export default class SettingsCenter extends Extension {
             { key: "items", callback: this._onParamChanged.bind(this) },
         ];
 
-        settingsToMonitor.forEach((setting) => {
+        for (const setting of settingsToMonitor) {
             this._settingSignals.push(this._settings.connect(`changed::${setting.key}`, setting.callback));
-        });
+        }
     }
 
     disable() {
         //Remove setting Signals
-        this._settingSignals.forEach(function (signal) {
+        for (const signal of this._settingSignals) {
             this._settings.disconnect(signal);
-        }, this);
+        }
         this._settingSignals = null;
         this._settings = null;
 
