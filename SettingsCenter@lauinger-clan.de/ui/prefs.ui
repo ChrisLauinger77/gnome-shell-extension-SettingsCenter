@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="SettingsCenter">
+  <object class="AdwPreferencesPage" id="SettingsCenter_page_settings">
+    <property name="name">SettingsCenter_page_settings</property>
+    <property name="title" translatable="yes">Settings</property>
+    <property name="icon-name">preferences-system-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup" id="SettingsCenter_group_global">
+        <property name="title" translatable="yes">Global</property>
+        <child>
+          <object class="AdwEntryRow" id="SettingsCenter_row_menulabel">
+            <property name="title" translatable="yes">Menu Label</property>
+              <child>
+              <object class="GtkButton" id="SettingsCenter_button_menulabel">
+                <property name="label" translatable="yes">Apply</property>
+                <property name="valign">center</property>
+                <style>
+                    <class name="suggested-action"/>
+                </style>
+              </object>
+          </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="SettingsCenter_row_systemindicator">
+            <property name="title" translatable="yes">Show SystemIndicator</property>
+            <property name="tooltip-text" translatable="yes">Toggle to show systemindicator</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="SettingsCenter_group_addmenu">
+        <property name="title" translatable="yes">Add Menu</property>
+        <child>
+          <object class="AdwEntryRow" id="SettingsCenter_row_label">
+            <property name="title" translatable="yes">Label</property>
+            <property name="tooltip-text" translatable="yes">Label to show in menu</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="SettingsCenter_row_command">
+            <property name="title" translatable="yes">Command</property>
+            <property name="tooltip-text" translatable="yes">Name of .desktop file (MyApp.desktop) or name of command</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow" id="SettingsCenter_row_buttons">
+            <property name="title" translatable="yes"></property>
+            <property name="activatable-widget">SettingsCenter_button_addmenu</property>
+            <child>
+              <object class="GtkButton" id="SettingsCenter_button_addapp">
+                <property name="label" translatable="yes">Select app</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="SettingsCenter_button_addmenu">
+                <property name="label" translatable="yes">Add</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">'Label' and 'Command' must be filled out !</property>
+                <style>
+                    <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="AdwPreferencesPage" id="SettingsCenter_page_menuitems">
+      <property name="name">SettingsCenter_page_menuitems</property>
+      <property name="title" translatable="yes">Settings Center</property>
+      <property name="icon-name">preferences-other-symbolic</property>
+  </object>
+</interface>

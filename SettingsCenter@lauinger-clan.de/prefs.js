@@ -4,7 +4,7 @@ import Gtk from "gi://Gtk";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 import GObject from "gi://GObject";
-import * as Menu_Items from "./menu_items.js";
+import * as Menu_Items from "./lib/menu_items.js";
 import { ExtensionPreferences, gettext as _ } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 const AppChooser = GObject.registerClass(
@@ -221,12 +221,10 @@ export default class AdwPrefs extends ExtensionPreferences {
         window._settings = this.getSettings();
         const menuItems = new Menu_Items.MenuItems(window._settings);
         let adwrow;
-        const page1 = Adw.PreferencesPage.new();
-        page1.set_title(_("Settings"));
-        page1.set_name("settingscenter_page1");
-        page1.set_icon_name("preferences-system-symbolic");
-
-        let myAppChooser = new AppChooser({
+        const builder = Gtk.Builder.new();
+        builder.add_from_file(this.path + "/ui/prefs.ui");
+        const page1 = builder.get_object("SettingsCenter_page_settings");
+        const myAppChooser = new AppChooser({
             title: _("Select app"),
             modal: true,
             transient_for: page1.get_root(),
@@ -235,55 +233,16 @@ export default class AdwPrefs extends ExtensionPreferences {
             height_request: 600,
             resizable: false,
         });
-
-        // group1
-        const group1 = Adw.PreferencesGroup.new();
-        group1.set_title(_("Global"));
-        group1.set_name("settingscenter_global");
-        page1.add(group1);
-        adwrow = new Adw.EntryRow({ title: _("Menu Label") });
-        group1.add(adwrow);
-
+        adwrow = builder.get_object("SettingsCenter_row_menulabel");
         adwrow.set_text(_(window._settings.get_string("label-menu")));
-        const buttonMenu = new Gtk.Button({
-            label: _("Apply"),
-            css_classes: ["suggested-action"],
-            valign: Gtk.Align.CENTER,
-        });
+        const buttonMenu = builder.get_object("SettingsCenter_button_menulabel");
         buttonMenu.connect("clicked", this._changeMenu.bind(this, adwrow));
-        adwrow.add_suffix(buttonMenu);
-        adwrow.activatable_widget = buttonMenu;
 
-        adwrow = new Adw.SwitchRow({ title: _("Show SystemIndicator") });
-        adwrow.set_tooltip_text(_("Toggle to show systemindicator"));
-        group1.add(adwrow);
+        adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
 
-        // group2
-        const group2 = Adw.PreferencesGroup.new();
-        group2.set_title(_("Add Menu"));
-        group2.set_name("settingscenter_addmenu");
-        page1.add(group2);
-
-        const valueLabelAdd = new Adw.EntryRow({ title: _("Label") });
-        valueLabelAdd.set_tooltip_text(_("Label to show in menu"));
-        group2.add(valueLabelAdd);
-
-        const valueCmdAdd = new Adw.EntryRow({ title: _("Command") });
-        valueCmdAdd.set_tooltip_text(_("Name of .desktop file (MyApp.desktop) or name of command"));
-        group2.add(valueCmdAdd);
-
-        adwrow = new Adw.ActionRow({ title: "" });
-        group2.add(adwrow);
-        const buttonfilechooser = new Gtk.Button({
-            label: _("Select app"),
-            valign: Gtk.Align.CENTER,
-        });
-        buttonfilechooser.set_tooltip_text(_("Usually located in '/usr/share/applications'"));
-        adwrow.add_suffix(buttonfilechooser);
-        adwrow.activatable_widget = buttonfilechooser;
-
-        buttonfilechooser.connect("clicked", async () => {
+        const buttonappchooser = builder.get_object("SettingsCenter_button_addapp");
+        buttonappchooser.connect("clicked", async () => {
             const errorLog = (...args) => {
                 this.getLogger().error("Error:", ...args);
             };
@@ -297,23 +256,13 @@ export default class AdwPrefs extends ExtensionPreferences {
                 valueCmdAdd.set_text(appRow.subtitle);
             }
         });
-
-        const buttonAdd = new Gtk.Button({
-            label: _("Add"),
-            css_classes: ["suggested-action"],
-            valign: Gtk.Align.CENTER,
-        });
-        //page2
-        const page2 = Adw.PreferencesPage.new();
-        page2.set_title(_("Settings Center"));
-        page2.set_name("settingscenter_page2");
-        page2.set_icon_name("preferences-other-symbolic");
-
+        const page2 = builder.get_object("SettingsCenter_page_menuitems");
+        const buttonAdd = builder.get_object("SettingsCenter_button_addmenu");
+        const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
+        const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
         buttonAdd.connect("clicked", this._addCmd.bind(this, menuItems, page2, valueLabelAdd, valueCmdAdd));
         buttonAdd.set_tooltip_text(_("'Label' and 'Command' must be filled out !"));
-        adwrow.add_suffix(buttonAdd);
-        adwrow.activatable_widget = buttonAdd;
-        // group3
+
         page2._group3 = null;
         this._buildList(menuItems, page2);
         window.set_default_size(675, 655);
