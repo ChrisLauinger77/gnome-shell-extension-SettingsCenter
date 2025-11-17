@@ -225,9 +225,12 @@ export default class AdwPrefs extends ExtensionPreferences {
         builder.add_from_file(this.path + "/ui/prefs.ui");
         const page1 = builder.get_object("SettingsCenter_page_settings");
         const page2 = builder.get_object("SettingsCenter_page_menuitems");
+        const buttonMenu = builder.get_object("SettingsCenter_row_buttonmenulabel");
+        const buttonAppChooser = builder.get_object("SettingsCenter_row_buttonselectapp");
         const buttonAdd = builder.get_object("SettingsCenter_row_buttonadd");
         const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
         const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
+
         const myAppChooser = new AppChooser({
             title: _("Select app"),
             modal: true,
@@ -237,16 +240,16 @@ export default class AdwPrefs extends ExtensionPreferences {
             height_request: 600,
             resizable: false,
         });
+
         adwrow = builder.get_object("SettingsCenter_row_menulabel");
         adwrow.set_text(_(window._settings.get_string("label-menu")));
-        const buttonMenu = builder.get_object("SettingsCenter_row_buttonmenulabel");
+
         buttonMenu.connect("activated", this._changeMenu.bind(this, adwrow));
 
         adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
 
-        const buttonappchooser = builder.get_object("SettingsCenter_row_buttonselectapp");
-        buttonappchooser.connect("activated", async () => {
+        buttonAppChooser.connect("activated", async () => {
             const errorLog = (...args) => {
                 this.getLogger().error("Error:", ...args);
             };
