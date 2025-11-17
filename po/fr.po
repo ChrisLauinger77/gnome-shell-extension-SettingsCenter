@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 12:05+0100\n"
+"POT-Creation-Date: 2025-11-17 18:57+0100\n"
 "PO-Revision-Date: 2025-02-09 18:55+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -41,8 +41,7 @@ msgid "SettingsCenter"
 msgstr "Centre de paramètres"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:95
-#: SettingsCenter@lauinger-clan.de/prefs.js:264
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:61
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "'Label' et 'Commande' doivent être remplis !"
 
@@ -75,7 +74,8 @@ msgid "Menu Items"
 msgstr "Éléments du menu"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:228
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:53
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
 msgstr "Sélectionner l'application"
 
@@ -120,7 +120,7 @@ msgid "Items"
 msgstr "Éléments"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:16
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:27
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:28
 msgid "Toggle to show systemindicator"
 msgstr "Basculer pour afficher l'indicateur système"
 
@@ -136,39 +136,40 @@ msgstr "Global"
 msgid "Menu Label"
 msgstr "Étiquette du menu"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:15
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:17
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:18
 msgid "Apply"
 msgstr "Appliquer"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:26
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:27
 msgid "Show SystemIndicator"
 msgstr "Afficher l'indicateur système"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:34
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:35
 msgid "Add Menu"
 msgstr "Ajouter un menu"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:37
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:44
 msgid "Label"
 msgstr "Étiquette"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:45
 msgid "Label to show in menu"
 msgstr "Étiquette à afficher dans le menu"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:43
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:50
 msgid "Command"
 msgstr "Commande"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:44
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:51
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr "Nom du fichier .desktop (MonApp.desktop) ou nom de la commande"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:59
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:56
 msgid "Add"
 msgstr "Ajouter"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:74
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:68
 msgid "Settings Center"
 msgstr "Centre de paramètres"
 

@@ -10,15 +10,16 @@
         <child>
           <object class="AdwEntryRow" id="SettingsCenter_row_menulabel">
             <property name="title" translatable="yes">Menu Label</property>
-              <child>
-              <object class="GtkButton" id="SettingsCenter_button_menulabel">
-                <property name="label" translatable="yes">Apply</property>
-                <property name="valign">center</property>
-                <style>
-                    <class name="suggested-action"/>
-                </style>
-              </object>
-          </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwButtonRow" id="SettingsCenter_row_buttonmenulabel">
+            <property name="title" translatable="yes">Apply</property>
+            <property name="tooltip-text" translatable="yes">Apply</property>
+            <property name="valign">center</property>
+            <style>
+              <class name="suggested-action" />
+            </style>
           </object>
         </child>
         <child>
@@ -33,6 +34,12 @@
       <object class="AdwPreferencesGroup" id="SettingsCenter_group_addmenu">
         <property name="title" translatable="yes">Add Menu</property>
         <child>
+          <object class="AdwButtonRow" id="SettingsCenter_row_buttonselectapp">
+            <property name="title" translatable="yes">Select app</property>
+            <property name="tooltip-text" translatable="yes">Select app</property>
+          </object>
+        </child>
+        <child>
           <object class="AdwEntryRow" id="SettingsCenter_row_label">
             <property name="title" translatable="yes">Label</property>
             <property name="tooltip-text" translatable="yes">Label to show in menu</property>
@@ -45,25 +52,12 @@
           </object>
         </child>
         <child>
-          <object class="AdwActionRow" id="SettingsCenter_row_buttons">
-            <property name="title" translatable="yes"></property>
-            <property name="activatable-widget">SettingsCenter_button_addmenu</property>
-            <child>
-              <object class="GtkButton" id="SettingsCenter_button_addapp">
-                <property name="label" translatable="yes">Select app</property>
-                <property name="valign">center</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="SettingsCenter_button_addmenu">
-                <property name="label" translatable="yes">Add</property>
-                <property name="valign">center</property>
-                <property name="tooltip-text" translatable="yes">'Label' and 'Command' must be filled out !</property>
-                <style>
-                    <class name="suggested-action"/>
-                </style>
-              </object>
-            </child>
+          <object class="AdwButtonRow" id="SettingsCenter_row_buttonadd">
+            <property name="title" translatable="yes">Add</property>
+            <property name="tooltip-text" translatable="yes">'Label' and 'Command' must be filled out !</property>
+            <style>
+                <class name="suggested-action"/>
+            </style>
           </object>
         </child>
       </object>

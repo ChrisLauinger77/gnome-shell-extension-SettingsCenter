@@ -235,14 +235,14 @@ export default class AdwPrefs extends ExtensionPreferences {
         });
         adwrow = builder.get_object("SettingsCenter_row_menulabel");
         adwrow.set_text(_(window._settings.get_string("label-menu")));
-        const buttonMenu = builder.get_object("SettingsCenter_button_menulabel");
-        buttonMenu.connect("clicked", this._changeMenu.bind(this, adwrow));
+        const buttonMenu = builder.get_object("SettingsCenter_row_buttonmenulabel");
+        buttonMenu.connect("activated", this._changeMenu.bind(this, adwrow));
 
         adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
 
-        const buttonappchooser = builder.get_object("SettingsCenter_button_addapp");
-        buttonappchooser.connect("clicked", async () => {
+        const buttonappchooser = builder.get_object("SettingsCenter_row_buttonselectapp");
+        buttonappchooser.connect("activated", async () => {
             const errorLog = (...args) => {
                 this.getLogger().error("Error:", ...args);
             };
@@ -257,11 +257,10 @@ export default class AdwPrefs extends ExtensionPreferences {
             }
         });
         const page2 = builder.get_object("SettingsCenter_page_menuitems");
-        const buttonAdd = builder.get_object("SettingsCenter_button_addmenu");
+        const buttonAdd = builder.get_object("SettingsCenter_row_buttonadd");
         const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
         const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
-        buttonAdd.connect("clicked", this._addCmd.bind(this, menuItems, page2, valueLabelAdd, valueCmdAdd));
-        buttonAdd.set_tooltip_text(_("'Label' and 'Command' must be filled out !"));
+        buttonAdd.connect("activated", this._addCmd.bind(this, menuItems, page2, valueLabelAdd, valueCmdAdd));
 
         page2._group3 = null;
         this._buildList(menuItems, page2);
