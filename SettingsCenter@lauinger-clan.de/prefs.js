@@ -224,6 +224,10 @@ export default class AdwPrefs extends ExtensionPreferences {
         const builder = Gtk.Builder.new();
         builder.add_from_file(this.path + "/ui/prefs.ui");
         const page1 = builder.get_object("SettingsCenter_page_settings");
+        const page2 = builder.get_object("SettingsCenter_page_menuitems");
+        const buttonAdd = builder.get_object("SettingsCenter_row_buttonadd");
+        const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
+        const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
         const myAppChooser = new AppChooser({
             title: _("Select app"),
             modal: true,
@@ -256,10 +260,6 @@ export default class AdwPrefs extends ExtensionPreferences {
                 valueCmdAdd.set_text(appRow.subtitle);
             }
         });
-        const page2 = builder.get_object("SettingsCenter_page_menuitems");
-        const buttonAdd = builder.get_object("SettingsCenter_row_buttonadd");
-        const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
-        const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
         buttonAdd.connect("activated", this._addCmd.bind(this, menuItems, page2, valueLabelAdd, valueCmdAdd));
 
         page2._group3 = null;
