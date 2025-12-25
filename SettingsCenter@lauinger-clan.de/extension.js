@@ -54,12 +54,12 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
         launch(settingItem) {
             if (settingItem["cmd"].match(/.desktop$/)) {
-                let app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
+                const app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
 
                 if (app !== null) app.activate();
                 else if (settingItem["cmd-alt"] !== null) Util.spawn([settingItem["cmd-alt"]]);
             } else {
-                let cmdArray = settingItem["cmd"].split(" ");
+                const cmdArray = settingItem["cmd"].split(" ");
                 Util.spawn(cmdArray);
             }
             QuickSettingsMenu.menu.close(PopupAnimation.FADE);
