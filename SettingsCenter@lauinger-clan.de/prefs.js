@@ -192,10 +192,10 @@ export default class AdwPrefs extends ExtensionPreferences {
         group3.set_name("settingscenter_menuitems");
         page2.add(group3);
         page2._group3 = group3;
-        let items = menuItems.getItems();
+        const items = menuItems.getItems();
 
-        for (let indexItem in items) {
-            let item = items[indexItem];
+        for (const indexItem in items) {
+            const item = items[indexItem];
             const adwrow = new Adw.ActionRow({ title: _(item["label"]) });
             adwrow.set_tooltip_text(item["cmd"]);
             group3.add(adwrow);

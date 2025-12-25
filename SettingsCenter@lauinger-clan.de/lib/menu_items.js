@@ -6,25 +6,23 @@ export const MenuItems = class MenuItems {
     }
 
     getItems() {
-        let itemsString = this._settings.get_string("items");
+        const itemsString = this._settings.get_string("items");
 
         return this.itemsToArray(itemsString);
     }
 
     setItems(items) {
-        let itemsString = this.itemsToString(items);
+        const itemsString = this.itemsToString(items);
 
         this._settings.set_string("items", itemsString);
     }
 
     getEnableItems() {
-        let items = this.getItems();
-        let indexItem;
-        let itemsEnable = [];
+        const items = this.getItems();
+        const itemsEnable = [];
 
-        for (indexItem in items) {
-            let item = items[indexItem];
-
+        for (const indexItem in items) {
+            const item = items[indexItem];
             if (item["enable"]) itemsEnable.push(item);
         }
 
@@ -32,24 +30,24 @@ export const MenuItems = class MenuItems {
     }
 
     getItem(index) {
-        let items = this.getItems();
+        const items = this.getItems();
 
         if (index >= 0 && index < items.length) return items[index];
         else return null;
     }
 
     isEnable(index) {
-        let item = this.getItem(index);
+        const item = this.getItem(index);
 
         if (item === null) return null;
         return item["enable"];
     }
 
     changeOrder(index, posRel) {
-        let items = this.getItems();
+        const items = this.getItems();
 
         if ((posRel < 0 && index > 0) || (posRel > 0 && index < items.length - 1)) {
-            let temp = items[index];
+            const temp = items[index];
             items.splice(index, 1);
             items.splice(Number.parseInt(index) + posRel, 0, temp);
 
@@ -60,7 +58,7 @@ export const MenuItems = class MenuItems {
     }
 
     changeEnable(index, value) {
-        let items = this.getItems();
+        const items = this.getItems();
 
         if (index < 0 && index >= items.length) return false;
 
@@ -72,9 +70,9 @@ export const MenuItems = class MenuItems {
     }
 
     addItem(label, cmd) {
-        let items = this.getItems();
+        const items = this.getItems();
 
-        let item = {
+        const item = {
             label: label,
             cmd: cmd,
             enable: "1",
@@ -87,7 +85,7 @@ export const MenuItems = class MenuItems {
     }
 
     delItem(index) {
-        let items = this.getItems();
+        const items = this.getItems();
 
         if (index < 1 && index >= items.length) return false;
 
@@ -99,14 +97,14 @@ export const MenuItems = class MenuItems {
     }
 
     itemsToArray(itemsString) {
-        let items = itemsString.split("|");
+        const items = itemsString.split("|");
 
-        let itemsArray = [];
+        const itemsArray = [];
 
-        for (let indexItem in items) {
-            let itemData = items[indexItem].split(";");
+        for (const indexItem in items) {
+            const itemData = items[indexItem].split(";");
 
-            let item = {
+            const item = {
                 label: itemData[0],
                 cmd: itemData[1],
                 enable: itemData[2] === "1",
@@ -120,12 +118,12 @@ export const MenuItems = class MenuItems {
     }
 
     itemsToString(itemsArray) {
-        let items = [];
+        const items = [];
 
-        for (let indexItem in itemsArray) {
-            let itemDatasArray = itemsArray[indexItem];
+        for (const indexItem in itemsArray) {
+            const itemDatasArray = itemsArray[indexItem];
 
-            let itemDatasString =
+            const itemDatasString =
                 itemDatasArray["label"] +
                 ";" +
                 itemDatasArray["cmd"] +
