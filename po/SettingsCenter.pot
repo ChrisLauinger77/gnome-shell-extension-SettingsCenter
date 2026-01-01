@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-17 18:57+0100\n"
+"POT-Creation-Date: 2026-01-01 12:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:46
+#: SettingsCenter@lauinger-clan.de/extension.js:57
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr ""
@@ -72,7 +72,15 @@ msgstr ""
 msgid "Menu Items"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:228
+#: SettingsCenter@lauinger-clan.de/prefs.js:231
+msgid "Reset Settings"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:237
+msgid "Reset all settings to default values"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:278
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
@@ -108,6 +116,10 @@ msgstr ""
 
 #: SettingsCenter@lauinger-clan.de/translation.js:14
 msgid "ExtensionManager"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/translation.js:15
+msgid "Volume Control"
 msgstr ""
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
