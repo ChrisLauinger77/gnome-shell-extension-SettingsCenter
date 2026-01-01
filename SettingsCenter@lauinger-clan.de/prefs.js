@@ -216,6 +216,16 @@ export default class AdwPrefs extends ExtensionPreferences {
         return fullPath.replace(/^.*[\\/]/, "");
     }
 
+    _findWidgetByType(parent, type) {
+        for (const child of parent) {
+            if (child instanceof type) return child;
+
+            const match = this._findWidgetByType(child, type);
+            if (match) return match;
+        }
+        return null;
+    }
+
     _addResetButton(window, settings) {
         const button = new Gtk.Button({
             label: _("Reset Settings"),
