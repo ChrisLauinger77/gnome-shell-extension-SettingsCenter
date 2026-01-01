@@ -36,18 +36,19 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
                 if (this._items.length > 0) {
                     for (const [index, item] of this._items.entries()) {
-                        let menuItem;
+                        let strIcon,
+                            strLabel = null;
                         if (item["cmd"].match(/.desktop$/)) {
                             const app = Shell.AppSystem.get_default().lookup_app(item["cmd"]);
                             if (app !== null) {
-                                menuItem = new PopupMenu.PopupImageMenuItem(_(item.label), app.icon.to_string(), {
-                                    style_class: "special-action",
-                                });
+                                strLabel = app.get_name();
+                                strIcon = app.icon.to_string();
                             }
                         }
-                        if (!menuItem) {
-                            menuItem = new PopupMenu.PopupMenuItem(_(item.label), 0);
-                        }
+                        const menuItem = new PopupMenu.PopupImageMenuItem(
+                            strLabel || item.label,
+                            strIcon || "image-missing-symbolic"
+                        );
                         menuItem.connect("activate", () => this.launch(item));
                         this.menu.addMenuItem(menuItem, index);
                     }
