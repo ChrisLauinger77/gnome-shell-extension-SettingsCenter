@@ -4,12 +4,12 @@
     <key name="label-menu" type="s">
       <default>'Settings Center'</default>
       <summary>Label Menu</summary>
-      <description/>
+      <description />
     </key>
     <key name="items" type="s">
-      <default>'Gnome Config Editor;gconf-editor.desktop;1;gconf-editor|Gnome Tweaks;gnome-tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;dconf-editor.desktop;1;dconf-editor|Extensions Preferences;org.gnome.Extensions.desktop;1;gnome-extensions-app|NVidia Settings;nvidia-settings.desktop;1;nvidia-settings|Passwords and Keys;seahorse.desktop;1;seahorse|PulseAudio;pavucontrol.desktop;1;pavucontrol|Session Properties;session-properties.desktop;0;gnome-session-properties'</default>
+      <default>'Gnome Config Editor;gconf-editor.desktop;0;gconf-editor|Gnome Tweaks;org.gnome.tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;ca.desrt.dconf-editor.desktop;1;dconf-editor|Extensions Preferences;org.gnome.Extensions.desktop;1;gnome-extensions-app|ExtensionManager;com.mattjakeman.ExtensionManager.desktop;1;com.mattjakeman.ExtensionManager|NVidia Settings;nvidia-settings.desktop;0;nvidia-settings|Passwords and Keys;org.gnome.seahorse.Application.desktop;1;seahorse|PulseAudio;org.pulseaudio.pavucontrol.desktop;1;pavucontrol|Session Properties;session-properties.desktop;0;gnome-session-properties'</default>
       <summary>Items</summary>
-      <description/>
+      <description />
     </key>
     <key name="show-systemindicator" type="b">
       <default>true</default>
