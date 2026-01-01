@@ -36,7 +36,6 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
                 if (this._items.length > 0) {
                     for (const [index, item] of this._items.entries()) {
-                        log("item: " + JSON.stringify(item));
                         let menuItem;
                         if (item["cmd"].match(/.desktop$/)) {
                             const app = Shell.AppSystem.get_default().lookup_app(item["cmd"]);
