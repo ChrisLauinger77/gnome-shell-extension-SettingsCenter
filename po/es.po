@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 12:52+0100\n"
+"POT-Creation-Date: 2026-01-01 14:44+0100\n"
 "PO-Revision-Date: 2025-02-09 18:55+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:57
+#: SettingsCenter@lauinger-clan.de/extension.js:58
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr "Configuraciones"
@@ -88,42 +88,6 @@ msgstr ""
 msgid "Select app"
 msgstr "Seleccionar aplicación"
 
-#: SettingsCenter@lauinger-clan.de/translation.js:7
-msgid "Gnome Tweaks"
-msgstr "Ajustes de Gnome"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:8
-msgid "Desktop Config Editor"
-msgstr "Editor de configuración del escritorio"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:9
-msgid "Gnome Config Editor"
-msgstr "Editor de configuración de Gnome"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:10
-msgid "Session Properties"
-msgstr "Propiedades de la sesión"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:11
-msgid "Extensions Preferences"
-msgstr "Preferencias de extensiones"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:12
-msgid "Passwords and Keys"
-msgstr "Contraseñas y claves"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:13
-msgid "NVidia Settings"
-msgstr "Configuración de NVidia"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:14
-msgid "ExtensionManager"
-msgstr "Administrador de extensiones"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:15
-msgid "Volume Control"
-msgstr ""
-
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"
 msgstr "Etiqueta del menú"
@@ -185,12 +149,3 @@ msgstr "Agregar"
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:68
 msgid "Settings Center"
 msgstr "Centro de configuración"
-
-#~ msgid "Usually located in '/usr/share/applications'"
-#~ msgstr "Generalmente ubicado en '/usr/share/applications'"
-
-#~ msgid "Select desktop file"
-#~ msgstr "Seleccionar archivo de escritorio"
-
-#~ msgid "Last chosen file"
-#~ msgstr "Último archivo elegido"
