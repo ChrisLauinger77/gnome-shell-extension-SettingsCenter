@@ -216,6 +216,49 @@ export default class AdwPrefs extends ExtensionPreferences {
         return fullPath.replace(/^.*[\\/]/, "");
     }
 
+    _findWidgetByType(parent, type) {
+        for (const child of parent) {
+            if (child instanceof type) return child;
+
+            const match = this._findWidgetByType(child, type);
+            if (match) return match;
+        }
+        return null;
+    }
+
+    _addResetButton(window, settings) {
+        const button = new Gtk.Button({
+            label: _("Reset Settings"),
+            icon_name: "edit-clear",
+            css_classes: ["destructive-action"],
+            vexpand: true,
+            valign: Gtk.Align.END,
+        });
+        button.set_tooltip_text(_("Reset all settings to default values"));
+        button.connect("clicked", () => {
+            this._resetSettings(settings, "all");
+        });
+
+        const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
+        if (header) {
+            header.pack_start(button);
+        }
+    }
+
+    _resetSettings(settings, strKey) {
+        if (strKey === "all") {
+            // List all keys you want to reset
+            const keys = ["label-menu", "items", "show-systemindicator"];
+            for (const key of keys) {
+                if (settings.is_writable(key)) {
+                    settings.reset(key);
+                }
+            }
+        } else if (settings.is_writable(strKey)) {
+            settings.reset(strKey);
+        }
+    }
+
     fillPreferencesWindow(window) {
         window.search_enabled = true;
         window._settings = this.getSettings();
@@ -268,6 +311,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         page2._group3 = null;
         this._buildList(menuItems, page2);
         window.set_default_size(675, 655);
+        this._addResetButton(window, window._settings);
         window.add(page1);
         window.add(page2);
     }

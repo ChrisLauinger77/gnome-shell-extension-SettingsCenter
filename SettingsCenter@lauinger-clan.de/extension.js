@@ -36,7 +36,18 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 
                 if (this._items.length > 0) {
                     for (const [index, item] of this._items.entries()) {
-                        const menuItem = new PopupMenu.PopupMenuItem(_(item.label), 0);
+                        let menuItem;
+                        if (item["cmd"].match(/.desktop$/)) {
+                            const app = Shell.AppSystem.get_default().lookup_app(item["cmd"]);
+                            if (app !== null) {
+                                menuItem = new PopupMenu.PopupImageMenuItem(_(item.label), app.icon.to_string(), {
+                                    style_class: "special-action",
+                                });
+                            }
+                        }
+                        if (!menuItem) {
+                            menuItem = new PopupMenu.PopupMenuItem(_(item.label), 0);
+                        }
                         menuItem.connect("activate", () => this.launch(item));
                         this.menu.addMenuItem(menuItem, index);
                     }
@@ -48,7 +59,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 settingsItem.visible = Main.sessionMode.allowSettings;
                 this.menu._settingsActions[Me.uuid] = settingsItem;
             } catch (error) {
-                this.getLogger().error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
+                Me.getLogger().error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
             }
         }
 

@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-17 18:57+0100\n"
-"PO-Revision-Date: 2025-02-09 18:55+0100\n"
+"POT-Creation-Date: 2026-01-01 12:52+0100\n"
+"PO-Revision-Date: 2026-01-01 12:58+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:46
+#: SettingsCenter@lauinger-clan.de/extension.js:57
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr "Paramètres"
@@ -73,7 +73,15 @@ msgstr "Suppr"
 msgid "Menu Items"
 msgstr "Éléments du menu"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:228
+#: SettingsCenter@lauinger-clan.de/prefs.js:231
+msgid "Reset Settings"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:237
+msgid "Reset all settings to default values"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:278
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
@@ -110,6 +118,10 @@ msgstr "Paramètres NVidia"
 #: SettingsCenter@lauinger-clan.de/translation.js:14
 msgid "ExtensionManager"
 msgstr "Gestionnaire d'extensions"
+
+#: SettingsCenter@lauinger-clan.de/translation.js:15
+msgid "Volume Control"
+msgstr ""
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"
