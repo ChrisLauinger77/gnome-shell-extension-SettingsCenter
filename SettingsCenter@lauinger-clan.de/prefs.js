@@ -187,6 +187,19 @@ export default class AdwPrefs extends ExtensionPreferences {
         return valueList;
     }
 
+    _addAppIcon(adwrow, appname) {
+        const apps = Gio.AppInfo.get_all();
+
+        for (const app of apps) {
+            if (appname.includes(app.get_id())) {
+                adwrow.subtitle = app.get_description();
+                const icon = new Gtk.Image({ gicon: app.get_icon() });
+                adwrow.add_prefix(icon);
+                return;
+            }
+        }
+    }
+
     _buildList(menuItems, page2) {
         if (page2._group3 !== null) {
             page2.remove(page2._group3);
@@ -206,6 +219,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             }
             const adwrow = new Adw.ActionRow({ title: item["label"] });
             adwrow.set_tooltip_text(item["cmd"]);
+            this._addAppIcon(adwrow, item["cmd"]);
             group3.add(adwrow);
             const buttonUp = this._buttonUp(menuItems, page2, indexItem);
             const buttonDown = this._buttonDown(menuItems, page2, indexItem, items.length);
