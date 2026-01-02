@@ -135,6 +135,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             valign: Gtk.Align.CENTER,
         });
         buttonUp.set_icon_name("go-up-symbolic");
+        buttonUp.set_tooltip_text(_("Move item up"));
         if (indexItem > 0) {
             buttonUp.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, -1));
             buttonUp.set_sensitive(true);
@@ -150,6 +151,7 @@ export default class AdwPrefs extends ExtensionPreferences {
             valign: Gtk.Align.CENTER,
         });
         buttonDown.set_icon_name("go-down-symbolic");
+        buttonDown.set_tooltip_text(_("Move item down"));
         if (indexItem < itemslen - 1) {
             buttonDown.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, 1));
             buttonDown.set_sensitive(true);
@@ -169,6 +171,7 @@ export default class AdwPrefs extends ExtensionPreferences {
                 margin_start: 10,
             });
             buttonDel.set_icon_name("user-trash-symbolic");
+            buttonDel.set_tooltip_text(_("Delete item"));
             buttonDel.connect("clicked", this._delCmd.bind(this, menuItems, page2, indexItem));
         }
         return buttonDel;
@@ -179,8 +182,22 @@ export default class AdwPrefs extends ExtensionPreferences {
             active: item["enable"],
             valign: Gtk.Align.CENTER,
         });
+        valueList.set_tooltip_text(_("Enable/Disable item"));
         valueList.connect("notify::active", this._changeEnable.bind(this, menuItems, indexItem, valueList));
         return valueList;
+    }
+
+    _addAppIcon(adwrow, appname) {
+        const apps = Gio.AppInfo.get_all();
+
+        for (const app of apps) {
+            if (appname.includes(app.get_id())) {
+                adwrow.subtitle = app.get_description();
+                const icon = new Gtk.Image({ gicon: app.get_icon() });
+                adwrow.add_prefix(icon);
+                return;
+            }
+        }
     }
 
     _buildList(menuItems, page2) {
@@ -196,8 +213,13 @@ export default class AdwPrefs extends ExtensionPreferences {
 
         for (const indexItem in items) {
             const item = items[indexItem];
-            const adwrow = new Adw.ActionRow({ title: _(item["label"]) });
+            const appInfo = Gio.DesktopAppInfo.new(item["cmd"]);
+            if (appInfo !== null) {
+                item["label"] = appInfo.get_display_name();
+            }
+            const adwrow = new Adw.ActionRow({ title: item["label"] });
             adwrow.set_tooltip_text(item["cmd"]);
+            this._addAppIcon(adwrow, item["cmd"]);
             group3.add(adwrow);
             const buttonUp = this._buttonUp(menuItems, page2, indexItem);
             const buttonDown = this._buttonDown(menuItems, page2, indexItem, items.length);

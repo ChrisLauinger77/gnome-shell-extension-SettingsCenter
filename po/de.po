@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 12:52+0100\n"
-"PO-Revision-Date: 2026-01-01 12:53+0100\n"
+"POT-Creation-Date: 2026-01-01 15:25+0100\n"
+"PO-Revision-Date: 2026-01-01 15:26+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:57
+#: SettingsCenter@lauinger-clan.de/extension.js:58
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr "Einstellungen"
@@ -61,67 +61,47 @@ msgstr "Löschen"
 msgid "Up"
 msgstr "Auf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:149
+#: SettingsCenter@lauinger-clan.de/prefs.js:138
+msgid "Move item up"
+msgstr "Element nach oben verschieben"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:150
 msgid "Down"
 msgstr "Ab"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:167
+#: SettingsCenter@lauinger-clan.de/prefs.js:154
+msgid "Move item down"
+msgstr "Element nach unten verschieben"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:169
 msgid "Del"
 msgstr "Entf"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:191
+#: SettingsCenter@lauinger-clan.de/prefs.js:174
+msgid "Delete item"
+msgstr "Element löschen"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:185
+msgid "Enable/Disable item"
+msgstr "Element aktivieren/deaktivieren"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:195
 msgid "Menu Items"
 msgstr "Menü Einträge"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:231
+#: SettingsCenter@lauinger-clan.de/prefs.js:239
 msgid "Reset Settings"
 msgstr "Einstellungen zurücksetzen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:237
+#: SettingsCenter@lauinger-clan.de/prefs.js:245
 msgid "Reset all settings to default values"
 msgstr "Alle Einstellungen auf Standardwerte zurücksetzen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:278
+#: SettingsCenter@lauinger-clan.de/prefs.js:286
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
 msgstr "App auswählen"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:7
-msgid "Gnome Tweaks"
-msgstr "Gnome Optimierungen"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:8
-msgid "Desktop Config Editor"
-msgstr "Desktop Konfigurationseditor"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:9
-msgid "Gnome Config Editor"
-msgstr "Gnome Konfigurationseditor"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:10
-msgid "Session Properties"
-msgstr "Sitzungseigenschaften"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:11
-msgid "Extensions Preferences"
-msgstr "Erweiterungen"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:12
-msgid "Passwords and Keys"
-msgstr "Passwörter und Schlüssel"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:13
-msgid "NVidia Settings"
-msgstr "NVidia Einstellungen"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:14
-msgid "ExtensionManager"
-msgstr "Erweiterungs-Manager"
-
-#: SettingsCenter@lauinger-clan.de/translation.js:15
-msgid "Volume Control"
-msgstr "Lautstärkeregler"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"
@@ -184,18 +164,3 @@ msgstr "Hinzufügen"
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:68
 msgid "Settings Center"
 msgstr "Einstellungszentrum"
-
-#~ msgid "Usually located in '/usr/share/applications'"
-#~ msgstr "Befinden sich normalerweise in '/usr/share/applications'"
-
-#~ msgid "Select desktop file"
-#~ msgstr "Desktop Datei auswählen"
-
-#~ msgid "Last chosen file"
-#~ msgstr "Letzt gewählte Datei"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Optimierungen"

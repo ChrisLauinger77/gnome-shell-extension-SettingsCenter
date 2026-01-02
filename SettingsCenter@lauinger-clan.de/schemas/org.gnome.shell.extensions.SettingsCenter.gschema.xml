@@ -7,7 +7,7 @@
       <description />
     </key>
     <key name="items" type="s">
-      <default>'Gnome Config Editor;gconf-editor.desktop;0;gconf-editor|Gnome Tweaks;org.gnome.tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;ca.desrt.dconf-editor.desktop;1;dconf-editor|Extensions Preferences;org.gnome.Extensions.desktop;1;gnome-extensions-app|ExtensionManager;com.mattjakeman.ExtensionManager.desktop;0;com.mattjakeman.ExtensionManager|NVidia Settings;nvidia-settings.desktop;0;nvidia-settings|Passwords and Keys;org.gnome.seahorse.Application.desktop;1;seahorse|Volume Control;org.pulseaudio.pavucontrol.desktop;1;pavucontrol|Session Properties;session-properties.desktop;0;gnome-session-properties'</default>
+      <default>'Gnome Config Editor;gconf-editor.desktop;0;gconf-editor|Gnome Tweaks;org.gnome.tweaks.desktop;1;gnome-tweaks|Desktop Config Editor;ca.desrt.dconf-editor.desktop;1;dconf-editor|Extensions Preferences;org.gnome.Extensions.desktop;1;gnome-extensions-app|ExtensionManager;com.mattjakeman.ExtensionManager.desktop;0;com.mattjakeman.ExtensionManager|NVidia Settings;nvidia-settings.desktop;0;nvidia-settings|Passwords and Keys;org.gnome.seahorse.Application.desktop;1;seahorse|Volume Control;org.pulseaudio.pavucontrol.desktop;1;pavucontrol|Refine;page.tesk.Refine.desktop;0;page.tesk.Refine|Session Properties;session-properties.desktop;0;gnome-session-properties'</default>
       <summary>Items</summary>
       <description />
     </key>

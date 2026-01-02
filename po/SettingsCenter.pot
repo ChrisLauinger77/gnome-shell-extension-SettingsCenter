@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 12:52+0100\n"
+"POT-Creation-Date: 2026-01-01 15:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:57
+#: SettingsCenter@lauinger-clan.de/extension.js:58
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr ""
@@ -60,66 +60,46 @@ msgstr ""
 msgid "Up"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:149
+#: SettingsCenter@lauinger-clan.de/prefs.js:138
+msgid "Move item up"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:150
 msgid "Down"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:167
+#: SettingsCenter@lauinger-clan.de/prefs.js:154
+msgid "Move item down"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:169
 msgid "Del"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:191
+#: SettingsCenter@lauinger-clan.de/prefs.js:174
+msgid "Delete item"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:185
+msgid "Enable/Disable item"
+msgstr ""
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:195
 msgid "Menu Items"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:231
+#: SettingsCenter@lauinger-clan.de/prefs.js:239
 msgid "Reset Settings"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:237
+#: SettingsCenter@lauinger-clan.de/prefs.js:245
 msgid "Reset all settings to default values"
 msgstr ""
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:278
+#: SettingsCenter@lauinger-clan.de/prefs.js:286
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:7
-msgid "Gnome Tweaks"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:8
-msgid "Desktop Config Editor"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:9
-msgid "Gnome Config Editor"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:10
-msgid "Session Properties"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:11
-msgid "Extensions Preferences"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:12
-msgid "Passwords and Keys"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:13
-msgid "NVidia Settings"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:14
-msgid "ExtensionManager"
-msgstr ""
-
-#: SettingsCenter@lauinger-clan.de/translation.js:15
-msgid "Volume Control"
 msgstr ""
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
