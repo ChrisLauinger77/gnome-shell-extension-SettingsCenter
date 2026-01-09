@@ -55,7 +55,10 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 }
 
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-                const settingsItem = this.menu.addAction(_("Settings"), () => extension._openPreferences());
+                const settingsItem = this.menu.addAction(_("Settings"), () => {
+                    extension.openPreferences();
+                    QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+                });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
                 this.menu._settingsActions[extension.uuid] = settingsItem;
@@ -118,11 +121,6 @@ export default class SettingsCenter extends Extension {
 
     _onParamChangedIndicator() {
         this._indicator.setIndicatorVisible(this._settings.get_boolean("show-systemindicator"));
-    }
-
-    _openPreferences() {
-        this.openPreferences();
-        QuickSettingsMenu.menu.close(PopupAnimation.FADE);
     }
 
     enable() {
