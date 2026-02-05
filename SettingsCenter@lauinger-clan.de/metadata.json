@@ -3,7 +3,7 @@
     "description": "Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quicksettings. Originally created by XES.\n\nSettings shortcuts : gnome-tweak-tool, dconf-editor, gconf-editor, gnome-session-properties, gnome-shell-extension-prefs, seahorse and nvidia-settings. You can add your own\n\nOriginal source : http://svn.xesnet.fr/gnomeextensions",
     "gettext-domain": "SettingsCenter",
     "uuid": "SettingsCenter@lauinger-clan.de",
-    "shell-version": ["48", "49"],
+    "shell-version": ["48", "49", "50"],
     "original-author": "Xes, l300lvl",
     "url": "https://github.com/ChrisLauinger77/gnome-shell-extension-SettingsCenter",
     "settings-schema": "org.gnome.shell.extensions.SettingsCenter",
