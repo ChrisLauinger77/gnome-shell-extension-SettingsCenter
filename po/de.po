@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 15:25+0100\n"
+"POT-Creation-Date: 2026-02-07 09:57+0100\n"
 "PO-Revision-Date: 2026-01-01 15:26+0100\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -85,19 +85,19 @@ msgstr "Element löschen"
 msgid "Enable/Disable item"
 msgstr "Element aktivieren/deaktivieren"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:195
+#: SettingsCenter@lauinger-clan.de/prefs.js:208
 msgid "Menu Items"
 msgstr "Menü Einträge"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:239
+#: SettingsCenter@lauinger-clan.de/prefs.js:253
 msgid "Reset Settings"
 msgstr "Einstellungen zurücksetzen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:245
+#: SettingsCenter@lauinger-clan.de/prefs.js:259
 msgid "Reset all settings to default values"
 msgstr "Alle Einstellungen auf Standardwerte zurücksetzen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:286
+#: SettingsCenter@lauinger-clan.de/prefs.js:300
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
