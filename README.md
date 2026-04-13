@@ -1,3 +1,9 @@
+<div align="center">
+
+![Gnome Extensions Downloads](https://img.shields.io/gnome-extensions/dt/SettingsCenter@lauinger-clan.de) ![GNOME Shell](https://img.shields.io/badge/GNOME-3.4%20--%2050-blue?logo=gnome&logoColor=white) ![GitHub License](https://img.shields.io/github/license/ChrisLauinger77/gnome-shell-extension-HeadsetControl)
+
+</div>
+
 ### Description:
 
 Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu. Originally created by XES / l300lvl.
