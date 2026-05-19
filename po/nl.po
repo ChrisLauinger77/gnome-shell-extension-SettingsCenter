@@ -24,11 +24,11 @@ msgstr "Voorkeuren"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:20
 msgid "Search..."
-msgstr ""
+msgstr "Zoeken..."
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:32
 msgid "Select"
-msgstr ""
+msgstr "Selecteren"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:35
 #: SettingsCenter@lauinger-clan.de/prefs.js:118
@@ -62,7 +62,7 @@ msgstr "Omhoog"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:138
 msgid "Move item up"
-msgstr ""
+msgstr "Item omhoog verplaatsen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:150
 msgid "Down"
@@ -70,7 +70,7 @@ msgstr "Omlaag"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:154
 msgid "Move item down"
-msgstr ""
+msgstr "Item omlaag verplaatsen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:169
 msgid "Del"
@@ -78,11 +78,11 @@ msgstr "Del"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:174
 msgid "Delete item"
-msgstr ""
+msgstr "Item verwijderen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:185
 msgid "Enable/Disable item"
-msgstr ""
+msgstr "Item in-/uitschakelen"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:208
 msgid "Menu Items"
@@ -94,13 +94,13 @@ msgstr "Instellingen resetten"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:259
 msgid "Reset all settings to default values"
-msgstr ""
+msgstr "Alle instellingen terugzetten naar standaardwaarden"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:300
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
-msgstr ""
+msgstr "App selecteren"
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:6
 msgid "Label Menu"

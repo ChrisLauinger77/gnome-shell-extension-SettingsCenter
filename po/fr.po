@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -25,7 +24,7 @@ msgstr "Paramètres"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:20
 msgid "Search..."
-msgstr ""
+msgstr "Rechercher..."
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:32
 msgid "Select"
@@ -63,7 +62,7 @@ msgstr "Haut"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:138
 msgid "Move item up"
-msgstr ""
+msgstr "Déplacer l'élément vers le haut"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:150
 msgid "Down"
@@ -71,7 +70,7 @@ msgstr "Bas"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:154
 msgid "Move item down"
-msgstr ""
+msgstr "Déplacer l'élément vers le bas"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:169
 msgid "Del"
@@ -79,11 +78,11 @@ msgstr "Suppr"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:174
 msgid "Delete item"
-msgstr ""
+msgstr "Supprimer l'élément"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:185
 msgid "Enable/Disable item"
-msgstr ""
+msgstr "Activer/désactiver l'élément"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:208
 msgid "Menu Items"
@@ -91,11 +90,11 @@ msgstr "Éléments du menu"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:253
 msgid "Reset Settings"
-msgstr ""
+msgstr "Réinitialiser les paramètres"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:259
 msgid "Reset all settings to default values"
-msgstr ""
+msgstr "Réinitialiser tous les paramètres aux valeurs par défaut"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:300
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
