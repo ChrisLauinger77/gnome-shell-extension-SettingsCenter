@@ -2,6 +2,7 @@
 
 import Gtk from "gi://Gtk";
 import Gio from "gi://Gio";
+import Gdk from "gi://Gdk";
 import Adw from "gi://Adw";
 import GObject from "gi://GObject";
 import * as Menu_Items from "./lib/menu_items.js";
@@ -103,10 +104,32 @@ export default class AdwPrefs extends ExtensionPreferences {
         this._buildList(menuItems, page2);
     }
 
-    _changeOrder(menuItems, page2, index, order) {
-        menuItems.changeOrder(index, order);
+    _moveItem(menuItems, page2, fromIndex, toIndex) {
+        if (fromIndex === toIndex) return;
 
+        menuItems.changeOrder(fromIndex, toIndex - fromIndex);
         this._buildList(menuItems, page2);
+    }
+
+    _loadStylesheet() {
+        if (this._stylesheetLoaded) return;
+
+        const display = Gdk.Display.get_default();
+        if (display === null) return;
+
+        const provider = new Gtk.CssProvider();
+        provider.load_from_path(`${this.path}/stylesheet.css`);
+        Gtk.StyleContext.add_provider_for_display(
+            display,
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+        this._stylesheetLoaded = true;
+    }
+
+    _dragHighlightRow(adwrow, active) {
+        if (active) adwrow.add_css_class("drag_highlight_row");
+        else adwrow.remove_css_class("drag_highlight_row");
     }
 
     _delCmd(menuItems, page2, index) {
@@ -127,38 +150,6 @@ export default class AdwPrefs extends ExtensionPreferences {
         });
 
         dialog.present();
-    }
-
-    _buttonUp(menuItems, page2, indexItem) {
-        const buttonUp = new Gtk.Button({
-            label: _("Up"),
-            valign: Gtk.Align.CENTER,
-        });
-        buttonUp.set_icon_name("go-up-symbolic");
-        buttonUp.set_tooltip_text(_("Move item up"));
-        if (indexItem > 0) {
-            buttonUp.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, -1));
-            buttonUp.set_sensitive(true);
-        } else {
-            buttonUp.set_sensitive(false);
-        }
-        return buttonUp;
-    }
-
-    _buttonDown(menuItems, page2, indexItem, itemslen) {
-        const buttonDown = new Gtk.Button({
-            label: _("Down"),
-            valign: Gtk.Align.CENTER,
-        });
-        buttonDown.set_icon_name("go-down-symbolic");
-        buttonDown.set_tooltip_text(_("Move item down"));
-        if (indexItem < itemslen - 1) {
-            buttonDown.connect("clicked", this._changeOrder.bind(this, menuItems, page2, indexItem, 1));
-            buttonDown.set_sensitive(true);
-        } else {
-            buttonDown.set_sensitive(false);
-        }
-        return buttonDown;
     }
 
     _buttonDel(menuItems, page2, indexItem, itemslen) {
@@ -200,12 +191,55 @@ export default class AdwPrefs extends ExtensionPreferences {
         }
     }
 
+    _dragHandle(indexItem) {
+        const dragHandle = new Gtk.Image({
+            icon_name: "list-drag-handle-symbolic",
+            css_classes: ["dim-label"],
+        });
+        dragHandle.set_tooltip_text(_("Drag to reorder"));
+
+        const dragSource = new Gtk.DragSource({
+            actions: Gdk.DragAction.MOVE,
+        });
+        dragSource.connect("prepare", () => Gdk.ContentProvider.new_for_value(String(indexItem)));
+        dragHandle.add_controller(dragSource);
+
+        return dragHandle;
+    }
+
+    _makeRowDropTarget(adwrow, menuItems, page2, indexItem) {
+        const dropTarget = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.MOVE);
+        dropTarget.connect("enter", () => {
+            this._dragHighlightRow(adwrow, true);
+            return Gdk.DragAction.MOVE;
+        });
+        dropTarget.connect("leave", () => {
+            this._dragHighlightRow(adwrow, false);
+        });
+        dropTarget.connect("drop", (_target, value, _x, y) => {
+            this._dragHighlightRow(adwrow, false);
+            const fromIndex = Number.parseInt(value, 10);
+            const rowIndex = Number.parseInt(indexItem, 10);
+
+            if (Number.isNaN(fromIndex) || Number.isNaN(rowIndex)) return false;
+
+            let toIndex = rowIndex;
+            if (y > adwrow.get_height() / 2) toIndex += 1;
+            if (fromIndex < toIndex) toIndex -= 1;
+
+            this._moveItem(menuItems, page2, fromIndex, toIndex);
+            return true;
+        });
+        adwrow.add_controller(dropTarget);
+    }
+
     _buildList(menuItems, page2) {
         if (page2._group3 !== null) {
             page2.remove(page2._group3);
         }
         const group3 = Adw.PreferencesGroup.new();
         group3.set_title(_("Menu Items"));
+        group3.set_description(_("Add custom commands to the menu, rows can be reordered by drag and drop."));
         group3.set_name("settingscenter_menuitems");
         page2.add(group3);
         page2._group3 = group3;
@@ -221,21 +255,14 @@ export default class AdwPrefs extends ExtensionPreferences {
             adwrow.set_tooltip_text(item["cmd"]);
             this._addAppIcon(adwrow, item["cmd"]);
             group3.add(adwrow);
-            const buttonUp = this._buttonUp(menuItems, page2, indexItem);
-            const buttonDown = this._buttonDown(menuItems, page2, indexItem, items.length);
             const valueList = this._valueList(menuItems, indexItem, item);
             const buttonDel = this._buttonDel(menuItems, page2, indexItem, items.length);
+            adwrow.add_prefix(this._dragHandle(indexItem));
+            this._makeRowDropTarget(adwrow, menuItems, page2, indexItem);
             adwrow.add_suffix(valueList);
             adwrow.activatable_widget = valueList;
-            adwrow.add_suffix(buttonUp);
-            adwrow.add_suffix(buttonDown);
             if (buttonDel !== null) adwrow.add_suffix(buttonDel);
         }
-    }
-
-    _getFilename(fullPath) {
-        this.getLogger().log("_getFilename fullPath: " + fullPath);
-        return fullPath.replace(/^.*[\\/]/, "");
     }
 
     _findWidgetByType(parent, type) {
@@ -288,6 +315,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         let adwrow;
         const builder = Gtk.Builder.new();
         builder.add_from_file(this.path + "/ui/prefs.ui");
+        this._loadStylesheet();
         const page1 = builder.get_object("SettingsCenter_page_settings");
         const page2 = builder.get_object("SettingsCenter_page_menuitems");
         const buttonMenu = builder.get_object("SettingsCenter_row_buttonmenulabel");

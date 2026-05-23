@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 09:57+0100\n"
-"PO-Revision-Date: 2026-01-01 12:58+0100\n"
+"POT-Creation-Date: 2026-05-23 11:55+0200\n"
+"PO-Revision-Date: 2026-05-23 11:53+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -22,81 +22,76 @@ msgstr ""
 msgid "Settings"
 msgstr "Paramètres"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:20
+#: SettingsCenter@lauinger-clan.de/prefs.js:21
 msgid "Search..."
 msgstr "Rechercher..."
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:32
+#: SettingsCenter@lauinger-clan.de/prefs.js:33
 msgid "Select"
 msgstr "Sélectionner"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:35
-#: SettingsCenter@lauinger-clan.de/prefs.js:118
+#: SettingsCenter@lauinger-clan.de/prefs.js:36
+#: SettingsCenter@lauinger-clan.de/prefs.js:120
 msgid "Cancel"
 msgstr "Annuler"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:95
+#: SettingsCenter@lauinger-clan.de/prefs.js:96
 msgid "SettingsCenter"
 msgstr "Centre de paramètres"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:95
+#: SettingsCenter@lauinger-clan.de/prefs.js:96
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "'Label' et 'Commande' doivent être remplis !"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:115
+#: SettingsCenter@lauinger-clan.de/prefs.js:117
 msgid "Delete entry"
 msgstr "Supprimer l'entrée"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:116
+#: SettingsCenter@lauinger-clan.de/prefs.js:118
 msgid "Are you sure you want to delete the entry ?"
 msgstr "Êtes-vous sûr de vouloir supprimer l'entrée ?"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:119
+#: SettingsCenter@lauinger-clan.de/prefs.js:121
 msgid "Delete"
 msgstr "Supprimer"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:134
-msgid "Up"
-msgstr "Haut"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:138
-msgid "Move item up"
-msgstr "Déplacer l'élément vers le haut"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:150
-msgid "Down"
-msgstr "Bas"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:154
-msgid "Move item down"
-msgstr "Déplacer l'élément vers le bas"
-
-#: SettingsCenter@lauinger-clan.de/prefs.js:169
+#: SettingsCenter@lauinger-clan.de/prefs.js:139
 msgid "Del"
 msgstr "Suppr"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:174
+#: SettingsCenter@lauinger-clan.de/prefs.js:144
 msgid "Delete item"
 msgstr "Supprimer l'élément"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:185
+#: SettingsCenter@lauinger-clan.de/prefs.js:155
 msgid "Enable/Disable item"
 msgstr "Activer/désactiver l'élément"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:208
+#: SettingsCenter@lauinger-clan.de/prefs.js:178
+msgid "Drag to reorder"
+msgstr "Faire glisser pour réordonner"
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:212
 msgid "Menu Items"
 msgstr "Éléments du menu"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:253
+#: SettingsCenter@lauinger-clan.de/prefs.js:213
+msgid ""
+"Add custom commands to the menu, rows can be reordered by drag and drop."
+msgstr ""
+"Ajoutez des commandes personnalisées au menu ; les lignes peuvent être "
+"réordonnées par glisser-déposer."
+
+#: SettingsCenter@lauinger-clan.de/prefs.js:251
 msgid "Reset Settings"
 msgstr "Réinitialiser les paramètres"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:259
+#: SettingsCenter@lauinger-clan.de/prefs.js:257
 msgid "Reset all settings to default values"
 msgstr "Réinitialiser tous les paramètres aux valeurs par défaut"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:300
+#: SettingsCenter@lauinger-clan.de/prefs.js:298
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Select app"
