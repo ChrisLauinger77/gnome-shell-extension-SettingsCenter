@@ -119,11 +119,7 @@ export default class AdwPrefs extends ExtensionPreferences {
 
         const provider = new Gtk.CssProvider();
         provider.load_from_path(`${this.path}/stylesheet.css`);
-        Gtk.StyleContext.add_provider_for_display(
-            display,
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        );
+        Gtk.StyleContext.add_provider_for_display(display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         this._stylesheetLoaded = true;
     }
 
@@ -193,6 +189,8 @@ export default class AdwPrefs extends ExtensionPreferences {
 
     _dragHandle(indexItem) {
         const dragHandle = new Gtk.Image({
+            pixel_size: 16,
+            valign: Gtk.Align.CENTER,
             icon_name: "list-drag-handle-symbolic",
             css_classes: ["dim-label"],
         });
@@ -237,9 +235,10 @@ export default class AdwPrefs extends ExtensionPreferences {
         if (page2._group3 !== null) {
             page2.remove(page2._group3);
         }
-        const group3 = Adw.PreferencesGroup.new();
-        group3.set_title(_("Menu Items"));
-        group3.set_description(_("Add custom commands to the menu, rows can be reordered by drag and drop."));
+        const group3 = new Adw.PreferencesGroup({
+            title: _("Menu Items"),
+            description: _("Add custom commands to the menu, rows can be reordered by drag and drop."),
+        });
         group3.set_name("settingscenter_menuitems");
         page2.add(group3);
         page2._group3 = group3;
