@@ -28,6 +28,7 @@ Current target shell versions are declared in `SettingsCenter@lauinger-clan.de/m
 - Preferences code uses GTK4/libadwaita and should avoid Shell-only APIs.
 - For GI imports where multiple major versions can exist, prefer explicit versions when practical, for example `gi://Gdk?version=4.0`.
 - Preserve user changes. The worktree may contain staged or unstaged edits unrelated to your task.
+- Check `gnome-extension-review.md` before changing runtime, preferences, metadata, schema, packaging, or user-data behavior that may affect extensions.gnome.org review.
 
 ## Menu Item Storage
 
