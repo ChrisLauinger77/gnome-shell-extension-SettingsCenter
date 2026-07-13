@@ -16,6 +16,8 @@ import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
 const SettingsCenterMenuToggle = GObject.registerClass(
+    // The matching class name is intentional for GObject registration.
+    // eslint-disable-next-line no-shadow
     class SettingsCenterMenuToggle extends QuickSettings.QuickMenuToggle {
         constructor(extension) {
             const { _settings } = extension;
@@ -83,6 +85,8 @@ const SettingsCenterMenuToggle = GObject.registerClass(
 );
 
 const SettingsCenterIndicator = GObject.registerClass(
+    // The matching class name is intentional for GObject registration.
+    // eslint-disable-next-line no-shadow
     class SettingsCenterIndicator extends QuickSettings.SystemIndicator {
         constructor(extension) {
             const { _settings } = extension;
