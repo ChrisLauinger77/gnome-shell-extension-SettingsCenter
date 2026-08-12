@@ -26,7 +26,6 @@ Current target shell versions are declared in `SettingsCenter@lauinger-clan.de/m
 - This is GJS ES module code. Prefer GNOME/GJS APIs and existing local patterns.
 - Runtime Shell code may use GNOME Shell private modules. Check compatibility carefully across every shell version listed in `metadata.json`.
 - Preferences code uses GTK4/libadwaita and should avoid Shell-only APIs.
-- For GI imports where multiple major versions can exist, prefer explicit versions when practical, for example `gi://Gdk?version=4.0`.
 - Preserve user changes. The worktree may contain staged or unstaged edits unrelated to your task.
 - Use `$review-gnome-shell-extension` before changing runtime, preferences, metadata, schema, packaging, or user-data behavior that may affect extensions.gnome.org review.
 

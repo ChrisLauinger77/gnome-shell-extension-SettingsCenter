@@ -65,19 +65,30 @@ const AppChooser = GObject.registerClass(
             searchEntry.connect("search-changed", () => {
                 this.listBox.invalidate_filter();
             });
-            this.cancelBtn.connect("clicked", () => {
-                this.close();
-            });
         }
 
         showChooser() {
             return new Promise((resolve) => {
-                const signalId = this.selectBtn.connect("clicked", () => {
-                    this.close();
-                    this.selectBtn.disconnect(signalId);
-                    const row = this.listBox.get_selected_row();
+                const signalIds = [];
+                const finish = (row) => {
+                    for (const [object, signalId] of signalIds) object.disconnect(signalId);
                     resolve(row);
-                });
+                };
+
+                signalIds.push(
+                    [this.selectBtn, this.selectBtn.connect("clicked", () => {
+                        finish(this.listBox.get_selected_row());
+                        this.close();
+                    })],
+                    [this.cancelBtn, this.cancelBtn.connect("clicked", () => {
+                        finish(null);
+                        this.close();
+                    })],
+                    [this, this.connect("close-request", () => {
+                        finish(null);
+                        return false;
+                    })]
+                );
                 this.present();
             });
         }
