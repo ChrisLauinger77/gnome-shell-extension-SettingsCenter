@@ -99,8 +99,10 @@ export const MenuItems = class MenuItems {
     itemsToArray(itemsString) {
         if (itemsString.startsWith("v2:|")) {
             try {
-                return itemsString
-                    .slice(4)
+                const payload = itemsString.slice(4);
+                if (payload === "") return [];
+
+                return payload
                     .split("|")
                     .map((item) => {
                         const fields = item.split(";");
