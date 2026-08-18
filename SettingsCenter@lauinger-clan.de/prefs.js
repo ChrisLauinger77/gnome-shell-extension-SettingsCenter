@@ -76,18 +76,27 @@ const AppChooser = GObject.registerClass(
                 };
 
                 signalIds.push(
-                    [this.selectBtn, this.selectBtn.connect("clicked", () => {
-                        finish(this.listBox.get_selected_row());
-                        this.close();
-                    })],
-                    [this.cancelBtn, this.cancelBtn.connect("clicked", () => {
-                        finish(null);
-                        this.close();
-                    })],
-                    [this, this.connect("close-request", () => {
-                        finish(null);
-                        return false;
-                    })]
+                    [
+                        this.selectBtn,
+                        this.selectBtn.connect("clicked", () => {
+                            finish(this.listBox.get_selected_row());
+                            this.close();
+                        }),
+                    ],
+                    [
+                        this.cancelBtn,
+                        this.cancelBtn.connect("clicked", () => {
+                            finish(null);
+                            this.close();
+                        }),
+                    ],
+                    [
+                        this,
+                        this.connect("close-request", () => {
+                            finish(null);
+                            return false;
+                        }),
+                    ]
                 );
                 this.present();
             });
@@ -96,8 +105,8 @@ const AppChooser = GObject.registerClass(
 );
 
 export default class AdwPrefs extends ExtensionPreferences {
-    _changeMenu(text) {
-        this.getSettings().set_string("label-menu", text.get_text());
+    _changeMenu(settings, text) {
+        settings.set_string("label-menu", text.get_text());
     }
 
     _changeEnable(menuItems, index, valueList) {
@@ -349,7 +358,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         adwrow = builder.get_object("SettingsCenter_row_menulabel");
         adwrow.set_text(_(window._settings.get_string("label-menu")));
 
-        buttonMenu.connect("activated", this._changeMenu.bind(this, adwrow));
+        buttonMenu.connect("activated", this._changeMenu.bind(this, window._settings, adwrow));
 
         adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
