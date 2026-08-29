@@ -9,7 +9,6 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as QuickSettings from "resource:///org/gnome/shell/ui/quickSettings.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as Menu_Items from "./lib/menu_items.js";
-import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
 
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
@@ -59,7 +58,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
                 const settingsItem = this.menu.addAction(_("Settings"), () => {
                     extension.openPreferences();
-                    QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+                    QuickSettingsMenu.menu.close({ fadeOnly: true });
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
@@ -78,7 +77,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             } else {
                 Util.spawnCommandLine(settingItem["cmd"]);
             }
-            QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+            QuickSettingsMenu.menu.close({ fadeOnly: true });
         }
     }
 );
