@@ -60,7 +60,7 @@ export const MenuItems = class MenuItems {
     changeEnable(index, value) {
         const items = this.getItems();
 
-        if (index < 0 && index >= items.length) return false;
+        if (index < 0 || index >= items.length) return false;
 
         items[index]["enable"] = value;
 
@@ -87,7 +87,7 @@ export const MenuItems = class MenuItems {
     delItem(index) {
         const items = this.getItems();
 
-        if (index < 1 && index >= items.length) return false;
+        if (index < 0 || index >= items.length) return false;
 
         items.splice(index, 1);
 
@@ -97,6 +97,31 @@ export const MenuItems = class MenuItems {
     }
 
     itemsToArray(itemsString) {
+        if (itemsString.startsWith("v2:|")) {
+            try {
+                const payload = itemsString.slice(4);
+                if (payload === "") return [];
+
+                return payload
+                    .split("|")
+                    .map((item) => {
+                        const fields = item.split(";");
+                        if (fields.length !== 4) throw new Error("Invalid encoded menu item");
+
+                        const itemData = fields.map((field) => decodeURIComponent(field));
+
+                        return {
+                            label: itemData[0],
+                            cmd: itemData[1],
+                            enable: itemData[2] === "1",
+                            "cmd-alt": itemData[3],
+                        };
+                    });
+            } catch {
+                // Fall through to the legacy parser for malformed encoded data.
+            }
+        }
+
         const items = itemsString.split("|");
 
         const itemsArray = [];
@@ -123,18 +148,18 @@ export const MenuItems = class MenuItems {
         for (const indexItem in itemsArray) {
             const itemDatasArray = itemsArray[indexItem];
 
-            const itemDatasString =
-                itemDatasArray["label"] +
-                ";" +
-                itemDatasArray["cmd"] +
-                ";" +
-                (itemDatasArray["enable"] ? "1" : "0") +
-                ";" +
-                itemDatasArray["cmd-alt"];
+            const itemDatasString = [
+                itemDatasArray["label"],
+                itemDatasArray["cmd"],
+                itemDatasArray["enable"] ? "1" : "0",
+                itemDatasArray["cmd-alt"],
+            ]
+                .map((field) => encodeURIComponent(field))
+                .join(";");
 
             items.push(itemDatasString);
         }
 
-        return items.join("|");
+        return `v2:|${items.join("|")}`;
     }
 };

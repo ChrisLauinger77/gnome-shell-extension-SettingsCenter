@@ -9,7 +9,6 @@ import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as QuickSettings from "resource:///org/gnome/shell/ui/quickSettings.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as Menu_Items from "./lib/menu_items.js";
-import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
 
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
 
@@ -40,7 +39,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                     for (const [index, item] of this._items.entries()) {
                         let strIcon,
                             strLabel = null;
-                        if (item["cmd"].match(/.desktop$/)) {
+                        if (item["cmd"].match(/\.desktop$/)) {
                             const app = Shell.AppSystem.get_default().lookup_app(item["cmd"]);
                             if (app !== null) {
                                 strLabel = app.get_name();
@@ -59,7 +58,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
                 const settingsItem = this.menu.addAction(_("Settings"), () => {
                     extension.openPreferences();
-                    QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+                    QuickSettingsMenu.menu.close({ fadeOnly: true });
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
@@ -70,16 +69,15 @@ const SettingsCenterMenuToggle = GObject.registerClass(
         }
 
         launch(settingItem) {
-            if (settingItem["cmd"].match(/.desktop$/)) {
+            if (settingItem["cmd"].match(/\.desktop$/)) {
                 const app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
 
                 if (app !== null) app.activate();
                 else if (settingItem["cmd-alt"] !== null) Util.spawn([settingItem["cmd-alt"]]);
             } else {
-                const cmdArray = settingItem["cmd"].split(" ");
-                Util.spawn(cmdArray);
+                Util.spawnCommandLine(settingItem["cmd"]);
             }
-            QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+            QuickSettingsMenu.menu.close({ fadeOnly: true });
         }
     }
 );
@@ -147,14 +145,15 @@ export default class SettingsCenter extends Extension {
     }
 
     disable() {
-        //Remove setting Signals
-        for (const signal of this._settingSignals) {
-            this._settings.disconnect(signal);
+        if (this._settingSignals && this._settings) {
+            for (const signal of this._settingSignals) {
+                this._settings.disconnect(signal);
+            }
         }
         this._settingSignals = null;
-        this._settings = null;
 
-        this._indicator.destroy();
+        this._indicator?.destroy();
         this._indicator = null;
+        this._settings = null;
     }
 }

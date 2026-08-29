@@ -1,6 +1,6 @@
 {
   "name": "gnome-shell-extension-settingscenter",
-  "version": "1.0.0",
+  "version": "51.0.0",
   "description": "Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu.",
   "main": "SettingsCenter@lauinger-clan.de/extension.js",
   "scripts": {
