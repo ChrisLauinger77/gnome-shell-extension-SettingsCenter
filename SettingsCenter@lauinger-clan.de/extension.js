@@ -11,7 +11,10 @@ import * as Util from "resource:///org/gnome/shell/misc/util.js";
 import * as Menu_Items from "./lib/menu_items.js";
 
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
+import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
+import * as Config from "resource:///org/gnome/shell/misc/config.js";
 
+const ShellVersion = parseFloat(Config.PACKAGE_VERSION);
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
 const SettingsCenterMenuToggle = GObject.registerClass(
@@ -58,7 +61,8 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
                 const settingsItem = this.menu.addAction(_("Settings"), () => {
                     extension.openPreferences();
-                    QuickSettingsMenu.menu.close({ fadeOnly: true });
+                    if (ShellVersion > 50) QuickSettingsMenu.menu.close({ fadeOnly: true });
+                    else QuickSettingsMenu.menu.close(PopupAnimation.FADE);
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
