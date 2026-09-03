@@ -28,6 +28,19 @@
             <property name="tooltip-text" translatable="yes">Toggle to show systemindicator</property>
           </object>
         </child>
+        <child>
+          <object class="AdwComboRow" id="SettingsCenter_row_quick_settings_appearance">
+            <property name="title" translatable="yes">Quick Settings appearance</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item translatable="yes">Toggle</item>
+                  <item translatable="yes">Button</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
       </object>
     </child>
     <child>

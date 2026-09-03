@@ -8,6 +8,7 @@ import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import * as PopupMenu from "resource:///org/gnome/shell/ui/popupMenu.js";
 import * as QuickSettings from "resource:///org/gnome/shell/ui/quickSettings.js";
 import * as Util from "resource:///org/gnome/shell/misc/util.js";
+import St from "gi://St";
 import * as Menu_Items from "./lib/menu_items.js";
 
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
@@ -16,6 +17,103 @@ import * as Config from "resource:///org/gnome/shell/misc/config.js";
 
 const ShellVersion = parseFloat(Config.PACKAGE_VERSION);
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
+
+function closeQuickSettingsMenu() {
+    if (ShellVersion > 50) QuickSettingsMenu.menu.close({ fadeOnly: true });
+    else QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+}
+
+function launchItem(settingItem) {
+    if (settingItem["cmd"].match(/\.desktop$/)) {
+        const app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
+
+        if (app !== null) app.activate();
+        else if (settingItem["cmd-alt"] !== null) Util.spawn([settingItem["cmd-alt"]]);
+    } else {
+        Util.spawnCommandLine(settingItem["cmd"]);
+    }
+
+    closeQuickSettingsMenu();
+}
+
+const SettingsCenterActionButton = GObject.registerClass(
+    // The matching class name is intentional for GObject registration.
+    // eslint-disable-next-line no-shadow
+    class SettingsCenterActionButton extends QuickSettings.QuickSettingsItem {
+        constructor(extension) {
+            const { _settings } = extension;
+            const labelmenu = _(_settings.get_string("label-menu"));
+            super({
+                style_class: "icon-button",
+                can_focus: true,
+                icon_name: "preferences-other-symbolic",
+                accessible_name: labelmenu,
+                visible: Main.sessionMode.allowSettings,
+            });
+
+            this.menu = new PopupMenu.PopupMenu(this, 0.5, St.Side.TOP);
+            Main.uiGroup.add_child(this.menu.actor);
+            this.menu.actor.hide();
+            this._menuManager = new PopupMenu.PopupMenuManager(this);
+            this._menuManager.addMenu(this.menu);
+
+            try {
+                const menuItems = new Menu_Items.MenuItems(_settings);
+                this._items = menuItems.getEnableItems();
+
+                if (this._items.length > 0) {
+                    for (const item of this._items) {
+                        let strIcon,
+                            strLabel = null;
+                        if (item["cmd"].match(/\.desktop$/)) {
+                            const app = Shell.AppSystem.get_default().lookup_app(item["cmd"]);
+                            if (app !== null) {
+                                strLabel = app.get_name();
+                                strIcon = app.icon.to_string();
+                            }
+                        }
+                        const menuItem = new PopupMenu.PopupImageMenuItem(
+                            strLabel || item.label,
+                            strIcon || "image-missing-symbolic"
+                        );
+                        menuItem.connect("activate", () => launchItem(item));
+                        this.menu.addMenuItem(menuItem);
+                    }
+                }
+
+                this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+                const settingsItem = this.menu.addAction(_("Preferences"), () => {
+                    extension.openPreferences();
+                    closeQuickSettingsMenu();
+                });
+
+                settingsItem.visible = Main.sessionMode.allowSettings;
+                this.menu._settingsActions[extension.uuid] = settingsItem;
+            } catch (error) {
+                extension.getLogger().error(`Error in SettingsCenterActionButton constructor: ${error}`);
+            }
+
+            this.connect("clicked", () => this.menu.toggle());
+            this._quickSettingsCloseId = QuickSettingsMenu.menu.connect("open-state-changed", (_menu, isOpen) => {
+                if (!isOpen) this.menu.close(PopupAnimation.NONE);
+            });
+            Main.sessionMode.connectObject(
+                "updated",
+                () => {
+                    this.visible = Main.sessionMode.allowSettings;
+                },
+                this
+            );
+        }
+
+        destroy() {
+            QuickSettingsMenu.menu.disconnect(this._quickSettingsCloseId);
+            this.menu.destroy();
+            this._menuManager = null;
+            super.destroy();
+        }
+    }
+);
 
 const SettingsCenterMenuToggle = GObject.registerClass(
     // The matching class name is intentional for GObject registration.
@@ -53,7 +151,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                             strLabel || item.label,
                             strIcon || "image-missing-symbolic"
                         );
-                        menuItem.connect("activate", () => this.launch(item));
+                        menuItem.connect("activate", () => launchItem(item));
                         this.menu.addMenuItem(menuItem, index);
                     }
                 }
@@ -61,8 +159,7 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
                 const settingsItem = this.menu.addAction(_("Settings"), () => {
                     extension.openPreferences();
-                    if (ShellVersion > 50) QuickSettingsMenu.menu.close({ fadeOnly: true });
-                    else QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+                    closeQuickSettingsMenu();
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
@@ -72,17 +169,6 @@ const SettingsCenterMenuToggle = GObject.registerClass(
             }
         }
 
-        launch(settingItem) {
-            if (settingItem["cmd"].match(/\.desktop$/)) {
-                const app = Shell.AppSystem.get_default().lookup_app(settingItem["cmd"]);
-
-                if (app !== null) app.activate();
-                else if (settingItem["cmd-alt"] !== null) Util.spawn([settingItem["cmd-alt"]]);
-            } else {
-                Util.spawnCommandLine(settingItem["cmd"]);
-            }
-            QuickSettingsMenu.menu.close({ fadeOnly: true });
-        }
     }
 );
 
@@ -98,9 +184,15 @@ const SettingsCenterIndicator = GObject.registerClass(
             this._indicator.icon_name = "preferences-other-symbolic";
             this._indicator.visible = _settings.get_boolean("show-systemindicator");
 
-            // Create the toggle menu and associate it with the indicator, being
+            const appearance = _settings.get_string("quick-settings-appearance");
+            const menuItem =
+                appearance === "button"
+                    ? new SettingsCenterActionButton(extension)
+                    : new SettingsCenterMenuToggle(extension);
+
+            // Create the quick settings item and associate it with the indicator, being
             // sure to destroy it along with the indicator
-            this.quickSettingsItems.push(new SettingsCenterMenuToggle(extension));
+            this.quickSettingsItems.push(menuItem);
 
             this.connect("destroy", () => {
                 for (const item of this.quickSettingsItems) {
@@ -139,6 +231,10 @@ export default class SettingsCenter extends Extension {
             {
                 key: "show-systemindicator",
                 callback: this._onParamChangedIndicator.bind(this),
+            },
+            {
+                key: "quick-settings-appearance",
+                callback: this._onParamChanged.bind(this),
             },
             { key: "items", callback: this._onParamChanged.bind(this) },
         ];

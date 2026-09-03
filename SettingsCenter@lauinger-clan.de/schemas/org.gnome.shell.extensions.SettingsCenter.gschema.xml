@@ -16,5 +16,14 @@
       <summary>Toggle to show systemindicator</summary>
       <description>Makes the systemindicator show/hide</description>
     </key>
+    <key name="quick-settings-appearance" type="s">
+      <default>'toggle'</default>
+      <choices>
+        <choice value='toggle'/>
+        <choice value='button'/>
+      </choices>
+      <summary>Quick Settings appearance</summary>
+      <description>Controls how the quick settings entry is shown.</description>
+    </key>
   </schema>
 </schemalist>
