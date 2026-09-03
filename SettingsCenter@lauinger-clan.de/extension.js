@@ -168,7 +168,6 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 extension.getLogger().error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
             }
         }
-
     }
 );
 
@@ -185,28 +184,44 @@ const SettingsCenterIndicator = GObject.registerClass(
             this._indicator.visible = _settings.get_boolean("show-systemindicator");
 
             const appearance = _settings.get_string("quick-settings-appearance");
-            const menuItem =
-                appearance === "button"
-                    ? new SettingsCenterActionButton(extension)
-                    : new SettingsCenterMenuToggle(extension);
+            if (appearance === "button") this._addActionButton(extension);
+            else this._addQuickSettingsToggle(extension);
 
-            // Create the quick settings item and associate it with the indicator, being
-            // sure to destroy it along with the indicator
-            this.quickSettingsItems.push(menuItem);
-
-            this.connect("destroy", () => {
-                for (const item of this.quickSettingsItems) {
-                    item.destroy();
-                }
-            });
-
-            // Add the indicator to the panel and the toggle to the menu
             QuickSettingsMenu._indicators.insert_child_at_index(this, 0);
             QuickSettingsMenu.addExternalIndicator(this);
         }
 
+        _addQuickSettingsToggle(extension) {
+            const quickSettingsToggle = new SettingsCenterMenuToggle(extension);
+            this.quickSettingsItems.push(quickSettingsToggle);
+        }
+
+        _addActionButton(extension) {
+            const actionRow = QuickSettingsMenu?._system?._systemItem?.child;
+            if (!actionRow) return;
+
+            this._actionButton = new SettingsCenterActionButton(extension);
+            const actionItems = actionRow.get_children();
+            const settingsIndex = actionItems.findIndex(
+                (child) => child._settingsApp?.get_id() === "org.gnome.Settings.desktop"
+            );
+            if (settingsIndex >= 0) actionRow.insert_child_at_index(this._actionButton, settingsIndex);
+            else actionRow.add_child(this._actionButton);
+        }
+
         setIndicatorVisible(visible) {
             this._indicator.visible = visible;
+        }
+
+        destroy() {
+            this._actionButton?.destroy();
+            this._actionButton = null;
+
+            for (const item of this.quickSettingsItems) {
+                item.destroy();
+            }
+
+            super.destroy();
         }
     }
 );
