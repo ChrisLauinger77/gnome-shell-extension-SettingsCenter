@@ -12,15 +12,11 @@ import St from "gi://St";
 import * as Menu_Items from "./lib/menu_items.js";
 
 import { Extension, gettext as _ } from "resource:///org/gnome/shell/extensions/extension.js";
-import { PopupAnimation } from "resource:///org/gnome/shell/ui/boxpointer.js";
-import * as Config from "resource:///org/gnome/shell/misc/config.js";
 
-const ShellVersion = parseFloat(Config.PACKAGE_VERSION);
 const QuickSettingsMenu = Main.panel.statusArea.quickSettings;
 
 function closeQuickSettingsMenu() {
-    if (ShellVersion > 50) QuickSettingsMenu.menu.close({ fadeOnly: true });
-    else QuickSettingsMenu.menu.close(PopupAnimation.FADE);
+    Main.panel.closeQuickSettings();
 }
 
 function launchItem(settingItem) {
@@ -88,14 +84,13 @@ const SettingsCenterActionButton = GObject.registerClass(
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
-                this.menu._settingsActions[extension.uuid] = settingsItem;
             } catch (error) {
                 extension.getLogger().error(`Error in SettingsCenterActionButton constructor: ${error}`);
             }
 
             this.connect("clicked", () => this.menu.toggle());
             this._quickSettingsCloseId = QuickSettingsMenu.menu.connect("open-state-changed", (_menu, isOpen) => {
-                if (!isOpen) this.menu.close(PopupAnimation.NONE);
+                if (!isOpen) this.menu.close();
             });
             Main.sessionMode.connectObject(
                 "updated",
@@ -163,7 +158,6 @@ const SettingsCenterMenuToggle = GObject.registerClass(
                 });
 
                 settingsItem.visible = Main.sessionMode.allowSettings;
-                this.menu._settingsActions[extension.uuid] = settingsItem;
             } catch (error) {
                 extension.getLogger().error(`Error in SettingsCenterMenuToggle constructor: ${error}`);
             }
@@ -187,7 +181,6 @@ const SettingsCenterIndicator = GObject.registerClass(
             if (appearance === "button") this._addActionButton(extension);
             else this._addQuickSettingsToggle(extension);
 
-            QuickSettingsMenu._indicators.insert_child_at_index(this, 0);
             QuickSettingsMenu.addExternalIndicator(this);
         }
 
@@ -197,6 +190,7 @@ const SettingsCenterIndicator = GObject.registerClass(
         }
 
         _addActionButton(extension) {
+            // GNOME Shell has no public API for adding buttons to its system action row.
             const actionRow = QuickSettingsMenu?._system?._systemItem?.child;
             if (!actionRow) return;
 
