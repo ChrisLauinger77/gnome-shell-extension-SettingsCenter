@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 16:48+0200\n"
+"POT-Creation-Date: 2026-09-03 18:10+0200\n"
 "PO-Revision-Date: 2026-05-23 11:56+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:67
+#: SettingsCenter@lauinger-clan.de/extension.js:81
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:157
+#: SettingsCenter@lauinger-clan.de/extension.js:155
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr "Einstellungen"
@@ -45,7 +45,7 @@ msgid "SettingsCenter"
 msgstr "Einstellungszentrum"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:123
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:70
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:76
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "'Beschriftung' und 'Kommando' müssen ausgefüllt werden !"
 
@@ -96,9 +96,9 @@ msgstr "Einstellungen zurücksetzen"
 msgid "Reset all settings to default values"
 msgstr "Alle Einstellungen auf Standardwerte zurücksetzen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:355
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:51
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:52
+#: SettingsCenter@lauinger-clan.de/prefs.js:361
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:58
 msgid "Select app"
 msgstr "App auswählen"
 
@@ -128,6 +128,18 @@ msgstr "Darstellung der Schnelleinstellungen"
 msgid "Controls how the quick settings entry is shown."
 msgstr "Steuert, wie der Schnellzugriffseintrag angezeigt wird."
 
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:30
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:46
+msgid "Hide GNOME Settings button"
+msgstr "GNOME-Einstellungen-Schaltfläche ausblenden"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:31
+msgid ""
+"Hides the default GNOME Settings button from the Quick Settings action row."
+msgstr ""
+"Blendet die standardmäßige GNOME-Einstellungen-Schaltfläche in der "
+"Aktionszeile der Schnelleinstellungen aus."
+
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:9
 msgid "Global"
 msgstr "Global"
@@ -153,30 +165,34 @@ msgstr "Umschalter"
 msgid "Button"
 msgstr "Schaltfläche"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:48
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:47
+msgid "Hide the default GNOME Settings button"
+msgstr "Standardmäßige GNOME-Einstellungen-Schaltfläche ausblenden"
+
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:54
 msgid "Add Menu"
 msgstr "Menü hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:63
 msgid "Label"
 msgstr "Beschriftung"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:58
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:64
 msgid "Label to show in menu"
 msgstr "Beschriftung die im Menü angezeigt wird"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:63
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:69
 msgid "Command"
 msgstr "Kommando"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:64
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:70
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr "Name der .desktop Datei (MyApp.desktop) oder Name des Befehls"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:69
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:75
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:81
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:87
 msgid "Settings Center"
 msgstr "Einstellungszentrum"

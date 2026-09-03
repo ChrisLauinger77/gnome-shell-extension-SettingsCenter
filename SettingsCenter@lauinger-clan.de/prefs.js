@@ -323,7 +323,13 @@ export default class AdwPrefs extends ExtensionPreferences {
     _resetSettings(settings, strKey) {
         if (strKey === "all") {
             // List all keys you want to reset
-            const keys = ["label-menu", "items", "show-systemindicator", "quick-settings-appearance"];
+            const keys = [
+                "label-menu",
+                "items",
+                "show-systemindicator",
+                "quick-settings-appearance",
+                "hide-system-settings-button",
+            ];
             for (const key of keys) {
                 if (settings.is_writable(key)) {
                     settings.reset(key);
@@ -368,6 +374,9 @@ export default class AdwPrefs extends ExtensionPreferences {
 
         adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
+
+        adwrow = builder.get_object("SettingsCenter_row_hide_system_settings_button");
+        window._settings.bind("hide-system-settings-button", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
 
         const quickSettingsAppearance = window._settings.get_string("quick-settings-appearance");
         quickSettingsAppearanceRow.selected = quickSettingsAppearance === "button" ? 1 : 0;

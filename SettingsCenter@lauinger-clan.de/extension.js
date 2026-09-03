@@ -177,6 +177,15 @@ const SettingsCenterIndicator = GObject.registerClass(
             this._indicator.icon_name = "preferences-other-symbolic";
             this._indicator.visible = _settings.get_boolean("show-systemindicator");
 
+            this._systemSettingsButton = this._findSystemSettingsButton();
+            this._hideSystemSettingsButton = _settings.get_boolean("hide-system-settings-button");
+            Main.sessionMode.connectObject(
+                "updated",
+                () => this._syncSystemSettingsButtonVisibility(),
+                this
+            );
+            this._syncSystemSettingsButtonVisibility();
+
             const appearance = _settings.get_string("quick-settings-appearance");
             if (appearance === "button") this._addActionButton(extension);
             else this._addQuickSettingsToggle(extension);
@@ -189,17 +198,32 @@ const SettingsCenterIndicator = GObject.registerClass(
             this.quickSettingsItems.push(quickSettingsToggle);
         }
 
+        _getSystemActionRow() {
+            // GNOME Shell has no public API for accessing its system action row.
+            return QuickSettingsMenu?._system?._systemItem?.child ?? null;
+        }
+
+        _findSystemSettingsButton() {
+            return this._getSystemActionRow()
+                ?.get_children()
+                .find((child) => child._settingsApp?.get_id() === "org.gnome.Settings.desktop");
+        }
+
+        _syncSystemSettingsButtonVisibility() {
+            if (!this._systemSettingsButton) return;
+
+            this._systemSettingsButton.visible =
+                !this._hideSystemSettingsButton && Main.sessionMode.allowSettings;
+        }
+
         _addActionButton(extension) {
-            // GNOME Shell has no public API for adding buttons to its system action row.
-            const actionRow = QuickSettingsMenu?._system?._systemItem?.child;
+            const actionRow = this._getSystemActionRow();
             if (!actionRow) return;
 
             this._actionButton = new SettingsCenterActionButton(extension);
             const actionItems = actionRow.get_children();
-            const settingsIndex = actionItems.findIndex(
-                (child) => child._settingsApp?.get_id() === "org.gnome.Settings.desktop"
-            );
-            if (settingsIndex >= 0) actionRow.insert_child_at_index(this._actionButton, settingsIndex);
+            const settingsIndex = actionItems.indexOf(this._systemSettingsButton);
+            if (settingsIndex >= 0) actionRow.insert_child_at_index(this._actionButton, settingsIndex + 1);
             else actionRow.add_child(this._actionButton);
         }
 
@@ -207,9 +231,18 @@ const SettingsCenterIndicator = GObject.registerClass(
             this._indicator.visible = visible;
         }
 
+        setSystemSettingsButtonHidden(hidden) {
+            this._hideSystemSettingsButton = hidden;
+            this._syncSystemSettingsButtonVisibility();
+        }
+
         destroy() {
             this._actionButton?.destroy();
             this._actionButton = null;
+
+            this._hideSystemSettingsButton = false;
+            this._syncSystemSettingsButtonVisibility();
+            this._systemSettingsButton = null;
 
             for (const item of this.quickSettingsItems) {
                 item.destroy();
@@ -230,6 +263,10 @@ export default class SettingsCenter extends Extension {
         this._indicator.setIndicatorVisible(this._settings.get_boolean("show-systemindicator"));
     }
 
+    _onSystemSettingsButtonChanged() {
+        this._indicator.setSystemSettingsButtonHidden(this._settings.get_boolean("hide-system-settings-button"));
+    }
+
     enable() {
         this._settings = this.getSettings();
         this._settingSignals = [];
@@ -244,6 +281,10 @@ export default class SettingsCenter extends Extension {
             {
                 key: "quick-settings-appearance",
                 callback: this._onParamChanged.bind(this),
+            },
+            {
+                key: "hide-system-settings-button",
+                callback: this._onSystemSettingsButtonChanged.bind(this),
             },
             { key: "items", callback: this._onParamChanged.bind(this) },
         ];

@@ -25,5 +25,10 @@
       <summary>Quick Settings appearance</summary>
       <description>Controls how the quick settings entry is shown.</description>
     </key>
+    <key name="hide-system-settings-button" type="b">
+      <default>false</default>
+      <summary>Hide GNOME Settings button</summary>
+      <description>Hides the default GNOME Settings button from the Quick Settings action row.</description>
+    </key>
   </schema>
 </schemalist>

@@ -41,6 +41,12 @@
             </property>
           </object>
         </child>
+        <child>
+          <object class="AdwSwitchRow" id="SettingsCenter_row_hide_system_settings_button">
+            <property name="title" translatable="yes">Hide GNOME Settings button</property>
+            <property name="tooltip-text" translatable="yes">Hide the default GNOME Settings button</property>
+          </object>
+        </child>
       </object>
     </child>
     <child>
