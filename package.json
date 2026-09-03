@@ -1,33 +1,33 @@
 {
-  "name": "gnome-shell-extension-settingscenter",
-  "version": "51.1.0",
-  "description": "Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu.",
-  "main": "SettingsCenter@lauinger-clan.de/extension.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "update-translations": "./update-translation-po-files.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ChrisLauinger77/XES-Settings-Center-Extension.git"
-  },
-  "keywords": [
-    "gnome-shell",
-    "extension",
-    "settings",
-    "quick-launch"
-  ],
-  "author": "Chris Lauinger",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/issues"
-  },
-  "homepage": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension#readme",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@microsoft/eslint-formatter-sarif": "3.1.0",
-    "eslint": "^10.6.0"
-  },
-  "type": "module"
+    "name": "gnome-shell-extension-settingscenter",
+    "version": "51.1.1",
+    "description": "Settings Center is a customizable drop-down menu for quickly launching frequently used apps in Gnome:Shell via the quick settings menu.",
+    "main": "SettingsCenter@lauinger-clan.de/extension.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint .",
+        "update-translations": "./update-translation-po-files.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ChrisLauinger77/XES-Settings-Center-Extension.git"
+    },
+    "keywords": [
+        "gnome-shell",
+        "extension",
+        "settings",
+        "quick-launch"
+    ],
+    "author": "Chris Lauinger",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension/issues"
+    },
+    "homepage": "https://github.com/ChrisLauinger77/XES-Settings-Center-Extension#readme",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@microsoft/eslint-formatter-sarif": "3.1.0",
+        "eslint": "^10.6.0"
+    },
+    "type": "module"
 }
