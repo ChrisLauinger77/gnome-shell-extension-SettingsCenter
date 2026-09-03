@@ -105,6 +105,11 @@ const AppChooser = GObject.registerClass(
 );
 
 export default class AdwPrefs extends ExtensionPreferences {
+    _changeQuickSettingsAppearance(settings, row) {
+        const appearanceOptions = ["toggle", "button"];
+        settings.set_string("quick-settings-appearance", appearanceOptions[row.selected] || appearanceOptions[0]);
+    }
+
     _changeMenu(settings, text) {
         settings.set_string("label-menu", text.get_text());
     }
@@ -318,7 +323,13 @@ export default class AdwPrefs extends ExtensionPreferences {
     _resetSettings(settings, strKey) {
         if (strKey === "all") {
             // List all keys you want to reset
-            const keys = ["label-menu", "items", "show-systemindicator"];
+            const keys = [
+                "label-menu",
+                "items",
+                "show-systemindicator",
+                "quick-settings-appearance",
+                "hide-system-settings-button",
+            ];
             for (const key of keys) {
                 if (settings.is_writable(key)) {
                     settings.reset(key);
@@ -344,6 +355,7 @@ export default class AdwPrefs extends ExtensionPreferences {
         const buttonAdd = builder.get_object("SettingsCenter_row_buttonadd");
         const valueLabelAdd = builder.get_object("SettingsCenter_row_label");
         const valueCmdAdd = builder.get_object("SettingsCenter_row_command");
+        const quickSettingsAppearanceRow = builder.get_object("SettingsCenter_row_quick_settings_appearance");
 
         const myAppChooser = new AppChooser({
             title: _("Select app"),
@@ -362,6 +374,16 @@ export default class AdwPrefs extends ExtensionPreferences {
 
         adwrow = builder.get_object("SettingsCenter_row_systemindicator");
         window._settings.bind("show-systemindicator", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
+
+        adwrow = builder.get_object("SettingsCenter_row_hide_system_settings_button");
+        window._settings.bind("hide-system-settings-button", adwrow, "active", Gio.SettingsBindFlags.DEFAULT);
+
+        const quickSettingsAppearance = window._settings.get_string("quick-settings-appearance");
+        quickSettingsAppearanceRow.selected = quickSettingsAppearance === "button" ? 1 : 0;
+        quickSettingsAppearanceRow.connect(
+            "notify::selected",
+            this._changeQuickSettingsAppearance.bind(this, window._settings, quickSettingsAppearanceRow)
+        );
 
         buttonAppChooser.connect("activated", async () => {
             const errorLog = (...args) => {

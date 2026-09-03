@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-24 08:21+0200\n"
+"POT-Creation-Date: 2026-09-03 18:10+0200\n"
 "PO-Revision-Date: 2026-05-23 11:53+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: Dutch\n"
@@ -17,83 +17,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: SettingsCenter@lauinger-clan.de/extension.js:58
+#: SettingsCenter@lauinger-clan.de/extension.js:81
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: SettingsCenter@lauinger-clan.de/extension.js:155
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:5
 msgid "Settings"
 msgstr "Voorkeuren"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:21
+#: SettingsCenter@lauinger-clan.de/prefs.js:23
 msgid "Search..."
 msgstr "Zoeken..."
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:33
+#: SettingsCenter@lauinger-clan.de/prefs.js:35
 msgid "Select"
 msgstr "Selecteren"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:36
-#: SettingsCenter@lauinger-clan.de/prefs.js:137
+#: SettingsCenter@lauinger-clan.de/prefs.js:38
+#: SettingsCenter@lauinger-clan.de/prefs.js:164
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:96
+#: SettingsCenter@lauinger-clan.de/prefs.js:123
 msgid "SettingsCenter"
 msgstr "Voorkeurencentrum"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:96
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
+#: SettingsCenter@lauinger-clan.de/prefs.js:123
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:76
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "Kies een label en opdracht !"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:134
+#: SettingsCenter@lauinger-clan.de/prefs.js:161
 msgid "Delete entry"
 msgstr "Verwijder invoer"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:135
+#: SettingsCenter@lauinger-clan.de/prefs.js:162
 msgid "Are you sure you want to delete the entry ?"
 msgstr "Weet u zeker dat u de invoer wilt verwijderen?"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:138
+#: SettingsCenter@lauinger-clan.de/prefs.js:165
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:156
+#: SettingsCenter@lauinger-clan.de/prefs.js:183
 msgid "Del"
 msgstr "Del"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:161
+#: SettingsCenter@lauinger-clan.de/prefs.js:188
 msgid "Delete item"
 msgstr "Item verwijderen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:172
+#: SettingsCenter@lauinger-clan.de/prefs.js:199
 msgid "Enable/Disable item"
 msgstr "Item in-/uitschakelen"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:197
+#: SettingsCenter@lauinger-clan.de/prefs.js:224
 msgid "Drag to reorder"
 msgstr "Sleep om te herschikken"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:239
+#: SettingsCenter@lauinger-clan.de/prefs.js:266
 msgid "Menu Items"
 msgstr "Menu-items"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:240
+#: SettingsCenter@lauinger-clan.de/prefs.js:267
 msgid ""
 "Add custom commands to the menu, rows can be reordered by drag and drop."
 msgstr ""
 "Voeg aangepaste opdrachten toe aan het menu; rijen kunnen met slepen en "
 "neerzetten worden herschikt."
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:279
+#: SettingsCenter@lauinger-clan.de/prefs.js:306
 msgid "Reset Settings"
 msgstr "Instellingen resetten"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:285
+#: SettingsCenter@lauinger-clan.de/prefs.js:312
 msgid "Reset all settings to default values"
 msgstr "Alle instellingen terugzetten naar standaardwaarden"
 
-#: SettingsCenter@lauinger-clan.de/prefs.js:327
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
+#: SettingsCenter@lauinger-clan.de/prefs.js:361
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:58
 msgid "Select app"
 msgstr "App selecteren"
 
@@ -114,6 +118,27 @@ msgstr "Systeemindicator toon-/verbergknop"
 msgid "Makes the systemindicator show/hide"
 msgstr "Toon/Verberg de systeemindicator"
 
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:25
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:33
+msgid "Quick Settings appearance"
+msgstr "Uiterlijk van snelle instellingen"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:26
+msgid "Controls how the quick settings entry is shown."
+msgstr "Bepaalt hoe het snelle instellingen-item wordt weergegeven."
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:30
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:46
+msgid "Hide GNOME Settings button"
+msgstr "Knop GNOME-instellingen verbergen"
+
+#: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:31
+msgid ""
+"Hides the default GNOME Settings button from the Quick Settings action row."
+msgstr ""
+"Verbergt de standaardknop voor GNOME-instellingen in de actierij van Snelle "
+"instellingen."
+
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:9
 msgid "Global"
 msgstr "Algemeen"
@@ -131,32 +156,44 @@ msgstr "Toepassen"
 msgid "Show SystemIndicator"
 msgstr "Systeemindicator tonen"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:35
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:37
+msgid "Toggle"
+msgstr "Schakelaar"
+
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
+msgid "Button"
+msgstr "Knop"
+
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:47
+msgid "Hide the default GNOME Settings button"
+msgstr "Standaardknop voor GNOME-instellingen verbergen"
+
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:54
 msgid "Add Menu"
 msgstr "Menu toevoegen"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:44
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:63
 msgid "Label"
 msgstr "Tekst"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:45
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:64
 msgid "Label to show in menu"
 msgstr "Het te tonen label in het menu"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:50
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:69
 msgid "Command"
 msgstr "Opdracht"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:51
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:70
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr ""
 "De naam van een .desktopbestand (MijnToepassing.desktop) of naam van een "
 "opdracht"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:56
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:75
 msgid "Add"
 msgstr "Toevoegen"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:68
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:87
 msgid "Settings Center"
 msgstr "Voorkeurenmenu"

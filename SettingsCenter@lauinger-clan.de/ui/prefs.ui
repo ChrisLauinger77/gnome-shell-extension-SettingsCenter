@@ -28,6 +28,25 @@
             <property name="tooltip-text" translatable="yes">Toggle to show systemindicator</property>
           </object>
         </child>
+        <child>
+          <object class="AdwComboRow" id="SettingsCenter_row_quick_settings_appearance">
+            <property name="title" translatable="yes">Quick Settings appearance</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item translatable="yes">Toggle</item>
+                  <item translatable="yes">Button</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="SettingsCenter_row_hide_system_settings_button">
+            <property name="title" translatable="yes">Hide GNOME Settings button</property>
+            <property name="tooltip-text" translatable="yes">Hide the default GNOME Settings button</property>
+          </object>
+        </child>
       </object>
     </child>
     <child>
