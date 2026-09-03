@@ -14,6 +14,13 @@ Original source : https://github.com/l300lvl/XES-Settings-Center-Extension
 
 Make sure you have gnome-icon-theme package installed.
 
+### GNOME Shell 50 and 51 settings
+
+The following settings are available only on GNOME Shell 50 and 51:
+
+- **Quick Settings appearance:** Show SettingsCenter as a Quick Settings toggle or as a button in the system action row.
+- **Hide GNOME Settings button:** Hide GNOME's standard Settings button from the system action row. This option is disabled by default.
+
 ### 1 click install from E.G.O:
 
 [<img src="https://raw.githubusercontent.com/andyholmes/gnome-shell-extensions-badge/master/get-it-on-ego.svg" height="125">](https://extensions.gnome.org/extension/2899/settingscenter)
