@@ -29,6 +29,13 @@ Current target shell versions are declared in `SettingsCenter@lauinger-clan.de/m
 - Preserve user changes. The worktree may contain staged or unstaged edits unrelated to your task.
 - Use `$review-gnome-shell-extension` before changing runtime, preferences, metadata, schema, packaging, or user-data behavior that may affect extensions.gnome.org review.
 
+## Useful Commands
+
+- `./settingscenter.sh install-dependencies`: install the locked JavaScript dependencies.
+
+Run `./settingscenter.sh install-dependencies` after pulling or rebasing remote
+changes that modify `package-lock.json`, particularly Renovate updates.
+
 ## Menu Item Storage
 
 Menu items are stored in GSettings key `items` as a single serialized string:
