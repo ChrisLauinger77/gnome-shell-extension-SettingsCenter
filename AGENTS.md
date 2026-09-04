@@ -46,6 +46,11 @@ Before finishing changes, run the validations that match the edit:
 - JavaScript changes: run `node --check` on each changed JavaScript file and `npm run lint`.
 - Schema, metadata, packaging, icon, UI, or translation changes: `./settingscenter.sh pack`.
 - User-visible strings: `./settingscenter.sh translate`.
+- Runtime behavior: load the extension in GNOME Shell and check both the popup
+  hotkey and preferences window.
+- Submission-oriented changes: use `$review-gnome-shell-extension` to check
+  lifecycle cleanup, process boundaries, metadata, schemas, privacy, and
+  packaging requirements.
 
 `npm run lint` requires ESLint 9. If the system picks up ESLint 6, install or use the project dependencies before trusting lint output.
 
