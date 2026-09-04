@@ -39,27 +39,19 @@ label;cmd;enable;cmd-alt|label;cmd;enable;cmd-alt
 
 Be careful with parsing and writing this format. Labels or commands containing `;` or `|` will currently break the format.
 
-## Validation
+## Validation Checklist
 
-Useful checks:
+Before finishing changes, run the validations that match the edit:
 
-```sh
-node --check SettingsCenter@lauinger-clan.de/prefs.js
-node --check SettingsCenter@lauinger-clan.de/extension.js
-npm run lint
-```
+- JavaScript changes: run `node --check` on each changed JavaScript file and `npm run lint`.
+- Schema, metadata, packaging, icon, UI, or translation changes: `./settingscenter.sh pack`.
+- User-visible strings: `./settingscenter.sh translate`.
 
-`npm run lint` requires ESLint 9. If the system picks up ESLint 6, install/use the project dependencies before trusting lint output.
+`npm run lint` requires ESLint 9. If the system picks up ESLint 6, install or use the project dependencies before trusting lint output.
 
-Packaging and install helpers:
+If a required GNOME or gettext command is unavailable in the environment, state that clearly in the final response.
 
-```sh
-./settingscenter.sh pack
-./settingscenter.sh install
-./settingscenter.sh translate
-```
-
-Do not upload releases unless the user explicitly asks.
+Do not install or upload releases unless the user explicitly asks.
 
 ## Translations
 
@@ -68,8 +60,6 @@ If a change adds, removes, or edits user-visible strings wrapped for translation
 ```sh
 ./settingscenter.sh translate
 ```
-
-Do not update translations automatically unless the user asks, because it may touch many `po/` files.
 
 ## Testing Checklist
 

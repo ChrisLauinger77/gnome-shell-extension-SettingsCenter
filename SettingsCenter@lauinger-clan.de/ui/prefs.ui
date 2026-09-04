@@ -31,6 +31,7 @@
         <child>
           <object class="AdwComboRow" id="SettingsCenter_row_quick_settings_appearance">
             <property name="title" translatable="yes">Quick Settings appearance</property>
+            <property name="tooltip-text" translatable="yes">Toggle means Quicksettings toggle, button means Quicksettings button</property>
             <property name="model">
               <object class="GtkStringList">
                 <items>

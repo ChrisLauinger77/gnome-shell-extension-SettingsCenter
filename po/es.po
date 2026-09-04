@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 18:10+0200\n"
+"POT-Creation-Date: 2026-09-04 15:24+0200\n"
 "PO-Revision-Date: 2026-05-23 11:53+0200\n"
 "Last-Translator: Christian Lauinger <christian@lauinger-clan.de>\n"
 "Language-Team: \n"
@@ -44,7 +44,7 @@ msgid "SettingsCenter"
 msgstr "Centro de Configuraciones"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:123
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:76
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:77
 msgid "'Label' and 'Command' must be filled out !"
 msgstr "¡'Etiqueta' y 'Comando' deben ser completados!"
 
@@ -96,8 +96,8 @@ msgid "Reset all settings to default values"
 msgstr "Restablecer todos los ajustes a sus valores predeterminados"
 
 #: SettingsCenter@lauinger-clan.de/prefs.js:361
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:57
 #: SettingsCenter@lauinger-clan.de/ui/prefs.ui:58
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:59
 msgid "Select app"
 msgstr "Seleccionar aplicación"
 
@@ -128,7 +128,7 @@ msgid "Controls how the quick settings entry is shown."
 msgstr "Controla cómo se muestra la entrada de configuración rápida."
 
 #: SettingsCenter@lauinger-clan.de/schemas/org.gnome.shell.extensions.SettingsCenter.gschema.xml:30
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:46
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:47
 msgid "Hide GNOME Settings button"
 msgstr "Ocultar el botón de Configuración de GNOME"
 
@@ -156,42 +156,46 @@ msgstr "Aplicar"
 msgid "Show SystemIndicator"
 msgstr "Mostrar indicador del sistema"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:37
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:34
+msgid "Toggle means Quicksettings toggle, button means Quicksettings button"
+msgstr "Interruptor significa interruptor de Configuración rápida, botón significa botón de Configuración rápida"
+
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
 msgid "Toggle"
 msgstr "Interruptor"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:38
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:39
 msgid "Button"
 msgstr "Botón"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:47
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:48
 msgid "Hide the default GNOME Settings button"
 msgstr "Ocultar el botón predeterminado de Configuración de GNOME"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:54
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:55
 msgid "Add Menu"
 msgstr "Agregar menú"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:63
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:64
 msgid "Label"
 msgstr "Etiqueta"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:64
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:65
 msgid "Label to show in menu"
 msgstr "Etiqueta para mostrar en el menú"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:69
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:70
 msgid "Command"
 msgstr "Comando"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:70
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:71
 msgid "Name of .desktop file (MyApp.desktop) or name of command"
 msgstr "Nombre del archivo .desktop (MyApp.desktop) o nombre del comando"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:75
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:76
 msgid "Add"
 msgstr "Agregar"
 
-#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:87
+#: SettingsCenter@lauinger-clan.de/ui/prefs.ui:88
 msgid "Settings Center"
 msgstr "Centro de configuración"
