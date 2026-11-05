@@ -2,13 +2,15 @@
 
 Guidance for coding agents working in this repository.
 
-## Project
+## Project Overview
 
 SettingsCenter is a GNOME Shell extension that adds a customizable quick settings menu for launching settings tools and apps.
 
 The extension UUID is `SettingsCenter@lauinger-clan.de`.
 
-Current target shell versions are declared in `SettingsCenter@lauinger-clan.de/metadata.json`. Keep compatibility with all declared versions unless the user explicitly changes the target.
+The `shell-version` field in `SettingsCenter@lauinger-clan.de/metadata.json` declares which GNOME Shell versions the current extension release supports. Keep compatibility with all declared versions unless the user explicitly changes the target.
+
+The GNOME Shell compatibility badge in `README.md` covers every GNOME Shell major version supported across the extension's releases. The extension's ES module releases currently cover GNOME Shell 45 through 51, inclusive. When updating the badge, account for versions supported by older releases, including those outside the current release's `shell-version` list.
 
 ## Repository Map
 
