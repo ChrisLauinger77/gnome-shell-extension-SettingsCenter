@@ -27,7 +27,10 @@
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@microsoft/eslint-formatter-sarif": "3.1.0",
-        "eslint": "^10.6.0"
+        "eslint": "^10.6.0",
+        "@girs/gjs": "latest",
+        "@girs/gnome-shell": "latest",
+        "typescript": "latest"
     },
     "type": "module"
 }
